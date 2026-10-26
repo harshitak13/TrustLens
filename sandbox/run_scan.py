@@ -133,7 +133,7 @@ def scan(pkg_path: str, variant: str = "baseline"):
     }
     out = ROOT / "scans" / f"{name}@{version}.{variant}.json"
     out.parent.mkdir(exist_ok=True)
-    out.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    out.write_text(json.dumps(result, indent=2), encoding="utf-8", newline="\n")
     return out, result
 
 

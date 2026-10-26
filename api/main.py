@@ -48,7 +48,7 @@ def combine(results: dict[str, dict]) -> dict:
         sev = "critical" if any(f["cap"].startswith(("net:", "proc:")) for f in findings) else "high"
         if SEVERITY_ORDER.index(sev) > SEVERITY_ORDER.index(base["diff"]["verdict"]):
             out["diff"] = {**base["diff"], "verdict": sev}
-    (SCANS / f"{base['package']}@{base['version']}.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+    (SCANS / f"{base['package']}@{base['version']}.json").write_text(json.dumps(out, indent=2), encoding="utf-8", newline="\n")
     return out
 
 
