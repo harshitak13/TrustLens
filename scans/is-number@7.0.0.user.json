@@ -1,5 +1,5 @@
 {
-  "scan": "bda7d38dcb",
+  "scan": "999279db31",
   "package": "is-number",
   "version": "7.0.0",
   "sha256": "ec02ca1a8eb57be9ce5ede43a63fa962894e803544a19342bd48d6c93e1ce013",
@@ -11,13 +11,7 @@
   "capabilities": [],
   "claims": {
     "network": [
-      "net:img.shields.io",
-      "net:www.npmjs.com",
-      "net:npmjs.org",
-      "net:travis-ci.org",
-      "net:github.com",
-      "net:linkedin.com",
-      "net:twitter.com"
+      "net:*"
     ],
     "files": [
       "file:*:.isFinite"
@@ -36,32 +30,8 @@
     "category": "parser",
     "evidence": [
       {
-        "cap": "net:img.shields.io",
-        "why": "URL in README: img.shields.io"
-      },
-      {
-        "cap": "net:www.npmjs.com",
-        "why": "URL in README: www.npmjs.com"
-      },
-      {
-        "cap": "net:npmjs.org",
-        "why": "URL in README: npmjs.org"
-      },
-      {
-        "cap": "net:travis-ci.org",
-        "why": "URL in README: travis-ci.org"
-      },
-      {
-        "cap": "net:github.com",
-        "why": "URL in README: github.com"
-      },
-      {
-        "cap": "net:linkedin.com",
-        "why": "URL in README: linkedin.com"
-      },
-      {
-        "cap": "net:twitter.com",
-        "why": "URL in README: twitter.com"
+        "cap": "net:*",
+        "why": "README says it makes network requests"
       },
       {
         "cap": "file:*:.isFinite",
@@ -74,37 +44,7 @@
     "category": "parser",
     "claimed": [
       {
-        "cap": "net:img.shields.io",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:www.npmjs.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:npmjs.org",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:travis-ci.org",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:github.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:linkedin.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:twitter.com",
+        "cap": "net:*",
         "family": "network",
         "seen": false
       },

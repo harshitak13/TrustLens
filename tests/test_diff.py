@@ -59,3 +59,12 @@ def test_bare_file_claim_matches_any_directory():
     m = {"files": ["file:*:.env"], "category": "string-utils"}
     rows = diff(obs(("snippet", "file:read:/work/.env"), ("snippet", "file:read:/work/x.env")), m)["observed"]
     assert [r["status"] for r in rows] == ["claimed", "unclaimed"]
+
+
+def test_readme_links_are_not_network_claims(tmp_path):
+    (tmp_path / "package.json").write_text('{"name": "x", "version": "1.0.0"}')
+    (tmp_path / "README.md").write_text(
+        "# x\n[![badge](https://img.shields.io/x)](https://evil.test/a)\nSee https://docs.test/ for docs.\n"
+        "It makes requests to https://api.good.test/v1.\n```js\nfetch('https://ex.test/')\n```\n")
+    m = parse(tmp_path)
+    assert set(m["network"]) == {"net:ex.test", "net:api.good.test"}

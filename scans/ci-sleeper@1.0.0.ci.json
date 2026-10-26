@@ -1,5 +1,5 @@
 {
-  "scan": "7544eb1afc",
+  "scan": "997b390777",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
@@ -9,8 +9,8 @@
   "variant": "ci",
   "events": [
     {
-      "ts": 0.8,
-      "scan": "7544eb1afc",
+      "ts": 0.781,
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "import",
       "type": "env",
@@ -23,8 +23,8 @@
       "token": null
     },
     {
-      "ts": 0.809,
-      "scan": "7544eb1afc",
+      "ts": 0.792,
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -39,8 +39,8 @@
       "token": null
     },
     {
-      "ts": 0.869,
-      "scan": "7544eb1afc",
+      "ts": 0.855,
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -53,8 +53,8 @@
       "token": null
     },
     {
-      "ts": 0.874,
-      "scan": "7544eb1afc",
+      "ts": 0.86,
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "import",
       "type": "dns",
@@ -67,8 +67,8 @@
       "token": null
     },
     {
-      "ts": 4.999,
-      "scan": "7544eb1afc",
+      "ts": 4.988,
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "snippet",
       "type": "env",
@@ -81,8 +81,8 @@
       "token": null
     },
     {
-      "ts": 5.012,
-      "scan": "7544eb1afc",
+      "ts": 5.0,
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -98,7 +98,7 @@
     },
     {
       "ts": 5.07,
-      "scan": "7544eb1afc",
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -112,7 +112,7 @@
     },
     {
       "ts": 5.076,
-      "scan": "7544eb1afc",
+      "scan": "997b390777",
       "variant": "ci",
       "stage": "snippet",
       "type": "dns",
@@ -129,25 +129,25 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 0.8,
+      "first_ts": 0.781,
       "count": 1
     },
     {
       "cap": "net:beacon.ci-sleeper.test",
       "stage": "import",
-      "first_ts": 0.809,
+      "first_ts": 0.792,
       "count": 3
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 4.999,
+      "first_ts": 4.988,
       "count": 1
     },
     {
       "cap": "net:beacon.ci-sleeper.test",
       "stage": "snippet",
-      "first_ts": 5.012,
+      "first_ts": 5.0,
       "count": 3
     }
   ],
@@ -177,7 +177,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.8,
+        "first_ts": 0.781,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -186,7 +186,7 @@
       {
         "cap": "net:beacon.ci-sleeper.test",
         "stage": "import",
-        "first_ts": 0.809,
+        "first_ts": 0.792,
         "count": 3,
         "status": "contradicted",
         "severity": "critical",
@@ -195,7 +195,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 4.999,
+        "first_ts": 4.988,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -204,7 +204,7 @@
       {
         "cap": "net:beacon.ci-sleeper.test",
         "stage": "snippet",
-        "first_ts": 5.012,
+        "first_ts": 5.0,
         "count": 3,
         "status": "contradicted",
         "severity": "critical",

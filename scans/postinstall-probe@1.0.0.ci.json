@@ -1,5 +1,5 @@
 {
-  "scan": "7a951ad01d",
+  "scan": "663177f803",
   "package": "postinstall-probe",
   "version": "1.0.0",
   "sha256": "770f06ebd2c8a01195133e062bd7e72a54c76cf6427cde6fd3a652f0ca4ed047",
@@ -9,8 +9,8 @@
   "variant": "ci",
   "events": [
     {
-      "ts": 0.704,
-      "scan": "7a951ad01d",
+      "ts": 0.68,
+      "scan": "663177f803",
       "variant": "ci",
       "stage": "install",
       "type": "proc",
@@ -27,8 +27,8 @@
       "token": null
     },
     {
-      "ts": 0.792,
-      "scan": "7a951ad01d",
+      "ts": 0.756,
+      "scan": "663177f803",
       "variant": "ci",
       "stage": "install",
       "type": "proc",
@@ -46,13 +46,13 @@
     {
       "cap": "proc:install-script:node setup.js",
       "stage": "install",
-      "first_ts": 0.704,
+      "first_ts": 0.68,
       "count": 1
     },
     {
       "cap": "proc:uname",
       "stage": "install",
-      "first_ts": 0.792,
+      "first_ts": 0.756,
       "count": 1
     }
   ],
@@ -77,7 +77,7 @@
       {
         "cap": "proc:install-script:node setup.js",
         "stage": "install",
-        "first_ts": 0.704,
+        "first_ts": 0.68,
         "count": 1,
         "status": "unclaimed",
         "severity": "high",
@@ -86,7 +86,7 @@
       {
         "cap": "proc:uname",
         "stage": "install",
-        "first_ts": 0.792,
+        "first_ts": 0.756,
         "count": 1,
         "status": "unclaimed",
         "severity": "high",

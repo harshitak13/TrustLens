@@ -1,5 +1,5 @@
 {
-  "scan": "63e50a0c46",
+  "scan": "0fd4272417",
   "package": "slugify",
   "version": "1.6.6",
   "sha256": "8deece9a6868450a7812d974174d3e636fce114c037622e627613895607df824",
@@ -10,14 +10,7 @@
   "events": [],
   "capabilities": [],
   "claims": {
-    "network": [
-      "net:github.com",
-      "net:developer.mozilla.org",
-      "net:en.wikipedia.org",
-      "net:img.shields.io",
-      "net:www.npmjs.com",
-      "net:coveralls.io"
-    ],
+    "network": [],
     "files": [],
     "env": [],
     "subprocess": [],
@@ -31,68 +24,12 @@
     ],
     "ecosystem": "npm",
     "category": "string-utils",
-    "evidence": [
-      {
-        "cap": "net:github.com",
-        "why": "URL in README: github.com"
-      },
-      {
-        "cap": "net:developer.mozilla.org",
-        "why": "URL in README: developer.mozilla.org"
-      },
-      {
-        "cap": "net:en.wikipedia.org",
-        "why": "URL in README: en.wikipedia.org"
-      },
-      {
-        "cap": "net:img.shields.io",
-        "why": "URL in README: img.shields.io"
-      },
-      {
-        "cap": "net:www.npmjs.com",
-        "why": "URL in README: www.npmjs.com"
-      },
-      {
-        "cap": "net:coveralls.io",
-        "why": "URL in README: coveralls.io"
-      }
-    ]
+    "evidence": []
   },
   "diff": {
     "verdict": "none",
     "category": "string-utils",
-    "claimed": [
-      {
-        "cap": "net:github.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:developer.mozilla.org",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:en.wikipedia.org",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:img.shields.io",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:www.npmjs.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:coveralls.io",
-        "family": "network",
-        "seen": false
-      }
-    ],
+    "claimed": [],
     "observed": [],
     "denials": []
   }

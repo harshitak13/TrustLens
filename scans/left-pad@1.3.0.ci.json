@@ -1,5 +1,5 @@
 {
-  "scan": "d1de437eab",
+  "scan": "d2dd25f413",
   "package": "left-pad",
   "version": "1.3.0",
   "sha256": "b918ea69ee35e6ac0705145fec0edde7fac2d7899c5ce0ff36a79a57518f5263",
@@ -10,11 +10,7 @@
   "events": [],
   "capabilities": [],
   "claims": {
-    "network": [
-      "net:github.com",
-      "net:en.wikipedia.org",
-      "net:travis-ci.org"
-    ],
+    "network": [],
     "files": [],
     "env": [],
     "subprocess": [],
@@ -24,41 +20,12 @@
     ],
     "ecosystem": "npm",
     "category": "string-utils",
-    "evidence": [
-      {
-        "cap": "net:github.com",
-        "why": "URL in README: github.com"
-      },
-      {
-        "cap": "net:en.wikipedia.org",
-        "why": "URL in README: en.wikipedia.org"
-      },
-      {
-        "cap": "net:travis-ci.org",
-        "why": "URL in README: travis-ci.org"
-      }
-    ]
+    "evidence": []
   },
   "diff": {
     "verdict": "none",
     "category": "string-utils",
-    "claimed": [
-      {
-        "cap": "net:github.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:en.wikipedia.org",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:travis-ci.org",
-        "family": "network",
-        "seen": false
-      }
-    ],
+    "claimed": [],
     "observed": [],
     "denials": []
   }

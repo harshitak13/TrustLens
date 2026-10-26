@@ -1,5 +1,5 @@
 {
-  "scan": "2e6be9279a",
+  "scan": "0e94efdfae",
   "package": "nanoid",
   "version": "3.3.7",
   "sha256": "ba5e0c3aa37ce381194411356524495ddad5ec7f0c4eab622bd78fd7db92007a",
@@ -10,13 +10,7 @@
   "events": [],
   "capabilities": [],
   "claims": {
-    "network": [
-      "net:ai.github.io",
-      "net:gitpod.io",
-      "net:github.com",
-      "net:developer.epages.com",
-      "net:evilmartians.com"
-    ],
+    "network": [],
     "files": [],
     "env": [],
     "subprocess": [],
@@ -26,59 +20,12 @@
     ],
     "ecosystem": "npm",
     "category": "string-utils",
-    "evidence": [
-      {
-        "cap": "net:ai.github.io",
-        "why": "URL in README: ai.github.io"
-      },
-      {
-        "cap": "net:gitpod.io",
-        "why": "URL in README: gitpod.io"
-      },
-      {
-        "cap": "net:github.com",
-        "why": "URL in README: github.com"
-      },
-      {
-        "cap": "net:developer.epages.com",
-        "why": "URL in README: developer.epages.com"
-      },
-      {
-        "cap": "net:evilmartians.com",
-        "why": "URL in README: evilmartians.com"
-      }
-    ]
+    "evidence": []
   },
   "diff": {
     "verdict": "none",
     "category": "string-utils",
-    "claimed": [
-      {
-        "cap": "net:ai.github.io",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:gitpod.io",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:github.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:developer.epages.com",
-        "family": "network",
-        "seen": false
-      },
-      {
-        "cap": "net:evilmartians.com",
-        "family": "network",
-        "seen": false
-      }
-    ],
+    "claimed": [],
     "observed": [],
     "denials": []
   }

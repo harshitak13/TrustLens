@@ -1,5 +1,5 @@
 {
-  "scan": "038533b857",
+  "scan": "104505cfad",
   "package": "py-titlecase",
   "version": "1.0.0",
   "sha256": "329038a56ee58592cc7714edd3673f33c124d347f25d504590f0add78ecb47f0",
@@ -9,22 +9,8 @@
   "variant": "later",
   "events": [
     {
-      "ts": 0.704,
-      "scan": "038533b857",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "CI",
-      "detail": {
-        "pid": 24,
-        "argv1": "/work/snippet.py",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 0.732,
-      "scan": "038533b857",
+      "ts": 0.648,
+      "scan": "104505cfad",
       "variant": "later",
       "stage": "import",
       "type": "env",
@@ -37,29 +23,43 @@
       "token": null
     },
     {
-      "ts": 0.766,
-      "scan": "038533b857",
+      "ts": 0.72,
+      "scan": "104505cfad",
       "variant": "later",
-      "stage": "snippet",
+      "stage": "import",
       "type": "dns",
       "target": "usage.py-titlecase.test",
       "detail": {
-        "pid": 24,
-        "argv1": "/work/snippet.py",
+        "pid": 20,
+        "argv1": "-c",
         "op": "getaddrinfo"
       },
       "token": null
     },
     {
-      "ts": 0.801,
-      "scan": "038533b857",
+      "ts": 0.758,
+      "scan": "104505cfad",
       "variant": "later",
-      "stage": "import",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 24,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 0.823,
+      "scan": "104505cfad",
+      "variant": "later",
+      "stage": "snippet",
       "type": "dns",
       "target": "usage.py-titlecase.test",
       "detail": {
-        "pid": 20,
-        "argv1": "-c",
+        "pid": 24,
+        "argv1": "/work/snippet.py",
         "op": "getaddrinfo"
       },
       "token": null
@@ -68,26 +68,26 @@
   "capabilities": [
     {
       "cap": "env:CI",
-      "stage": "snippet",
-      "first_ts": 0.704,
+      "stage": "import",
+      "first_ts": 0.648,
+      "count": 1
+    },
+    {
+      "cap": "net:usage.py-titlecase.test",
+      "stage": "import",
+      "first_ts": 0.72,
       "count": 1
     },
     {
       "cap": "env:CI",
-      "stage": "import",
-      "first_ts": 0.732,
+      "stage": "snippet",
+      "first_ts": 0.758,
       "count": 1
     },
     {
       "cap": "net:usage.py-titlecase.test",
       "stage": "snippet",
-      "first_ts": 0.766,
-      "count": 1
-    },
-    {
-      "cap": "net:usage.py-titlecase.test",
-      "stage": "import",
-      "first_ts": 0.801,
+      "first_ts": 0.823,
       "count": 1
     }
   ],
@@ -116,17 +116,8 @@
     "observed": [
       {
         "cap": "env:CI",
-        "stage": "snippet",
-        "first_ts": 0.704,
-        "count": 1,
-        "status": "contradicted",
-        "severity": "medium",
-        "reason": "README says it doesn't do this (minor capability)"
-      },
-      {
-        "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.732,
+        "first_ts": 0.648,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -134,17 +125,26 @@
       },
       {
         "cap": "net:usage.py-titlecase.test",
-        "stage": "snippet",
-        "first_ts": 0.766,
+        "stage": "import",
+        "first_ts": 0.72,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",
         "reason": "README explicitly says it doesn't do this"
       },
       {
+        "cap": "env:CI",
+        "stage": "snippet",
+        "first_ts": 0.758,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
         "cap": "net:usage.py-titlecase.test",
-        "stage": "import",
-        "first_ts": 0.801,
+        "stage": "snippet",
+        "first_ts": 0.823,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",

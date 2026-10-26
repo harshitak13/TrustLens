@@ -1,5 +1,5 @@
 {
-  "scan": "1e36295522",
+  "scan": "35be12ebbd",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
@@ -9,28 +9,28 @@
   "variant": "baseline",
   "events": [
     {
-      "ts": 0.745,
-      "scan": "1e36295522",
+      "ts": 0.805,
+      "scan": "35be12ebbd",
       "variant": "baseline",
       "stage": "import",
       "type": "env",
       "target": "CI",
       "detail": {
-        "pid": 24,
+        "pid": 23,
         "argv1": "",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 4.886,
-      "scan": "1e36295522",
+      "ts": 4.932,
+      "scan": "35be12ebbd",
       "variant": "baseline",
       "stage": "snippet",
       "type": "env",
       "target": "CI",
       "detail": {
-        "pid": 34,
+        "pid": 33,
         "argv1": "/work/snippet.js",
         "op": "get"
       },
@@ -41,13 +41,13 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 0.745,
+      "first_ts": 0.805,
       "count": 1
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 4.886,
+      "first_ts": 4.932,
       "count": 1
     }
   ],
@@ -77,7 +77,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.745,
+        "first_ts": 0.805,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -86,7 +86,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 4.886,
+        "first_ts": 4.932,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",

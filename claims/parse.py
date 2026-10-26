@@ -18,9 +18,15 @@ import yaml
 
 PRIORS = yaml.safe_load((Path(__file__).parent / "category_priors.yaml").read_text(encoding="utf-8"))
 
-FENCE = re.compile(r"```([a-zA-Z]*)\n(.*?)```", re.S)
+# Fences open and close at the start of a line; the info string can be
+# anything (```sh-session, ```js title="x"), only its first word is the language.
+FENCE = re.compile(r"^[ \t]*```([\w+-]*)[^\n]*\n(.*?)^[ \t]*```", re.S | re.M)
 SNIPPET_LANGS = {"npm": {"", "js", "javascript", "node"}, "python": {"", "py", "python"}}
 URL = re.compile(r"https?://([A-Za-z0-9.-]+)")
+# Sentence boundary: punctuation followed by whitespace, or a newline (not the dots in URLs or `.env`).
+SENTENCE = re.compile(r"(?<=[.!?])\s+|\n")
+# Markdown links and images: [text](url), ![alt](url), and bare <url>.
+MD_LINK = re.compile(r"!?\[[^\]]*\]\([^)]*\)|<https?://[^>]+>")
 BACKTICK = re.compile(r"`([^`\n]+)`")
 ENV_NAME = re.compile(r"^[A-Z][A-Z0-9_]{2,}$")
 CODE_ENV = re.compile(r"process\.env(?:\.([A-Z][A-Z0-9_]+)|\[['\"]([A-Z][A-Z0-9_]+)['\"]\])"
@@ -88,12 +94,20 @@ def parse(pkg_dir) -> dict:
             m[family].append(cap)
             m["evidence"].append({"cap": cap, "why": why})
 
-    for host in URL.findall(readme):
-        add("network", f"net:{host}", f"URL in README: {host}")
+    # Only URLs the package is said to talk to count: ones in code examples, or
+    # in a sentence about making requests. Badges and doc links don't, otherwise
+    # a README could "claim" any host just by linking to it.
+    for code in snippets:
+        for host in URL.findall(code):
+            add("network", f"net:{host}", f"URL in README example: {host}")
+    for sentence in SENTENCE.split(MD_LINK.sub("", prose)):
+        if NET_PHRASES.search(sentence):
+            for host in URL.findall(sentence):
+                add("network", f"net:{host}", f"README says it talks to {host}")
     if NET_PHRASES.search(prose) and not m["network"]:
         add("network", "net:*", "README says it makes network requests")
 
-    for sentence in re.split(r"(?<=[.!?\n])", prose):
+    for sentence in SENTENCE.split(prose):
         if ENV_PHRASES.search(sentence):
             for name in BACKTICK.findall(sentence):
                 if ENV_NAME.match(name):
@@ -108,6 +122,10 @@ def parse(pkg_dir) -> dict:
     for code in snippets:
         for groups in CODE_ENV.findall(code):
             add("env", f"env:{next(g for g in groups if g)}", "used in README example")
+        # File paths passed as string literals in examples, e.g. path: '.env.local'.
+        for tok in re.findall(r"['\"]([^'\"\s]{3,})['\"]", code):
+            if FILE_NAME.match(tok) and (tok.startswith((".", "~", "/")) or "/" in tok) and not tok.startswith(("./", "../")) or tok.startswith(("./.", "~/")):
+                add("files", f"file:*:{tok}", f"README example uses file `{tok}`")
     for _, code in FENCE.findall(readme):
         for name in SHELL_ENV.findall(code):
             if "_" in name:
