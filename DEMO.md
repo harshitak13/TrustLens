@@ -45,6 +45,11 @@ Open the **Hidden triggers** tab: the matrix shows that capability only in the `
 Click **py-titlecase** → **Dangerous**, with the amber Evasion banner.
 "Same pipeline for Python. It phones home on import even though its README says no network, and it goes *quiet* under CI, so a CI-only scanner would miss it. TrustLens flags both directions."
 
+## 5c. Real packages: no false alarms (30s)
+
+Click **dotenv@16.4.5** (tagged "real npm package") → **Matches its README**.
+"These six are real, popular npm packages pulled from the registry: left-pad, ms, is-number, slugify, nanoid, dotenv. All come back clean. dotenv is the interesting one: it reads a `.env` file and several `DOTENV_CONFIG_*` variables, and its README says so, so every row is *claimed*. TrustLens flags what's undocumented, not what's merely powerful."
+
 ## 6. Live scan (45s)
 
 Pick `fixtures/ci-sleeper` in the dropdown → **Scan**. The five steps light up one by one (~50s). Talk over it:
@@ -60,4 +65,4 @@ When it finishes, the result opens on its own.
 - **Can malware detect the sandbox?** Yes, a determined package could. The variants make the common checks (CI, date, host, user) visible instead of hiding them.
 - **Why no network?** Safety. The hook still records every attempt and its destination, even though the connection fails.
 - **What about Python?** Supported: an audit-hook based Python sandbox feeds the same event format and diff engine (see py-titlecase).
-- **False positives?** Category priors allow normal behaviour (an HTTP client fetching when called). Each flag shows its reason, so a human can judge it quickly.
+- **False positives?** We scanned six real npm packages (left-pad, ms, is-number, slugify, nanoid, dotenv): all clean. Category priors allow normal behaviour (an HTTP client fetching when called). Each flag shows its reason, so a human can judge it quickly.

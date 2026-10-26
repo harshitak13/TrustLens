@@ -104,8 +104,11 @@ def start_scan(req: ScanRequest):
     bad = [v for v in req.variants if v not in VARIANTS]
     if bad:
         raise HTTPException(400, f"unknown variants: {bad}")
-    path = req.path if Path(req.path).is_absolute() else str(ROOT / req.path)
-    if not is_package(Path(path)):
+    if req.path.startswith("npm:"):
+        path = req.path
+    else:
+        path = req.path if Path(req.path).is_absolute() else str(ROOT / req.path)
+    if not path.startswith("npm:") and not is_package(Path(path)):
         raise HTTPException(400, "path must be an npm or Python package directory")
     job_id = uuid.uuid4().hex[:8]
     JOBS[job_id] = {"events": [], "finished": False, "result": None}

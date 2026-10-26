@@ -1,0 +1,78 @@
+{
+  "scan": "55fc0ac788",
+  "package": "ms",
+  "version": "2.1.3",
+  "sha256": "cb0e001f61efd2f6dc327cad286bb7f68b53e297c646bd4e0fc83a4f9803d129",
+  "source": "registry",
+  "registry_sha256": "f6616e15e530ed552f9daa2d3ce71963947c6bc7c98c9b64fd3e673fd02622c6",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "events": [],
+  "capabilities": [],
+  "claims": {
+    "network": [
+      "net:github.com",
+      "net:nodejs.org",
+      "net:help.github.com"
+    ],
+    "files": [],
+    "env": [],
+    "subprocess": [
+      "proc:ms"
+    ],
+    "explicit_denials": [],
+    "snippets": [
+      "ms('2 days')  // 172800000\nms('1d')      // 86400000\nms('10h')     // 36000000\nms('2.5 hrs') // 9000000\nms('2h')      // 7200000\nms('1m')      // 60000\nms('5s')      // 5000\nms('1y')      // 31557600000\nms('100')     // 100\nms('-3 days') // -259200000\nms('-1h')     // -3600000\nms('-200')    // -200\n",
+      "ms(60000)             // \"1m\"\nms(2 * 60000)         // \"2m\"\nms(-3 * 60000)        // \"-3m\"\nms(ms('10 hours'))    // \"10h\"\n",
+      "ms(60000, { long: true })             // \"1 minute\"\nms(2 * 60000, { long: true })         // \"2 minutes\"\nms(-3 * 60000, { long: true })        // \"-3 minutes\"\nms(ms('10 hours'), { long: true })    // \"10 hours\"\n"
+    ],
+    "ecosystem": "npm",
+    "category": "string-utils",
+    "evidence": [
+      {
+        "cap": "net:github.com",
+        "why": "URL in README: github.com"
+      },
+      {
+        "cap": "net:nodejs.org",
+        "why": "URL in README: nodejs.org"
+      },
+      {
+        "cap": "net:help.github.com",
+        "why": "URL in README: help.github.com"
+      },
+      {
+        "cap": "proc:ms",
+        "why": "README says it runs `ms`"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "none",
+    "category": "string-utils",
+    "claimed": [
+      {
+        "cap": "net:github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:nodejs.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:help.github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "proc:ms",
+        "family": "subprocess",
+        "seen": false
+      }
+    ],
+    "observed": [],
+    "denials": []
+  }
+}

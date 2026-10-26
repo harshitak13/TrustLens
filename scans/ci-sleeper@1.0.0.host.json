@@ -1,14 +1,16 @@
 {
-  "scan": "896c7c4b7e",
+  "scan": "406dced778",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
+  "source": "local",
+  "registry_sha256": null,
   "ecosystem": "npm",
   "variant": "host",
   "events": [
     {
-      "ts": 0.899,
-      "scan": "896c7c4b7e",
+      "ts": 0.744,
+      "scan": "406dced778",
       "variant": "host",
       "stage": "import",
       "type": "env",
@@ -21,8 +23,8 @@
       "token": null
     },
     {
-      "ts": 5.033,
-      "scan": "896c7c4b7e",
+      "ts": 4.882,
+      "scan": "406dced778",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -39,13 +41,13 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 0.899,
+      "first_ts": 0.744,
       "count": 1
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 5.033,
+      "first_ts": 4.882,
       "count": 1
     }
   ],
@@ -63,6 +65,7 @@
     "snippets": [
       "const slug = require('ci-sleeper');\nslug('Hello World!'); // 'hello-world'\n"
     ],
+    "ecosystem": "npm",
     "category": "string-utils",
     "evidence": []
   },
@@ -74,7 +77,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.899,
+        "first_ts": 0.744,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -83,7 +86,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 5.033,
+        "first_ts": 4.882,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",

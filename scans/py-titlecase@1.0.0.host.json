@@ -1,14 +1,16 @@
 {
-  "scan": "3fe2932b8d",
+  "scan": "bbdd87556d",
   "package": "py-titlecase",
   "version": "1.0.0",
   "sha256": "329038a56ee58592cc7714edd3673f33c124d347f25d504590f0add78ecb47f0",
+  "source": "local",
+  "registry_sha256": null,
   "ecosystem": "python",
   "variant": "host",
   "events": [
     {
-      "ts": 2.826,
-      "scan": "3fe2932b8d",
+      "ts": 2.146,
+      "scan": "bbdd87556d",
       "variant": "host",
       "stage": "import",
       "type": "env",
@@ -21,8 +23,8 @@
       "token": null
     },
     {
-      "ts": 2.902,
-      "scan": "3fe2932b8d",
+      "ts": 2.21,
+      "scan": "bbdd87556d",
       "variant": "host",
       "stage": "import",
       "type": "dns",
@@ -35,8 +37,8 @@
       "token": null
     },
     {
-      "ts": 7.793,
-      "scan": "3fe2932b8d",
+      "ts": 6.904,
+      "scan": "bbdd87556d",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -49,8 +51,8 @@
       "token": null
     },
     {
-      "ts": 7.87,
-      "scan": "3fe2932b8d",
+      "ts": 6.971,
+      "scan": "bbdd87556d",
       "variant": "host",
       "stage": "snippet",
       "type": "dns",
@@ -67,25 +69,25 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 2.826,
+      "first_ts": 2.146,
       "count": 1
     },
     {
       "cap": "net:usage.py-titlecase.test",
       "stage": "import",
-      "first_ts": 2.902,
+      "first_ts": 2.21,
       "count": 1
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 7.793,
+      "first_ts": 6.904,
       "count": 1
     },
     {
       "cap": "net:usage.py-titlecase.test",
       "stage": "snippet",
-      "first_ts": 7.87,
+      "first_ts": 6.971,
       "count": 1
     }
   ],
@@ -115,7 +117,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 2.826,
+        "first_ts": 2.146,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -124,7 +126,7 @@
       {
         "cap": "net:usage.py-titlecase.test",
         "stage": "import",
-        "first_ts": 2.902,
+        "first_ts": 2.21,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",
@@ -133,7 +135,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 7.793,
+        "first_ts": 6.904,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -142,7 +144,7 @@
       {
         "cap": "net:usage.py-titlecase.test",
         "stage": "snippet",
-        "first_ts": 7.87,
+        "first_ts": 6.971,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",

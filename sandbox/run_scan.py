@@ -1,6 +1,7 @@
 """Run one npm or Python package through the sandbox and write scans/<pkg>@<ver>.json.
 
 Usage: python sandbox/run_scan.py fixtures/pad-clean [--variant baseline|ci|later|host|user]
+       python sandbox/run_scan.py npm:left-pad@1.3.0
 
 Host side, stdlib only. Packs the package (recording its sha256), runs it in a
 locked-down container with networking off, then turns the hook log into the
@@ -13,6 +14,7 @@ import os
 import shutil
 import subprocess
 import sys
+import tarfile
 import uuid
 from pathlib import Path
 
@@ -22,6 +24,7 @@ from diff.engine import diff  # noqa: E402
 from claims.parse import load_meta, parse  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
+NPM = "npm.cmd" if os.name == "nt" else "npm"
 WORK = ROOT / ".trustlens"
 # ecosystem -> (image, hook dir mounted at /trustlens, snippet extension)
 ECOSYSTEMS = {
@@ -53,12 +56,25 @@ def pack(pkg_dir: Path, out: Path):
             h.update(f.relative_to(out / "src").as_posix().encode())
             h.update(f.read_bytes())
         return ecosystem, meta["name"], meta["version"], h.hexdigest()
-    npm = "npm.cmd" if os.name == "nt" else "npm"
-    res = run([npm, "pack", str(pkg_dir), "--pack-destination", str(out), "--json"])
+    # --ignore-scripts: never run a package's prepack/prepare hooks on the host.
+    res = run([NPM, "pack", str(pkg_dir), "--pack-destination", str(out), "--json", "--ignore-scripts"])
     tgz = out / json.loads(res.stdout)[0]["filename"]
     final = out / "pkg.tgz"
     tgz.replace(final)
     return ecosystem, meta["name"], meta["version"], hashlib.sha256(final.read_bytes()).hexdigest()
+
+
+def fetch_npm(spec: str, out: Path) -> tuple[Path, str]:
+    """Download a registry tarball (outside the sandbox, no scripts run) and
+    unpack it as data so the claims parser can read package.json and README.
+    Returns (unpacked package dir, sha256 of the registry tarball)."""
+    dl = out / "download"
+    dl.mkdir()
+    res = run([NPM, "pack", spec, "--pack-destination", str(dl), "--json", "--ignore-scripts"])
+    tgz = dl / json.loads(res.stdout)[0]["filename"]
+    with tarfile.open(tgz) as t:
+        t.extractall(dl / "unpacked", filter="data")
+    return dl / "unpacked" / "package", hashlib.sha256(tgz.read_bytes()).hexdigest()
 
 
 def docker_run(ecosystem, name, pkg_dir: Path, events_dir: Path, variant: str):
@@ -87,8 +103,13 @@ def scan(pkg_path: str, variant: str = "baseline"):
     pkg_dir, events_dir = base / "pkg", base / "events"
     pkg_dir.mkdir(parents=True)
     events_dir.mkdir()
-    ecosystem, name, version, sha = pack(Path(pkg_path).resolve(), pkg_dir)
-    manifest = parse(Path(pkg_path))
+    source = None
+    if pkg_path.startswith("npm:"):
+        src_dir, source = fetch_npm(pkg_path[4:], base)
+    else:
+        src_dir = Path(pkg_path).resolve()
+    ecosystem, name, version, sha = pack(src_dir, pkg_dir)
+    manifest = parse(src_dir)
     # README code fences become the snippet stage, run in order after import.
     snip_dir = pkg_dir / "snippets"
     snip_dir.mkdir()
@@ -105,6 +126,7 @@ def scan(pkg_path: str, variant: str = "baseline"):
     caps = capabilities(events)
     result = {
         "scan": scan_id, "package": name, "version": version, "sha256": sha,
+        "source": "registry" if source else "local", "registry_sha256": source,
         "ecosystem": ecosystem, "variant": variant,
         "events": events, "capabilities": caps,
         "claims": manifest, "diff": diff(caps, manifest),

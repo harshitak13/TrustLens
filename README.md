@@ -36,9 +36,19 @@ compares that with what its README says it does.
 docker build -t trustlens-node sandbox/node
 docker build -t trustlens-python sandbox/python
 python scripts/scan.py fixtures/py-titlecase   # all variants, combined result
+python scripts/scan.py npm:dotenv@16.4.5           # a real registry package
 python sandbox/run_scan.py fixtures/http-fetchy
 python sandbox/run_scan.py fixtures/http-fetchy --variant ci
 ```
+
+## Backtest
+
+The malicious event-stream / ua-parser-js versions were unpublished from npm, so instead of
+fetching malware samples we backtested on real, popular packages for false positives:
+left-pad@1.3.0, ms@2.1.3, is-number@7.0.0, slugify@1.6.6, nanoid@3.3.7, dotenv@16.4.5 all
+come back clean (dotenv's `.env` and `DOTENV_CONFIG_*` reads are claimed in its README).
+Registry tarballs are fetched with `npm pack --ignore-scripts` and unpacked as data on the host;
+nothing from them runs outside the sandbox.
 
 ## Fixes to the original plan
 

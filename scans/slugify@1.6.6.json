@@ -1,0 +1,118 @@
+{
+  "scan": "63e50a0c46",
+  "package": "slugify",
+  "version": "1.6.6",
+  "sha256": "8deece9a6868450a7812d974174d3e636fce114c037622e627613895607df824",
+  "source": "registry",
+  "registry_sha256": "3adbaac6daeae595154217bda3836aa7e4292b5b103cc17955192fa9cd24732f",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "events": [],
+  "capabilities": [],
+  "claims": {
+    "network": [
+      "net:github.com",
+      "net:developer.mozilla.org",
+      "net:en.wikipedia.org",
+      "net:img.shields.io",
+      "net:www.npmjs.com",
+      "net:coveralls.io"
+    ],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "var slugify = require('slugify')\n\nslugify('some string') // some-string\n\n// if you prefer something other than '-' as separator\nslugify('some string', '_')  // some_string\n",
+      "slugify('some string', {\n  replacement: '-',  // replace spaces with replacement character, defaults to `-`\n  remove: undefined, // remove characters that match regex, defaults to `undefined`\n  lower: false,      // convert to lower case, defaults to `false`\n  strict: false,     // strip special characters except replacement, defaults to `false`\n  locale: 'vi',      // language code of the locale to use\n  trim: true         // trim leading and trailing replacement chars, defaults to `true`\n})\n",
+      "slugify('unicode \u2665 is \u2622') // unicode-love-is\n",
+      "slugify.extend({'\u2622': 'radioactive'})\nslugify('unicode \u2665 is \u2622') // unicode-love-is-radioactive\n",
+      "delete require.cache[require.resolve('slugify')]\nvar slugify = require('slugify')\n"
+    ],
+    "ecosystem": "npm",
+    "category": "string-utils",
+    "evidence": [
+      {
+        "cap": "net:github.com",
+        "why": "URL in README: github.com"
+      },
+      {
+        "cap": "net:developer.mozilla.org",
+        "why": "URL in README: developer.mozilla.org"
+      },
+      {
+        "cap": "net:en.wikipedia.org",
+        "why": "URL in README: en.wikipedia.org"
+      },
+      {
+        "cap": "net:img.shields.io",
+        "why": "URL in README: img.shields.io"
+      },
+      {
+        "cap": "net:www.npmjs.com",
+        "why": "URL in README: www.npmjs.com"
+      },
+      {
+        "cap": "net:coveralls.io",
+        "why": "URL in README: coveralls.io"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "none",
+    "category": "string-utils",
+    "claimed": [
+      {
+        "cap": "net:github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:developer.mozilla.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:en.wikipedia.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:img.shields.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:www.npmjs.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:coveralls.io",
+        "family": "network",
+        "seen": false
+      }
+    ],
+    "observed": [],
+    "denials": []
+  },
+  "variants": [
+    "baseline",
+    "ci",
+    "later",
+    "host",
+    "user"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci",
+      "later",
+      "host",
+      "user"
+    ],
+    "rows": [],
+    "findings": [],
+    "evasions": []
+  }
+}

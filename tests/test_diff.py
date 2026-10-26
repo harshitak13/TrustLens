@@ -53,3 +53,9 @@ def test_python_fixture_claims():
     assert m["ecosystem"] == "python" and m["category"] == "string-utils"
     assert "net" in m["explicit_denials"]
     assert len(m["snippets"]) == 1
+
+
+def test_bare_file_claim_matches_any_directory():
+    m = {"files": ["file:*:.env"], "category": "string-utils"}
+    rows = diff(obs(("snippet", "file:read:/work/.env"), ("snippet", "file:read:/work/x.env")), m)["observed"]
+    assert [r["status"] for r in rows] == ["claimed", "unclaimed"]

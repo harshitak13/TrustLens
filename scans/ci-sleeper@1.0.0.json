@@ -1,34 +1,36 @@
 {
-  "scan": "428e015063",
+  "scan": "1e36295522",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
+  "source": "local",
+  "registry_sha256": null,
   "ecosystem": "npm",
   "variant": "baseline",
   "events": [
     {
-      "ts": 0.962,
-      "scan": "428e015063",
+      "ts": 0.745,
+      "scan": "1e36295522",
       "variant": "baseline",
       "stage": "import",
       "type": "env",
       "target": "CI",
       "detail": {
-        "pid": 23,
+        "pid": 24,
         "argv1": "",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 5.102,
-      "scan": "428e015063",
+      "ts": 4.886,
+      "scan": "1e36295522",
       "variant": "baseline",
       "stage": "snippet",
       "type": "env",
       "target": "CI",
       "detail": {
-        "pid": 33,
+        "pid": 34,
         "argv1": "/work/snippet.js",
         "op": "get"
       },
@@ -39,13 +41,13 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 0.962,
+      "first_ts": 0.745,
       "count": 1
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 5.102,
+      "first_ts": 4.886,
       "count": 1
     }
   ],
@@ -63,6 +65,7 @@
     "snippets": [
       "const slug = require('ci-sleeper');\nslug('Hello World!'); // 'hello-world'\n"
     ],
+    "ecosystem": "npm",
     "category": "string-utils",
     "evidence": []
   },
@@ -74,7 +77,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.962,
+        "first_ts": 0.745,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -83,7 +86,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 5.102,
+        "first_ts": 4.886,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -135,6 +138,7 @@
         "variant": "ci",
         "cap": "net:beacon.ci-sleeper.test"
       }
-    ]
+    ],
+    "evasions": []
   }
 }

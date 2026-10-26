@@ -1,0 +1,120 @@
+{
+  "scan": "0ab1899561",
+  "package": "is-number",
+  "version": "7.0.0",
+  "sha256": "ec02ca1a8eb57be9ce5ede43a63fa962894e803544a19342bd48d6c93e1ce013",
+  "source": "registry",
+  "registry_sha256": "7b75c1057198cf97696909a9bee176c9c5e9bcb5b03bf3ecef2f484defadd51e",
+  "ecosystem": "npm",
+  "variant": "host",
+  "events": [],
+  "capabilities": [],
+  "claims": {
+    "network": [
+      "net:img.shields.io",
+      "net:www.npmjs.com",
+      "net:npmjs.org",
+      "net:travis-ci.org",
+      "net:github.com",
+      "net:linkedin.com",
+      "net:twitter.com"
+    ],
+    "files": [
+      "file:*:.isFinite"
+    ],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "console.log(+[]); //=> 0\nconsole.log(+''); //=> 0\nconsole.log(+'   '); //=> 0\nconsole.log(typeof NaN); //=> 'number'\n",
+      "const isNumber = require('is-number');\n",
+      "isNumber(5e3);               // true\nisNumber(0xff);              // true\nisNumber(-1.1);              // true\nisNumber(0);                 // true\nisNumber(1);                 // true\nisNumber(1.1);               // true\nisNumber(10);                // true\nisNumber(10.10);             // true\nisNumber(100);               // true\nisNumber('-1.1');            // true\nisNumber('0');               // true\nisNumber('012');             // true\nisNumber('0xff');            // true\nisNumber('1');               // true\nisNumber('1.1');             // true\nisNumber('10');              // true\nisNumber('10.10');           // true\nisNumber('100');             // true\nisNumber('5e3');             // true\nisNumber(parseInt('012'));   // true\nisNumber(parseFloat('012')); // true\n",
+      "isNumber(Infinity);          // false\nisNumber(NaN);               // false\nisNumber(null);              // false\nisNumber(undefined);         // false\nisNumber('');                // false\nisNumber('   ');             // false\nisNumber('foo');             // false\nisNumber([1]);               // false\nisNumber([]);                // false\nisNumber(function () {});    // false\nisNumber({});                // false\n",
+      "# all\nv7.0 x 413,222 ops/sec \u00b12.02% (86 runs sampled)\nv6.0 x 111,061 ops/sec \u00b11.29% (85 runs sampled)\nparseFloat x 317,596 ops/sec \u00b11.36% (86 runs sampled)\nfastest is 'v7.0'\n\n# string\nv7.0 x 3,054,496 ops/sec \u00b11.05% (89 runs sampled)\nv6.0 x 2,957,781 ops/sec \u00b10.98% (88 runs sampled)\nparseFloat x 3,071,060 ops/sec \u00b11.13% (88 runs sampled)\nfastest is 'parseFloat,v7.0'\n\n# number\nv7.0 x 3,146,895 ops/sec \u00b10.89% (89 runs sampled)\nv6.0 x 3,214,038 ops/sec \u00b11.07% (89 runs sampled)\nparseFloat x 3,077,588 ops/sec \u00b11.07% (87 runs sampled)\nfastest is 'v6.0'\n"
+    ],
+    "ecosystem": "npm",
+    "category": "parser",
+    "evidence": [
+      {
+        "cap": "net:img.shields.io",
+        "why": "URL in README: img.shields.io"
+      },
+      {
+        "cap": "net:www.npmjs.com",
+        "why": "URL in README: www.npmjs.com"
+      },
+      {
+        "cap": "net:npmjs.org",
+        "why": "URL in README: npmjs.org"
+      },
+      {
+        "cap": "net:travis-ci.org",
+        "why": "URL in README: travis-ci.org"
+      },
+      {
+        "cap": "net:github.com",
+        "why": "URL in README: github.com"
+      },
+      {
+        "cap": "net:linkedin.com",
+        "why": "URL in README: linkedin.com"
+      },
+      {
+        "cap": "net:twitter.com",
+        "why": "URL in README: twitter.com"
+      },
+      {
+        "cap": "file:*:.isFinite",
+        "why": "README names file `.isFinite`"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "none",
+    "category": "parser",
+    "claimed": [
+      {
+        "cap": "net:img.shields.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:www.npmjs.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:npmjs.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:travis-ci.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:linkedin.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:twitter.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "file:*:.isFinite",
+        "family": "files",
+        "seen": false
+      }
+    ],
+    "observed": [],
+    "denials": []
+  }
+}

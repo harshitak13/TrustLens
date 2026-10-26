@@ -39,7 +39,17 @@ DENIALS = [
     ("proc", re.compile(r"\b(no (?:child )?process|no subprocess|never spawns|pure function)", re.I)),
 ]
 
+# Shell-style `NAME=value cmd` in any code fence documents an env var.
+SHELL_ENV = re.compile(r"(?:^|[\s$])([A-Z][A-Z0-9_]*(?:<[A-Z_]+>)?[A-Z0-9_]*)=", re.M)
+# A backticked file name: dotfiles (.env, .npmrc) or anything with a path or extension.
+FILE_NAME = re.compile(r"^(?:~/|\./|/)?(?:[\w-]+/)*\.?[\w-]+(?:\.[\w-]+)*$")
+
 FAMILIES = ("network", "files", "env", "subprocess")
+
+
+def _env_glob(name: str) -> str:
+    """DOTENV_CONFIG_<OPTION> -> DOTENV_CONFIG_*"""
+    return re.sub(r"<[^>]+>", "*", name)
 
 
 def category(meta: dict) -> str:
@@ -98,6 +108,16 @@ def parse(pkg_dir) -> dict:
     for code in snippets:
         for groups in CODE_ENV.findall(code):
             add("env", f"env:{next(g for g in groups if g)}", "used in README example")
+    for _, code in FENCE.findall(readme):
+        for name in SHELL_ENV.findall(code):
+            if "_" in name:
+                add("env", f"env:{_env_glob(name)}", f"README shows `{name}=...`")
+    for tok in BACKTICK.findall(prose):
+        tok = tok.strip()
+        if ENV_NAME.match(_env_glob(tok).replace("*", "X")) and "_" in tok:
+            add("env", f"env:{_env_glob(tok)}", f"README names `{tok}`")
+        elif FILE_NAME.match(tok) and (tok.startswith((".", "~", "/")) or "/" in tok) and len(tok) > 2:
+            add("files", f"file:*:{tok}", f"README names file `{tok}`")
 
     for fam, rx in DENIALS:
         if rx.search(prose):

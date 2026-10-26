@@ -11,7 +11,8 @@ HOME = "/home/dev"
 NOISE_ENV = {"PATH", "HOME", "PWD", "SHELL", "TERM", "LANG", "LC_ALL", "TMPDIR", "TZ",
              "NODE_OPTIONS", "NODE_ENV", "NODE_DEBUG", "NODE_EXTRA_CA_CERTS", "NODE_PATH",
              "NODE_V8_COVERAGE", "NODE_UNIQUE_ID", "NODE_CHANNEL_FD", "UV_THREADPOOL_SIZE",
-             "INIT_CWD", "NODE_TLS_REJECT_UNAUTHORIZED", "NODE_USE_SYSTEM_CA", "FORCE_COLOR", "NO_COLOR", "NODE_NO_WARNINGS"}
+             "INIT_CWD", "NODE_TLS_REJECT_UNAUTHORIZED", "NODE_USE_SYSTEM_CA", "FORCE_COLOR", "NO_COLOR", "NODE_NO_WARNINGS",
+             "WATCH_REPORT_DEPENDENCIES"}
 NOISE_ENV_PREFIX = ("TL_", "npm_", "NPM_", "NODE_TEST")
 
 # Module loading reads every .js/.json it requires; that's not behaviour.

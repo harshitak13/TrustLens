@@ -1,8 +1,10 @@
 {
-  "scan": "70ef23d1ad",
+  "scan": "eb7a41800c",
   "package": "pad-clean",
   "version": "1.0.0",
   "sha256": "e2c3ecbe9c44a50f211e8eba2c083f48bb56693f503f1c20e22f90fa41f92110",
+  "source": "local",
+  "registry_sha256": null,
   "ecosystem": "npm",
   "variant": "host",
   "events": [],
@@ -21,6 +23,7 @@
     "snippets": [
       "const pad = require('pad-clean');\npad('5', 3, '0'); // '005'\n"
     ],
+    "ecosystem": "npm",
     "category": "string-utils",
     "evidence": []
   },

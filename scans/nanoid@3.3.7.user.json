@@ -1,0 +1,85 @@
+{
+  "scan": "2e6be9279a",
+  "package": "nanoid",
+  "version": "3.3.7",
+  "sha256": "ba5e0c3aa37ce381194411356524495ddad5ec7f0c4eab622bd78fd7db92007a",
+  "source": "registry",
+  "registry_sha256": "28821115275efecbceccdfceb3c7c80c3c1d129af62a9c0f995f6002c72621f2",
+  "ecosystem": "npm",
+  "variant": "user",
+  "events": [],
+  "capabilities": [],
+  "claims": {
+    "network": [
+      "net:ai.github.io",
+      "net:gitpod.io",
+      "net:github.com",
+      "net:developer.epages.com",
+      "net:evilmartians.com"
+    ],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "import { nanoid } from 'nanoid'\nmodel.id = nanoid() //=> \"V1StGXR8_Z5jdHi6B-myT\"\n"
+    ],
+    "ecosystem": "npm",
+    "category": "string-utils",
+    "evidence": [
+      {
+        "cap": "net:ai.github.io",
+        "why": "URL in README: ai.github.io"
+      },
+      {
+        "cap": "net:gitpod.io",
+        "why": "URL in README: gitpod.io"
+      },
+      {
+        "cap": "net:github.com",
+        "why": "URL in README: github.com"
+      },
+      {
+        "cap": "net:developer.epages.com",
+        "why": "URL in README: developer.epages.com"
+      },
+      {
+        "cap": "net:evilmartians.com",
+        "why": "URL in README: evilmartians.com"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "none",
+    "category": "string-utils",
+    "claimed": [
+      {
+        "cap": "net:ai.github.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:gitpod.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:developer.epages.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:evilmartians.com",
+        "family": "network",
+        "seen": false
+      }
+    ],
+    "observed": [],
+    "denials": []
+  }
+}

@@ -23,9 +23,13 @@ def _matches(cap: str, patterns) -> bool:
     for p in patterns:
         if fnmatchcase(cap, p):
             return True
-        # Claims for files are written as file:*:<path>; compare on the path.
-        if p.startswith("file:*:") and cap.split(":", 2)[-1] == p[len("file:*:"):]:
-            return True
+        # Claims for files are written as file:*:<path>. A bare name like
+        # `.env` covers that file in any directory.
+        if p.startswith("file:*:") and cap.startswith("file:"):
+            path, claim = cap.split(":", 2)[-1], p[len("file:*:"):]
+            bare = claim[2:] if claim.startswith(("./", "~/")) else claim
+            if path == claim or ("/" not in bare and path.endswith("/" + bare)):
+                return True
     return False
 
 

@@ -1,14 +1,16 @@
 {
-  "scan": "f7d03ad37b",
+  "scan": "841d2d71ee",
   "package": "http-fetchy",
   "version": "1.0.0",
   "sha256": "1cb01c0f10bf4765eb134c8b8f9dcbe177c35bf014c0621fa6c52c6d94352d75",
+  "source": "local",
+  "registry_sha256": null,
   "ecosystem": "npm",
   "variant": "ci",
   "events": [
     {
-      "ts": 0.904,
-      "scan": "f7d03ad37b",
+      "ts": 0.769,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "import",
       "type": "env",
@@ -21,8 +23,8 @@
       "token": null
     },
     {
-      "ts": 0.916,
-      "scan": "f7d03ad37b",
+      "ts": 0.782,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -37,8 +39,8 @@
       "token": null
     },
     {
-      "ts": 0.988,
-      "scan": "f7d03ad37b",
+      "ts": 0.851,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -51,8 +53,8 @@
       "token": null
     },
     {
-      "ts": 0.994,
-      "scan": "f7d03ad37b",
+      "ts": 0.856,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "import",
       "type": "dns",
@@ -65,8 +67,8 @@
       "token": null
     },
     {
-      "ts": 5.125,
-      "scan": "f7d03ad37b",
+      "ts": 4.969,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "env",
@@ -79,8 +81,8 @@
       "token": null
     },
     {
-      "ts": 5.139,
-      "scan": "f7d03ad37b",
+      "ts": 4.982,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -95,8 +97,8 @@
       "token": null
     },
     {
-      "ts": 5.219,
-      "scan": "f7d03ad37b",
+      "ts": 5.05,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -109,8 +111,8 @@
       "token": null
     },
     {
-      "ts": 5.225,
-      "scan": "f7d03ad37b",
+      "ts": 5.059,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "dns",
@@ -123,8 +125,8 @@
       "token": null
     },
     {
-      "ts": 5.241,
-      "scan": "f7d03ad37b",
+      "ts": 5.078,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -139,8 +141,8 @@
       "token": null
     },
     {
-      "ts": 5.257,
-      "scan": "f7d03ad37b",
+      "ts": 5.091,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -153,8 +155,8 @@
       "token": null
     },
     {
-      "ts": 5.273,
-      "scan": "f7d03ad37b",
+      "ts": 5.104,
+      "scan": "841d2d71ee",
       "variant": "ci",
       "stage": "snippet",
       "type": "dns",
@@ -171,31 +173,31 @@
     {
       "cap": "env:FETCHY_TIMEOUT",
       "stage": "import",
-      "first_ts": 0.904,
+      "first_ts": 0.769,
       "count": 1
     },
     {
       "cap": "net:status.http-fetchy.test",
       "stage": "import",
-      "first_ts": 0.916,
+      "first_ts": 0.782,
       "count": 3
     },
     {
       "cap": "env:FETCHY_TIMEOUT",
       "stage": "snippet",
-      "first_ts": 5.125,
+      "first_ts": 4.969,
       "count": 1
     },
     {
       "cap": "net:status.http-fetchy.test",
       "stage": "snippet",
-      "first_ts": 5.139,
+      "first_ts": 4.982,
       "count": 3
     },
     {
       "cap": "net:example.test",
       "stage": "snippet",
-      "first_ts": 5.241,
+      "first_ts": 5.078,
       "count": 3
     }
   ],
@@ -212,6 +214,7 @@
     "snippets": [
       "const get = require('http-fetchy');\nget('https://example.test/').then(console.log);\n"
     ],
+    "ecosystem": "npm",
     "category": "http-client",
     "evidence": [
       {
@@ -243,7 +246,7 @@
       {
         "cap": "env:FETCHY_TIMEOUT",
         "stage": "import",
-        "first_ts": 0.904,
+        "first_ts": 0.769,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -252,7 +255,7 @@
       {
         "cap": "net:status.http-fetchy.test",
         "stage": "import",
-        "first_ts": 0.916,
+        "first_ts": 0.782,
         "count": 3,
         "status": "unclaimed",
         "severity": "high",
@@ -261,7 +264,7 @@
       {
         "cap": "env:FETCHY_TIMEOUT",
         "stage": "snippet",
-        "first_ts": 5.125,
+        "first_ts": 4.969,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -270,7 +273,7 @@
       {
         "cap": "net:status.http-fetchy.test",
         "stage": "snippet",
-        "first_ts": 5.139,
+        "first_ts": 4.982,
         "count": 3,
         "status": "expected",
         "severity": "none",
@@ -279,7 +282,7 @@
       {
         "cap": "net:example.test",
         "stage": "snippet",
-        "first_ts": 5.241,
+        "first_ts": 5.078,
         "count": 3,
         "status": "claimed",
         "severity": "none",

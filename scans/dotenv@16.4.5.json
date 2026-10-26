@@ -1,0 +1,785 @@
+{
+  "scan": "7a8d67a2c7",
+  "package": "dotenv",
+  "version": "16.4.5",
+  "sha256": "a0822e4897b4e40c2ce69255eca794bf233c6033d926d22561e68ce6891f7133",
+  "source": "registry",
+  "registry_sha256": "0ae24e5b77e0346558b024ab2ee87bc4d42e3570147e7af755cf6e8671e96637",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "events": [
+    {
+      "ts": 4.994,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_KEY",
+      "detail": {
+        "pid": 33,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.003,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "file",
+      "target": "/work/.env",
+      "detail": {
+        "pid": 33,
+        "argv1": "/work/snippet.js",
+        "op": "read"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.195,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_CONFIG_ENCODING",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.21,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_CONFIG_PATH",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.22,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_CONFIG_DEBUG",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.229,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_CONFIG_OVERRIDE",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.239,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_CONFIG_DOTENV_KEY",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.259,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_KEY",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.267,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "file",
+      "target": "/work/.env",
+      "detail": {
+        "pid": 42,
+        "argv1": "/work/snippet.js",
+        "op": "read"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.666,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DOTENV_KEY",
+      "detail": {
+        "pid": 82,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.676,
+      "scan": "7a8d67a2c7",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "file",
+      "target": "/custom/path/to/.env",
+      "detail": {
+        "pid": 82,
+        "argv1": "/work/snippet.js",
+        "op": "read"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:DOTENV_KEY",
+      "stage": "snippet",
+      "first_ts": 4.994,
+      "count": 3
+    },
+    {
+      "cap": "file:read:/work/.env",
+      "stage": "snippet",
+      "first_ts": 5.003,
+      "count": 2
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_ENCODING",
+      "stage": "snippet",
+      "first_ts": 5.195,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_PATH",
+      "stage": "snippet",
+      "first_ts": 5.21,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_DEBUG",
+      "stage": "snippet",
+      "first_ts": 5.22,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_OVERRIDE",
+      "stage": "snippet",
+      "first_ts": 5.229,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
+      "stage": "snippet",
+      "first_ts": 5.239,
+      "count": 1
+    },
+    {
+      "cap": "file:read:/custom/path/to/.env",
+      "stage": "snippet",
+      "first_ts": 5.676,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [
+      "net:github.com",
+      "net:www.warp.dev",
+      "net:res.cloudinary.com",
+      "net:workos.com",
+      "net:runalloy.com",
+      "net:img.shields.io",
+      "net:www.npmjs.com",
+      "net:raw.githubusercontent.com",
+      "net:nodejs.org",
+      "net:12factor.net",
+      "net:codecov.io",
+      "net:www.youtube.com",
+      "net:img.youtube.com",
+      "net:simpleicons.vercel.app",
+      "net:dotenvx.com",
+      "net:techcrunch.com",
+      "net:coderpad.io",
+      "net:stackoverflow.com",
+      "net:developer.mozilla.org",
+      "net:create-react-app.dev",
+      "net:hacks.mozilla.org",
+      "net:docs.github.com",
+      "net:dotenvx.sh"
+    ],
+    "files": [
+      "file:*:.env",
+      "file:*:.env.vault",
+      "file:*:.env.ENVIRONMENT"
+    ],
+    "env": [
+      "env:S3_BUCKET",
+      "env:DOTENV_KEY",
+      "env:API_KEY",
+      "env:SECRET_KEY",
+      "env:PRIVATE_KEY",
+      "env:SECRET_HASH",
+      "env:DOTENV_CONFIG_*",
+      "env:DOTENV_CONFIG_ENCODING",
+      "env:DOTENV_CONFIG_DEBUG",
+      "env:BACKTICK_KEY"
+    ],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "require('dotenv').config()\nconsole.log(process.env) // remove this after you've confirmed it is working\n",
+      "import 'dotenv/config'\n",
+      "require('dotenv').config()\n\n...\n\ns3.getBucketCors({Bucket: process.env.S3_BUCKET}, function(err, data) {})\n",
+      "const dotenv = require('dotenv')\nconst buf = Buffer.from('BASIC=basic')\nconst config = dotenv.parse(buf) // will return an object\nconsole.log(typeof config, config) // object { BASIC : 'basic' }\n",
+      "const result = dotenv.config()\n\nif (result.error) {\n  throw result.error\n}\n\nconsole.log(result.parsed)\n",
+      "require('dotenv').config({ path: '/custom/path/to/.env' })\n",
+      "\n##### encoding\n\nDefault: `utf8`\n\nSpecify the encoding of your file containing environment variables.\n\n",
+      "\n##### debug\n\nDefault: `false`\n\nTurn on logging to help debug why certain keys or values are not being set as you expect.\n\n",
+      "\n##### override\n\nDefault: `false`\n\nOverride any environment variables that have already been set on your machine with values from your .env file(s). If multiple files have been provided in `option.path` the override will also be used as each file is combined with the next. Without `override` being set, the first value wins. With `override` set the last value wins. \n\n",
+      "\n##### processEnv\n\nDefault: `process.env`\n\nSpecify an object to write your secrets to. Defaults to `process.env` environment variables.\n\n",
+      "\n##### DOTENV_KEY\n\nDefault: `process.env.DOTENV_KEY`\n\nPass the `DOTENV_KEY` directly to config options. Defaults to looking for `process.env.DOTENV_KEY` environment variable. Note this only applies to decrypting `.env.vault` files. If passed as null or undefined, or not passed at all, dotenv falls back to its traditional job of parsing a `.env` file.\n\n",
+      "\n### Parse\n\nThe engine which parses the contents of your file containing environment\nvariables is available to use. It accepts a String or Buffer and will return\nan Object with the parsed keys and values.\n\n",
+      "\n#### Options\n\n##### debug\n\nDefault: `false`\n\nTurn on logging to help debug why certain keys or values are not being set as you expect.\n\n",
+      "\n### Populate\n\nThe engine which populates the contents of your .env file to `process.env` is available for use. It accepts a target, a source, and options. This is useful for power users who want to supply their own objects.\n\nFor example, customizing the source:\n\n",
+      "\nFor example, customizing the source AND target:\n\n",
+      "\n#### options\n\n##### Debug\n\nDefault: `false`\n\nTurn on logging to help debug why certain keys or values are not being populated as you expect.\n\n##### override\n\nDefault: `false`\n\nOverride any environment variables that have already been set.\n\n### Decrypt\n\nThe engine which decrypts the ciphertext contents of your .env.vault file is available for use. It accepts a ciphertext and a decryption key. It uses AES-256-GCM encryption.\n\nFor example, decrypting a simple ciphertext:\n\n",
+      "\n## \u2753 FAQ\n\n### Why is the `.env` file not loading my environment variables successfully?\n\nMost likely your `.env` file is not in the correct place. [See this stack overflow](https://stackoverflow.com/questions/42335016/dotenv-file-is-not-loading-environment-variables).\n\nTurn on debug mode and try again..\n\n",
+      "\nYou will receive a helpful error outputted to your console.\n\n### Should I commit my `.env` file?\n\nNo. We **strongly** recommend against committing your `.env` file to version\ncontrol. It should only include environment-specific values such as database\npasswords or API keys. Your production database should have a different\npassword than your development database.\n\n### Should I have multiple `.env` files?\n\nWe recommend creating on `.env` file per environment. Use `.env` for local/development, `.env.production` for production and so on. This still follows the twelve factor principles as each is attributed individually to its own environment. Avoid custom set ups that work in inheritance somehow (`.env.production` inherits values form `.env` for example). It is better to duplicate values if necessary across each `.env.environment` file.\n\n> In a twelve-factor app, env vars are granular controls, each fully orthogonal to other env vars. They are never grouped together as \u201cenvironments\u201d, but instead are independently managed for each deploy. This is a model that scales up smoothly as the app naturally expands into more deploys over its lifetime.\n>\n> \u2013 [The Twelve-Factor App](http://12factor.net/config)\n\n### What rules does the parsing engine follow?\n\nThe parsing engine currently supports the following rules:\n\n- `BASIC=basic` becomes `{BASIC: 'basic'}`\n- empty lines are skipped\n- lines beginning with `#` are treated as comments\n- `#` marks the beginning of a comment (unless when the value is wrapped in quotes)\n- empty values become empty strings (`EMPTY=` becomes `{EMPTY: ''}`)\n- inner quotes are maintained (think JSON) (`JSON={\"foo\": \"bar\"}` becomes `{JSON:\"{\\\"foo\\\": \\\"bar\\\"}\"`)\n- whitespace is removed from both ends of unquoted values (see more on [`trim`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)) (`FOO=  some value  ` becomes `{FOO: 'some value'}`)\n- single and double quoted values are escaped (`SINGLE_QUOTE='quoted'` becomes `{SINGLE_QUOTE: \"quoted\"}`)\n- single and double quoted values maintain whitespace from both ends (`FOO=\"  some value  \"` becomes `{FOO: '  some value  '}`)\n- double quoted values expand new lines (`MULTILINE=\"new\\nline\"` becomes\n\n",
+      "\n- backticks are supported (`` BACKTICK_KEY=`This has 'single' and \"double\" quotes inside of it.` ``)\n\n### What happens to environment variables that were already set?\n\nBy default, we will never modify any environment variables that have already been set. In particular, if there is a variable in your `.env` file which collides with one that already exists in your environment, then that variable will be skipped.\n\nIf instead, you want to override `process.env` use the `override` option.\n\n",
+      "\n### How come my environment variables are not showing up for React?\n\nYour React code is run in Webpack, where the `fs` module or even the `process` global itself are not accessible out-of-the-box. `process.env` can only be injected through Webpack configuration.\n\nIf you are using [`react-scripts`](https://www.npmjs.com/package/react-scripts), which is distributed through [`create-react-app`](https://create-react-app.dev/), it has dotenv built in but with a quirk. Preface your environment variables with `REACT_APP_`. See [this stack overflow](https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project) for more details.\n\nIf you are using other frameworks (e.g. Next.js, Gatsby...), you need to consult their documentation for how to inject environment variables into the client.\n\n### Can I customize/write plugins for dotenv?\n\nYes! `dotenv.config()` returns an object representing the parsed `.env` file. This gives you everything you need to continue setting values on `process.env`. For example:\n\n",
+      "\n### How do I use dotenv with `import`?\n\nSimply..\n\n",
+      "\nA little background..\n\n> When you run a module containing an `import` declaration, the modules it imports are loaded first, then each module body is executed in a depth-first traversal of the dependency graph, avoiding cycles by skipping anything already executed.\n>\n> \u2013 [ES6 In Depth: Modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/)\n\nWhat does this mean in plain language? It means you would think the following would work but it won't.\n\n`errorReporter.mjs`:\n",
+      "`index.mjs`:\n",
+      "\n`process.env.API_KEY` will be blank.\n\nInstead, `index.mjs` should be written as..\n\n",
+      "\nDoes that make sense? It's a bit unintuitive, but it is how importing of ES6 modules work. Here is a [working example of this pitfall](https://github.com/dotenv-org/examples/tree/master/usage/dotenv-es6-import-pitfall).\n\nThere are two alternatives to this approach:\n\n1. Preload dotenv: `node --require dotenv/config index.js` (_Note: you do not need to `import` dotenv with this approach_)\n2. Create a separate file that will execute `config` first as outlined in [this comment on #133](https://github.com/motdotla/dotenv/issues/133#issuecomment-255298822)\n\n### Why am I getting the error `Module not found: Error: Can't resolve 'crypto|os|path'`?\n\nYou are using dotenv on the front-end and have not included a polyfill. Webpack < 5 used to include these for you. Do the following:\n\n",
+      "\nConfigure your `webpack.config.js` to something like the following.\n\n",
+      "\nAlternatively, just use [dotenv-webpack](https://github.com/mrsteele/dotenv-webpack) which does this and more behind the scenes for you.\n\n### What about variable expansion?\n\nTry [dotenv-expand](https://github.com/motdotla/dotenv-expand)\n\n### What about syncing and securing .env files?\n\nUse [dotenv-vault](https://github.com/dotenv-org/dotenv-vault)\n\n### What is a `.env.vault` file?\n\nA `.env.vault` file is an encrypted version of your development (and ci, staging, production, etc) environment variables. It is paired with a `DOTENV_KEY` to deploy your secrets more securely than scattering them across multiple platforms and tools. Use [dotenv-vault](https://github.com/dotenv-org/dotenv-vault) to manage and generate them.\n\n### What if I accidentally commit my `.env` file to code?\n\nRemove it, [remove git history](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository) and then install the [git pre-commit hook](https://github.com/dotenvx/dotenvx#pre-commit) to prevent this from ever happening again. \n\n",
+      "\n### How can I prevent committing my `.env` file to a Docker build?\n\nUse the [docker prebuild hook](https://dotenvx.com/docs/features/prebuild).\n\n"
+    ],
+    "ecosystem": "npm",
+    "category": "string-utils",
+    "evidence": [
+      {
+        "cap": "net:github.com",
+        "why": "URL in README: github.com"
+      },
+      {
+        "cap": "net:www.warp.dev",
+        "why": "URL in README: www.warp.dev"
+      },
+      {
+        "cap": "net:res.cloudinary.com",
+        "why": "URL in README: res.cloudinary.com"
+      },
+      {
+        "cap": "net:workos.com",
+        "why": "URL in README: workos.com"
+      },
+      {
+        "cap": "net:runalloy.com",
+        "why": "URL in README: runalloy.com"
+      },
+      {
+        "cap": "net:img.shields.io",
+        "why": "URL in README: img.shields.io"
+      },
+      {
+        "cap": "net:www.npmjs.com",
+        "why": "URL in README: www.npmjs.com"
+      },
+      {
+        "cap": "net:raw.githubusercontent.com",
+        "why": "URL in README: raw.githubusercontent.com"
+      },
+      {
+        "cap": "net:nodejs.org",
+        "why": "URL in README: nodejs.org"
+      },
+      {
+        "cap": "net:12factor.net",
+        "why": "URL in README: 12factor.net"
+      },
+      {
+        "cap": "net:codecov.io",
+        "why": "URL in README: codecov.io"
+      },
+      {
+        "cap": "net:www.youtube.com",
+        "why": "URL in README: www.youtube.com"
+      },
+      {
+        "cap": "net:img.youtube.com",
+        "why": "URL in README: img.youtube.com"
+      },
+      {
+        "cap": "net:simpleicons.vercel.app",
+        "why": "URL in README: simpleicons.vercel.app"
+      },
+      {
+        "cap": "net:dotenvx.com",
+        "why": "URL in README: dotenvx.com"
+      },
+      {
+        "cap": "net:techcrunch.com",
+        "why": "URL in README: techcrunch.com"
+      },
+      {
+        "cap": "net:coderpad.io",
+        "why": "URL in README: coderpad.io"
+      },
+      {
+        "cap": "net:stackoverflow.com",
+        "why": "URL in README: stackoverflow.com"
+      },
+      {
+        "cap": "net:developer.mozilla.org",
+        "why": "URL in README: developer.mozilla.org"
+      },
+      {
+        "cap": "net:create-react-app.dev",
+        "why": "URL in README: create-react-app.dev"
+      },
+      {
+        "cap": "net:hacks.mozilla.org",
+        "why": "URL in README: hacks.mozilla.org"
+      },
+      {
+        "cap": "net:docs.github.com",
+        "why": "URL in README: docs.github.com"
+      },
+      {
+        "cap": "net:dotenvx.sh",
+        "why": "URL in README: dotenvx.sh"
+      },
+      {
+        "cap": "env:S3_BUCKET",
+        "why": "used in README example"
+      },
+      {
+        "cap": "env:DOTENV_KEY",
+        "why": "used in README example"
+      },
+      {
+        "cap": "env:API_KEY",
+        "why": "used in README example"
+      },
+      {
+        "cap": "env:SECRET_KEY",
+        "why": "README shows `SECRET_KEY=...`"
+      },
+      {
+        "cap": "env:PRIVATE_KEY",
+        "why": "README shows `PRIVATE_KEY=...`"
+      },
+      {
+        "cap": "env:SECRET_HASH",
+        "why": "README shows `SECRET_HASH=...`"
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_*",
+        "why": "README shows `DOTENV_CONFIG_<OPTION>=...`"
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_ENCODING",
+        "why": "README shows `DOTENV_CONFIG_ENCODING=...`"
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DEBUG",
+        "why": "README shows `DOTENV_CONFIG_DEBUG=...`"
+      },
+      {
+        "cap": "env:BACKTICK_KEY",
+        "why": "README shows `BACKTICK_KEY=...`"
+      },
+      {
+        "cap": "file:*:.env",
+        "why": "README names file `.env`"
+      },
+      {
+        "cap": "file:*:.env.vault",
+        "why": "README names file `.env.vault`"
+      },
+      {
+        "cap": "file:*:.env.ENVIRONMENT",
+        "why": "README names file `.env.ENVIRONMENT`"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "none",
+    "category": "string-utils",
+    "claimed": [
+      {
+        "cap": "net:github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:www.warp.dev",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:res.cloudinary.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:workos.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:runalloy.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:img.shields.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:www.npmjs.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:raw.githubusercontent.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:nodejs.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:12factor.net",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:codecov.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:www.youtube.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:img.youtube.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:simpleicons.vercel.app",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:dotenvx.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:techcrunch.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:coderpad.io",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:stackoverflow.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:developer.mozilla.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:create-react-app.dev",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:hacks.mozilla.org",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:docs.github.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:dotenvx.sh",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "file:*:.env",
+        "family": "files",
+        "seen": true
+      },
+      {
+        "cap": "file:*:.env.vault",
+        "family": "files",
+        "seen": false
+      },
+      {
+        "cap": "file:*:.env.ENVIRONMENT",
+        "family": "files",
+        "seen": false
+      },
+      {
+        "cap": "env:S3_BUCKET",
+        "family": "env",
+        "seen": false
+      },
+      {
+        "cap": "env:DOTENV_KEY",
+        "family": "env",
+        "seen": true
+      },
+      {
+        "cap": "env:API_KEY",
+        "family": "env",
+        "seen": false
+      },
+      {
+        "cap": "env:SECRET_KEY",
+        "family": "env",
+        "seen": false
+      },
+      {
+        "cap": "env:PRIVATE_KEY",
+        "family": "env",
+        "seen": false
+      },
+      {
+        "cap": "env:SECRET_HASH",
+        "family": "env",
+        "seen": false
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_*",
+        "family": "env",
+        "seen": true
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_ENCODING",
+        "family": "env",
+        "seen": true
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DEBUG",
+        "family": "env",
+        "seen": true
+      },
+      {
+        "cap": "env:BACKTICK_KEY",
+        "family": "env",
+        "seen": false
+      }
+    ],
+    "observed": [
+      {
+        "cap": "env:DOTENV_KEY",
+        "stage": "snippet",
+        "first_ts": 4.994,
+        "count": 3,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "file:read:/work/.env",
+        "stage": "snippet",
+        "first_ts": 5.003,
+        "count": 2,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_ENCODING",
+        "stage": "snippet",
+        "first_ts": 5.195,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_PATH",
+        "stage": "snippet",
+        "first_ts": 5.21,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DEBUG",
+        "stage": "snippet",
+        "first_ts": 5.22,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_OVERRIDE",
+        "stage": "snippet",
+        "first_ts": 5.229,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
+        "stage": "snippet",
+        "first_ts": 5.239,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "file:read:/custom/path/to/.env",
+        "stage": "snippet",
+        "first_ts": 5.676,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      }
+    ],
+    "denials": []
+  },
+  "variants": [
+    "baseline",
+    "ci",
+    "later",
+    "host",
+    "user"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci",
+      "later",
+      "host",
+      "user"
+    ],
+    "rows": [
+      {
+        "cap": "env:DOTENV_CONFIG_DEBUG",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_ENCODING",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_OVERRIDE",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_PATH",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "env:DOTENV_KEY",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "file:read:/custom/path/to/.env",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "file:read:/work/.env",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      }
+    ],
+    "findings": [],
+    "evasions": []
+  }
+}
