@@ -1,0 +1,158 @@
+{
+  "scan": "sample",
+  "package": "http-fetchy",
+  "version": "1.0.0",
+  "sha256": "sample",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "sample": true,
+  "events": [
+    {
+      "ts": 0.41,
+      "stage": "import",
+      "type": "env",
+      "target": "FETCHY_TIMEOUT"
+    },
+    {
+      "ts": 0.42,
+      "stage": "import",
+      "type": "net",
+      "target": "status.http-fetchy.test"
+    },
+    {
+      "ts": 5.1,
+      "stage": "snippet",
+      "type": "net",
+      "target": "example.test"
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:FETCHY_TIMEOUT",
+      "stage": "import",
+      "first_ts": 0.41,
+      "count": 1
+    },
+    {
+      "cap": "net:status.http-fetchy.test",
+      "stage": "import",
+      "first_ts": 0.42,
+      "count": 1
+    },
+    {
+      "cap": "net:example.test",
+      "stage": "snippet",
+      "first_ts": 5.1,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [
+      "net:example.test"
+    ],
+    "files": [],
+    "env": [
+      "env:FETCHY_TIMEOUT"
+    ],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "const get = require('http-fetchy');\nget('https://example.test/').then(console.log);\n"
+    ],
+    "category": "http-client",
+    "evidence": [
+      {
+        "cap": "net:example.test",
+        "why": "URL in README: example.test"
+      },
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "why": "README mentions env `FETCHY_TIMEOUT`"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "high",
+    "category": "http-client",
+    "claimed": [
+      {
+        "cap": "net:example.test",
+        "family": "network",
+        "seen": true
+      },
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "family": "env",
+        "seen": true
+      }
+    ],
+    "observed": [
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "stage": "import",
+        "first_ts": 0.41,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "net:status.http-fetchy.test",
+        "stage": "import",
+        "first_ts": 0.42,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "high",
+        "reason": "undocumented network call during import"
+      },
+      {
+        "cap": "net:example.test",
+        "stage": "snippet",
+        "first_ts": 5.1,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      }
+    ],
+    "denials": []
+  },
+  "variants": [
+    "baseline",
+    "ci"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci"
+    ],
+    "rows": [
+      {
+        "cap": "env:CI",
+        "baseline": false,
+        "ci": true
+      },
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "baseline": true,
+        "ci": true
+      },
+      {
+        "cap": "net:example.test",
+        "baseline": true,
+        "ci": true
+      },
+      {
+        "cap": "net:status.http-fetchy.test",
+        "baseline": true,
+        "ci": true
+      }
+    ],
+    "findings": [
+      {
+        "variant": "ci",
+        "cap": "env:CI"
+      }
+    ]
+  }
+}

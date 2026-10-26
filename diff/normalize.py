@@ -24,7 +24,7 @@ def _is_noise_file(path: str, pkg: str) -> bool:
         return True
     if "/node_modules/" in path and path.endswith(CODE_EXT):
         return True
-    if path.startswith(f"/work/node_modules/{pkg}/") or path in ("/work", "/work/package.json"):
+    if path.startswith(f"/work/node_modules/{pkg}/") or path in ("/work", "/work/package.json", "/work/snippet.js"):
         return True
     return False
 

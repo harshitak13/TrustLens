@@ -1,0 +1,52 @@
+{
+  "scan": "sample",
+  "package": "pad-clean",
+  "version": "1.0.0",
+  "sha256": "sample",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "sample": true,
+  "events": [],
+  "capabilities": [],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ],
+    "snippets": [
+      "const pad = require('pad-clean');\npad('5', 3, '0'); // '005'\n"
+    ],
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "none",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [],
+    "denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ]
+  },
+  "variants": [
+    "baseline",
+    "ci"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci"
+    ],
+    "rows": [],
+    "findings": []
+  }
+}
