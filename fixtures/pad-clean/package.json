@@ -1,0 +1,1 @@
+{ "name": "pad-clean", "version": "1.0.0", "description": "Left-pad a string. Pure string utility, no I/O.", "main": "index.js", "keywords": ["string", "pad"], "license": "MIT" }

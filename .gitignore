@@ -1,0 +1,5 @@
+.trustlens/
+node_modules/
+__pycache__/
+*.tgz
+scans/*.events.jsonl
