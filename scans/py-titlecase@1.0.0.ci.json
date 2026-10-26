@@ -1,0 +1,101 @@
+{
+  "scan": "5368a20bae",
+  "package": "py-titlecase",
+  "version": "1.0.0",
+  "sha256": "329038a56ee58592cc7714edd3673f33c124d347f25d504590f0add78ecb47f0",
+  "ecosystem": "python",
+  "variant": "ci",
+  "events": [
+    {
+      "ts": 2.767,
+      "scan": "5368a20bae",
+      "variant": "ci",
+      "stage": "import",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 17,
+        "argv1": "-c",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.565,
+      "scan": "5368a20bae",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 21,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:CI",
+      "stage": "import",
+      "first_ts": 2.767,
+      "count": 1
+    },
+    {
+      "cap": "env:CI",
+      "stage": "snippet",
+      "first_ts": 7.565,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ],
+    "snippets": [
+      "from py_titlecase import titlecase\nprint(titlecase(\"hello WORLD\"))  # Hello World\n"
+    ],
+    "ecosystem": "python",
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "medium",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [
+      {
+        "cap": "env:CI",
+        "stage": "import",
+        "first_ts": 2.767,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "env:CI",
+        "stage": "snippet",
+        "first_ts": 7.565,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      }
+    ],
+    "denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ]
+  }
+}

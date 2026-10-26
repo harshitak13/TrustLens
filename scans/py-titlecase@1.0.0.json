@@ -1,0 +1,200 @@
+{
+  "scan": "ad69fb9ebf",
+  "package": "py-titlecase",
+  "version": "1.0.0",
+  "sha256": "329038a56ee58592cc7714edd3673f33c124d347f25d504590f0add78ecb47f0",
+  "ecosystem": "python",
+  "variant": "baseline",
+  "events": [
+    {
+      "ts": 2.768,
+      "scan": "ad69fb9ebf",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 17,
+        "argv1": "-c",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 2.849,
+      "scan": "ad69fb9ebf",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "dns",
+      "target": "usage.py-titlecase.test",
+      "detail": {
+        "pid": 17,
+        "argv1": "-c",
+        "op": "getaddrinfo"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.771,
+      "scan": "ad69fb9ebf",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 21,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.851,
+      "scan": "ad69fb9ebf",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "usage.py-titlecase.test",
+      "detail": {
+        "pid": 21,
+        "argv1": "/work/snippet.py",
+        "op": "getaddrinfo"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:CI",
+      "stage": "import",
+      "first_ts": 2.768,
+      "count": 1
+    },
+    {
+      "cap": "net:usage.py-titlecase.test",
+      "stage": "import",
+      "first_ts": 2.849,
+      "count": 1
+    },
+    {
+      "cap": "env:CI",
+      "stage": "snippet",
+      "first_ts": 7.771,
+      "count": 1
+    },
+    {
+      "cap": "net:usage.py-titlecase.test",
+      "stage": "snippet",
+      "first_ts": 7.851,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ],
+    "snippets": [
+      "from py_titlecase import titlecase\nprint(titlecase(\"hello WORLD\"))  # Hello World\n"
+    ],
+    "ecosystem": "python",
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "critical",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [
+      {
+        "cap": "env:CI",
+        "stage": "import",
+        "first_ts": 2.768,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "net:usage.py-titlecase.test",
+        "stage": "import",
+        "first_ts": 2.849,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "critical",
+        "reason": "README explicitly says it doesn't do this"
+      },
+      {
+        "cap": "env:CI",
+        "stage": "snippet",
+        "first_ts": 7.771,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "net:usage.py-titlecase.test",
+        "stage": "snippet",
+        "first_ts": 7.851,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "critical",
+        "reason": "README explicitly says it doesn't do this"
+      }
+    ],
+    "denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ]
+  },
+  "variants": [
+    "baseline",
+    "ci",
+    "later",
+    "host",
+    "user"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci",
+      "later",
+      "host",
+      "user"
+    ],
+    "rows": [
+      {
+        "cap": "env:CI",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "net:usage.py-titlecase.test",
+        "baseline": true,
+        "ci": false,
+        "later": true,
+        "host": true,
+        "user": true
+      }
+    ],
+    "findings": [],
+    "evasions": [
+      {
+        "variant": "ci",
+        "cap": "net:usage.py-titlecase.test"
+      }
+    ]
+  }
+}

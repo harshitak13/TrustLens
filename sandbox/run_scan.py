@@ -1,4 +1,4 @@
-"""Run one npm package through the sandbox and write scans/<pkg>@<ver>.json.
+"""Run one npm or Python package through the sandbox and write scans/<pkg>@<ver>.json.
 
 Usage: python sandbox/run_scan.py fixtures/pad-clean [--variant baseline|ci|later|host|user]
 
@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import uuid
@@ -18,11 +19,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from diff.normalize import to_events, capabilities  # noqa: E402
 from diff.engine import diff  # noqa: E402
-from claims.parse import parse  # noqa: E402
+from claims.parse import load_meta, parse  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / ".trustlens"
-IMAGE = "trustlens-node"
+# ecosystem -> (image, hook dir mounted at /trustlens, snippet extension)
+ECOSYSTEMS = {
+    "npm": ("trustlens-node", "node", "js"),
+    "python": ("trustlens-python", "python", "py"),
+}
 
 # Hidden-trigger hunter variants: extra docker args and env per variant.
 VARIANTS = {
@@ -39,16 +44,25 @@ def run(cmd):
 
 
 def pack(pkg_dir: Path, out: Path):
-    meta = json.loads((pkg_dir / "package.json").read_text(encoding="utf-8"))
+    ecosystem, meta = load_meta(pkg_dir)
+    if ecosystem == "python":
+        # Installed from a copy of the source tree; hash every file in order.
+        shutil.copytree(pkg_dir, out / "src", ignore=shutil.ignore_patterns("__pycache__", "*.egg-info", "build"))
+        h = hashlib.sha256()
+        for f in sorted(p for p in (out / "src").rglob("*") if p.is_file()):
+            h.update(f.relative_to(out / "src").as_posix().encode())
+            h.update(f.read_bytes())
+        return ecosystem, meta["name"], meta["version"], h.hexdigest()
     npm = "npm.cmd" if os.name == "nt" else "npm"
     res = run([npm, "pack", str(pkg_dir), "--pack-destination", str(out), "--json"])
     tgz = out / json.loads(res.stdout)[0]["filename"]
     final = out / "pkg.tgz"
     tgz.replace(final)
-    return meta["name"], meta["version"], hashlib.sha256(final.read_bytes()).hexdigest()
+    return ecosystem, meta["name"], meta["version"], hashlib.sha256(final.read_bytes()).hexdigest()
 
 
-def docker_run(name, pkg_dir: Path, events_dir: Path, variant: str):
+def docker_run(ecosystem, name, pkg_dir: Path, events_dir: Path, variant: str):
+    image, hook_dir, _ = ECOSYSTEMS[ecosystem]
     extra_args, extra_env = VARIANTS[variant]
     mount = lambda src, dst, ro: ["--mount", f"type=bind,src={src},dst={dst}" + (",readonly" if ro else "")]
     cmd = ["docker", "run", "--rm", "--network", "none",
@@ -58,12 +72,12 @@ def docker_run(name, pkg_dir: Path, events_dir: Path, variant: str):
            "--tmpfs", "/tmp:exec,size=256m", "--tmpfs", "/work:exec,size=256m,uid=1001,gid=1001",
            "--tmpfs", "/home/dev:size=16m,uid=1001,gid=1001",
            *mount(pkg_dir, "/pkg", True),
-           *mount(ROOT / "sandbox" / "node", "/trustlens", True),
+           *mount(ROOT / "sandbox" / hook_dir, "/trustlens", True),
            *mount(events_dir, "/events", False),
-           "-e", f"TL_PKG_NAME={name}", *extra_args]
+           "-e", f"TL_PKG_NAME={name}", "-e", f"TL_PKG_IMPORT={name.replace('-', '_')}", *extra_args]
     for k, v in extra_env.items():
         cmd += ["-e", f"{k}={v}"]
-    cmd += [IMAGE, "sh", "/trustlens/run.sh"]
+    cmd += [image, "sh", "/trustlens/run.sh"]
     subprocess.run(cmd, check=False, timeout=120)
 
 
@@ -73,15 +87,15 @@ def scan(pkg_path: str, variant: str = "baseline"):
     pkg_dir, events_dir = base / "pkg", base / "events"
     pkg_dir.mkdir(parents=True)
     events_dir.mkdir()
-    name, version, sha = pack(Path(pkg_path).resolve(), pkg_dir)
+    ecosystem, name, version, sha = pack(Path(pkg_path).resolve(), pkg_dir)
     manifest = parse(Path(pkg_path))
     # README code fences become the snippet stage, run in order after import.
     snip_dir = pkg_dir / "snippets"
     snip_dir.mkdir()
     for i, code in enumerate(manifest["snippets"]):
-        (snip_dir / f"{i:02d}.js").write_text(code, encoding="utf-8")
+        (snip_dir / f"{i:02d}.{ECOSYSTEMS[ecosystem][2]}").write_text(code, encoding="utf-8")
 
-    docker_run(name, pkg_dir, events_dir, variant)
+    docker_run(ecosystem, name, pkg_dir, events_dir, variant)
 
     raw = []
     hook_log = events_dir / "hook.jsonl"
@@ -91,7 +105,7 @@ def scan(pkg_path: str, variant: str = "baseline"):
     caps = capabilities(events)
     result = {
         "scan": scan_id, "package": name, "version": version, "sha256": sha,
-        "ecosystem": "npm", "variant": variant,
+        "ecosystem": ecosystem, "variant": variant,
         "events": events, "capabilities": caps,
         "claims": manifest, "diff": diff(caps, manifest),
     }

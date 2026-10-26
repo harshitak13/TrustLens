@@ -97,4 +97,8 @@ def trigger_matrix(by_variant: dict[str, list[dict]]) -> dict:
     base = sets.get("baseline", set())
     caps = sorted(set().union(*sets.values())) if sets else []
     return {"variants": list(sets), "rows": [{"cap": c, **{v: c in s for v, s in sets.items()}} for c in caps],
-            "findings": [{"variant": v, "cap": c} for v, s in sets.items() if v != "baseline" for c in sorted(s - base)]}
+            "findings": [{"variant": v, "cap": c} for v, s in sets.items() if v != "baseline" for c in sorted(s - base)],
+            # The reverse: flagged-type behaviour that goes quiet in a variant
+            # (e.g. stops phoning home under CI) suggests the package hides from it.
+            "evasions": [{"variant": v, "cap": c} for v, s in sets.items() if v != "baseline"
+                         for c in sorted(base - s) if c.startswith(("net:", "proc:"))]}

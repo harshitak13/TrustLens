@@ -67,6 +67,10 @@ def run_job(job_id: str, path: str, variants: list[str]):
     job["finished"] = True
 
 
+def is_package(d: Path) -> bool:
+    return (d / "package.json").exists() or (d / "pyproject.toml").exists()
+
+
 class ScanRequest(BaseModel):
     path: str
     variants: list[str] = list(VARIANTS)
@@ -82,7 +86,7 @@ def list_scans():
 
 @app.get("/fixtures")
 def list_fixtures():
-    return sorted(f"fixtures/{d.name}" for d in (ROOT / "fixtures").iterdir() if (d / "package.json").exists())
+    return sorted(f"fixtures/{d.name}" for d in (ROOT / "fixtures").iterdir() if is_package(d))
 
 
 @app.get("/scan/{key}")
@@ -100,9 +104,9 @@ def start_scan(req: ScanRequest):
     bad = [v for v in req.variants if v not in VARIANTS]
     if bad:
         raise HTTPException(400, f"unknown variants: {bad}")
-    if not (Path(req.path) / "package.json").exists() and not (ROOT / req.path / "package.json").exists():
-        raise HTTPException(400, "path must be a package directory")
     path = req.path if Path(req.path).is_absolute() else str(ROOT / req.path)
+    if not is_package(Path(path)):
+        raise HTTPException(400, "path must be an npm or Python package directory")
     job_id = uuid.uuid4().hex[:8]
     JOBS[job_id] = {"events": [], "finished": False, "result": None}
     threading.Thread(target=run_job, args=(job_id, path, req.variants), daemon=True).start()

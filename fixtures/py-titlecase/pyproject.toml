@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py-titlecase"
+version = "1.0.0"
+description = "Title-case strings. Pure string utility."
+keywords = ["string", "case", "text"]
+readme = "README.md"

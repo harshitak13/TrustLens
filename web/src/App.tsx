@@ -88,8 +88,17 @@ export default function App() {
 function DiffView({ scan }: { scan: Scan }) {
   const { claimed, observed, denials } = scan.diff
   const findings = scan.matrix?.findings ?? []
+  const evasions = scan.matrix?.evasions ?? []
   return (
     <>
+    {evasions.length > 0 && (
+      <div className="mb-6 rounded-md bg-amber-500/10 p-4 ring-1 ring-amber-500/30">
+        <p className="text-sm font-medium text-amber-300">Evasion: behaviour that goes quiet in a changed environment</p>
+        <ul className="mt-2 space-y-1 font-mono text-sm">
+          {evasions.map((f) => <li key={f.variant + f.cap}>{f.cap} <span className="text-slate-400">stops when {f.variant}</span></li>)}
+        </ul>
+      </div>
+    )}
     {findings.length > 0 && (
       <div className="mb-6 rounded-md bg-red-500/10 p-4 ring-1 ring-red-500/30">
         <p className="text-sm font-medium text-red-300">Hidden trigger: behaviour that only appears in a changed environment</p>

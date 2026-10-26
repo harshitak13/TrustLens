@@ -16,13 +16,16 @@ NOISE_ENV_PREFIX = ("TL_", "npm_", "NPM_", "NODE_TEST")
 
 # Module loading reads every .js/.json it requires; that's not behaviour.
 NOISE_PATH_PREFIX = ("/usr/", "/trustlens/", "/proc/self/", "/lib/", "/etc/ssl/")
-CODE_EXT = (".js", ".cjs", ".mjs", ".json", ".node")
+CODE_EXT = (".js", ".cjs", ".mjs", ".json", ".node", ".py", ".pyc", ".so", ".pth", ".typed")
 
 
 def _is_noise_file(path: str, pkg: str) -> bool:
     if path.startswith(NOISE_PATH_PREFIX) or path.startswith("/events/"):
         return True
     if "/node_modules/" in path and path.endswith(CODE_EXT):
+        return True
+    # Python: the installed package, its source copy, pip's build temp dirs.
+    if path.startswith(("/work/site", "/work/src", "/tmp/")) or path in ("/work/snippet.py", "/dev/null", "/trustlens"):
         return True
     if path.startswith(f"/work/node_modules/{pkg}/") or path in ("/work", "/work/package.json", "/work/snippet.js"):
         return True

@@ -40,6 +40,11 @@ Click **ci-sleeper** → **Dangerous**, with the red Hidden trigger banner.
 "In the normal run it looks almost clean. But TrustLens runs every package five times: normal, CI, a future date, a different hostname, a different user. Under `CI=true`, and only then, it calls `beacon.ci-sleeper.test`. Its README says no network access, so that's a direct contradiction."
 Open the **Hidden triggers** tab: the matrix shows that capability only in the `ci` column.
 
+## 5b. Python too, and evasion (30s)
+
+Click **py-titlecase** → **Dangerous**, with the amber Evasion banner.
+"Same pipeline for Python. It phones home on import even though its README says no network, and it goes *quiet* under CI, so a CI-only scanner would miss it. TrustLens flags both directions."
+
 ## 6. Live scan (45s)
 
 Pick `fixtures/ci-sleeper` in the dropdown → **Scan**. The five steps light up one by one (~50s). Talk over it:
@@ -54,5 +59,5 @@ When it finishes, the result opens on its own.
 
 - **Can malware detect the sandbox?** Yes, a determined package could. The variants make the common checks (CI, date, host, user) visible instead of hiding them.
 - **Why no network?** Safety. The hook still records every attempt and its destination, even though the connection fails.
-- **What about Python?** The event format and diff engine don't care about the language; a Python hook plugs into the same pipeline.
+- **What about Python?** Supported: an audit-hook based Python sandbox feeds the same event format and diff engine (see py-titlecase).
 - **False positives?** Category priors allow normal behaviour (an HTTP client fetching when called). Each flag shows its reason, so a human can judge it quickly.

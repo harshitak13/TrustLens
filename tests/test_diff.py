@@ -46,3 +46,10 @@ def test_sensitive_read_plus_net_escalates():
 def test_trigger_matrix():
     t = trigger_matrix({"baseline": obs(("import", "env:A")), "ci": obs(("import", "env:A"), ("import", "net:c.test"))})
     assert t["findings"] == [{"variant": "ci", "cap": "net:c.test"}]
+
+
+def test_python_fixture_claims():
+    m = parse(ROOT / "fixtures/py-titlecase")
+    assert m["ecosystem"] == "python" and m["category"] == "string-utils"
+    assert "net" in m["explicit_denials"]
+    assert len(m["snippets"]) == 1

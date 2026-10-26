@@ -11,17 +11,20 @@ output must go through validate() and it never decides the verdict.
 """
 import json
 import re
+import tomllib
 from pathlib import Path
 
 import yaml
 
 PRIORS = yaml.safe_load((Path(__file__).parent / "category_priors.yaml").read_text(encoding="utf-8"))
 
-FENCE = re.compile(r"```[a-zA-Z]*\n(.*?)```", re.S)
+FENCE = re.compile(r"```([a-zA-Z]*)\n(.*?)```", re.S)
+SNIPPET_LANGS = {"npm": {"", "js", "javascript", "node"}, "python": {"", "py", "python"}}
 URL = re.compile(r"https?://([A-Za-z0-9.-]+)")
 BACKTICK = re.compile(r"`([^`\n]+)`")
 ENV_NAME = re.compile(r"^[A-Z][A-Z0-9_]{2,}$")
-CODE_ENV = re.compile(r"process\.env(?:\.([A-Z][A-Z0-9_]+)|\[['\"]([A-Z][A-Z0-9_]+)['\"]\])")
+CODE_ENV = re.compile(r"process\.env(?:\.([A-Z][A-Z0-9_]+)|\[['\"]([A-Z][A-Z0-9_]+)['\"]\])"
+                      r"|os\.(?:environ(?:\.get\(|\[)|getenv\()['\"]([A-Z][A-Z0-9_]+)['\"]")
 
 NET_PHRASES = re.compile(r"\b(http request|https request|makes? (?:a |an )?requests?|fetch(?:es)?|downloads?|"
                          r"calls? (?:the|an?) api|sends? (?:data|telemetry)|connects? to)\b", re.I)
@@ -49,18 +52,26 @@ def category(meta: dict) -> str:
     return best
 
 
+def load_meta(pkg_dir: Path) -> tuple[str, dict]:
+    """(ecosystem, metadata with name/version/description/keywords)."""
+    if (pkg_dir / "package.json").exists():
+        return "npm", json.loads((pkg_dir / "package.json").read_text(encoding="utf-8"))
+    project = tomllib.loads((pkg_dir / "pyproject.toml").read_text(encoding="utf-8")).get("project", {})
+    return "python", project
+
+
 def parse(pkg_dir) -> dict:
     pkg_dir = Path(pkg_dir)
-    meta = json.loads((pkg_dir / "package.json").read_text(encoding="utf-8"))
+    ecosystem, meta = load_meta(pkg_dir)
     readme = ""
     for n in ("README.md", "readme.md", "README"):
         if (pkg_dir / n).exists():
             readme = (pkg_dir / n).read_text(encoding="utf-8", errors="replace")
             break
-    snippets = FENCE.findall(readme)
+    snippets = [code for lang, code in FENCE.findall(readme) if lang.lower() in SNIPPET_LANGS[ecosystem]]
     prose = FENCE.sub("", readme) + "\n" + meta.get("description", "")
     m = {"network": [], "files": [], "env": [], "subprocess": [], "explicit_denials": [],
-         "snippets": snippets, "category": category(meta), "evidence": []}
+         "snippets": snippets, "ecosystem": ecosystem, "category": category(meta), "evidence": []}
 
     def add(family, cap, why):
         if cap not in m[family]:
@@ -85,8 +96,8 @@ def parse(pkg_dir) -> dict:
                 if "/" in path or path.startswith((".", "~")):
                     add("files", f"file:*:{path}", f"README mentions file `{path}`")
     for code in snippets:
-        for a, b in CODE_ENV.findall(code):
-            add("env", f"env:{a or b}", "used in README example")
+        for groups in CODE_ENV.findall(code):
+            add("env", f"env:{next(g for g in groups if g)}", "used in README example")
 
     for fam, rx in DENIALS:
         if rx.search(prose):
