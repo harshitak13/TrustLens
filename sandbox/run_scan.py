@@ -17,6 +17,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from diff.normalize import to_events, capabilities  # noqa: E402
+from diff.engine import diff  # noqa: E402
+from claims.parse import parse  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / ".trustlens"
@@ -72,6 +74,12 @@ def scan(pkg_path: str, variant: str = "baseline"):
     pkg_dir.mkdir(parents=True)
     events_dir.mkdir()
     name, version, sha = pack(Path(pkg_path).resolve(), pkg_dir)
+    manifest = parse(Path(pkg_path))
+    # README code fences become the snippet stage, run in order after import.
+    snip_dir = pkg_dir / "snippets"
+    snip_dir.mkdir()
+    for i, code in enumerate(manifest["snippets"]):
+        (snip_dir / f"{i:02d}.js").write_text(code, encoding="utf-8")
 
     docker_run(name, pkg_dir, events_dir, variant)
 
@@ -80,10 +88,12 @@ def scan(pkg_path: str, variant: str = "baseline"):
     if hook_log.exists():
         raw = [json.loads(l) for l in hook_log.read_text(encoding="utf-8").splitlines() if l.strip()]
     events = to_events(raw, scan_id, variant, name)
+    caps = capabilities(events)
     result = {
         "scan": scan_id, "package": name, "version": version, "sha256": sha,
         "ecosystem": "npm", "variant": variant,
-        "events": events, "capabilities": capabilities(events),
+        "events": events, "capabilities": caps,
+        "claims": manifest, "diff": diff(caps, manifest),
     }
     out = ROOT / "scans" / f"{name}@{version}.{variant}.json"
     out.parent.mkdir(exist_ok=True)
@@ -97,6 +107,7 @@ if __name__ == "__main__":
     ap.add_argument("--variant", default="baseline", choices=VARIANTS)
     a = ap.parse_args()
     out, res = scan(a.package, a.variant)
-    print(f"{out}: {len(res['events'])} events, {len(res['capabilities'])} capabilities")
-    for c in res["capabilities"]:
-        print(f"  {c['stage']:8} {c['cap']}")
+    d = res["diff"]
+    print(f"{out}: verdict {d['verdict'].upper()} ({len(res['events'])} events)")
+    for r in d["observed"]:
+        print(f"  {r['severity']:8} {r['status']:12} {r['stage']:8} {r['cap']}  {r['reason']}")

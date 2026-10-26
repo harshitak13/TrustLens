@@ -21,4 +21,12 @@ TL_STAGE=import timeout 20 node -e "require(process.env.TL_PKG_NAME); setTimeout
   > /events/import.log 2>&1
 echo "import exit $?" >> /events/import.log
 
+mark snippet
+for f in /pkg/snippets/*.js; do
+  [ -e "$f" ] || continue
+  cp "$f" /work/snippet.js
+  TL_STAGE=snippet timeout 20 node /work/snippet.js >> /events/snippet.log 2>&1
+  echo "$f exit $?" >> /events/snippet.log
+done
+
 mark done

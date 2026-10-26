@@ -1,0 +1,32 @@
+# Capabilities a package of each category may use without saying so.
+# Patterns are fnmatch globs over capability strings. "stages" limits where
+# the allowance applies: an HTTP client fetching when you call it is normal,
+# fetching on import is not.
+categories:
+  string-utils:
+    keywords: [string, pad, format, case, slug, trim, text]
+    allow: []
+  http-client:
+    keywords: [http, https, fetch, request, client, rest, api]
+    allow:
+      - {cap: "net:*", stages: [snippet]}
+      - {cap: "env:HTTP_PROXY"}
+      - {cap: "env:HTTPS_PROXY"}
+      - {cap: "env:NO_PROXY"}
+      - {cap: "env:http_proxy"}
+      - {cap: "env:https_proxy"}
+      - {cap: "env:no_proxy"}
+  cli-tool:
+    keywords: [cli, command, terminal, shell, bin]
+    allow:
+      - {cap: "file:read:/work/*"}
+      - {cap: "file:write:/work/*"}
+      - {cap: "file:list:/work*"}
+      - {cap: "env:NO_COLOR"}
+      - {cap: "env:FORCE_COLOR"}
+      - {cap: "env:CI"}
+      - {cap: "env:EDITOR"}
+  parser:
+    keywords: [parse, parser, yaml, csv, ini, toml, markdown, xml]
+    allow:
+      - {cap: "file:read:/work/*"}
