@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ScanPanel from './ScanPanel'
 import type { Scan, Severity, Status, Summary } from './types'
 
 const SEV: Record<Severity, string> = {
@@ -28,18 +29,21 @@ export default function App() {
   const [tab, setTab] = useState<Tab>('diff')
   const [error, setError] = useState('')
 
+  const [version, setVersion] = useState(0)
+
   useEffect(() => {
-    fetch('/api/scans').then((r) => r.json()).then((l: Summary[]) => { setList(l); if (l.length) setKey(l[0].key) })
+    fetch('/api/scans').then((r) => r.json()).then((l: Summary[]) => { setList(l); setKey((k) => k ?? l[0]?.key ?? null) })
       .catch(() => setError('API not reachable. Start it with: uvicorn api.main:app --port 8000'))
-  }, [])
+  }, [version])
   useEffect(() => {
     if (key) fetch(`/api/scan/${encodeURIComponent(key)}`).then((r) => r.json()).then(setScan)
-  }, [key])
+  }, [key, version])
 
   return (
     <div className="min-h-screen md:flex">
       <aside className="border-b border-slate-800 p-4 md:w-64 md:border-r md:border-b-0">
         <h1 className="mb-4 text-lg font-semibold tracking-tight">TrustLens</h1>
+        <ScanPanel onDone={(k) => { setKey(k); setVersion((v) => v + 1) }} />
         {error && <p className="text-sm text-red-300">{error}</p>}
         <ul className="space-y-1">
           {list.map((s) => (

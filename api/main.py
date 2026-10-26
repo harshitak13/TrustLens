@@ -80,6 +80,11 @@ def list_scans():
             for f in sorted(SCANS.glob("*.json")) if not f.stem.endswith(variant_suffix)]
 
 
+@app.get("/fixtures")
+def list_fixtures():
+    return sorted(f"fixtures/{d.name}" for d in (ROOT / "fixtures").iterdir() if (d / "package.json").exists())
+
+
 @app.get("/scan/{key}")
 def get_scan(key: str):
     f = SCANS / f"{key}.json"

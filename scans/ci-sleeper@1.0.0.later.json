@@ -1,5 +1,5 @@
 {
-  "scan": "6215b975b7",
+  "scan": "80f4716338",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
@@ -7,8 +7,8 @@
   "variant": "later",
   "events": [
     {
-      "ts": 0.943,
-      "scan": "6215b975b7",
+      "ts": 0.905,
+      "scan": "80f4716338",
       "variant": "later",
       "stage": "import",
       "type": "env",
@@ -21,8 +21,8 @@
       "token": null
     },
     {
-      "ts": 5.078,
-      "scan": "6215b975b7",
+      "ts": 5.046,
+      "scan": "80f4716338",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
@@ -39,13 +39,13 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 0.943,
+      "first_ts": 0.905,
       "count": 1
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 5.078,
+      "first_ts": 5.046,
       "count": 1
     }
   ],
@@ -74,7 +74,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.943,
+        "first_ts": 0.905,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -83,7 +83,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 5.078,
+        "first_ts": 5.046,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",

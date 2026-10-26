@@ -1,5 +1,5 @@
 {
-  "scan": "8174a4afd1",
+  "scan": "dfa9a5349e",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
@@ -7,8 +7,8 @@
   "variant": "ci",
   "events": [
     {
-      "ts": 0.956,
-      "scan": "8174a4afd1",
+      "ts": 0.931,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "import",
       "type": "env",
@@ -21,8 +21,8 @@
       "token": null
     },
     {
-      "ts": 0.967,
-      "scan": "8174a4afd1",
+      "ts": 0.943,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -37,8 +37,8 @@
       "token": null
     },
     {
-      "ts": 1.039,
-      "scan": "8174a4afd1",
+      "ts": 1.009,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -51,8 +51,8 @@
       "token": null
     },
     {
-      "ts": 1.045,
-      "scan": "8174a4afd1",
+      "ts": 1.015,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "import",
       "type": "dns",
@@ -65,8 +65,8 @@
       "token": null
     },
     {
-      "ts": 5.18,
-      "scan": "8174a4afd1",
+      "ts": 5.152,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "snippet",
       "type": "env",
@@ -79,8 +79,8 @@
       "token": null
     },
     {
-      "ts": 5.194,
-      "scan": "8174a4afd1",
+      "ts": 5.165,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -95,8 +95,8 @@
       "token": null
     },
     {
-      "ts": 5.261,
-      "scan": "8174a4afd1",
+      "ts": 5.234,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -109,8 +109,8 @@
       "token": null
     },
     {
-      "ts": 5.267,
-      "scan": "8174a4afd1",
+      "ts": 5.241,
+      "scan": "dfa9a5349e",
       "variant": "ci",
       "stage": "snippet",
       "type": "dns",
@@ -127,25 +127,25 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 0.956,
+      "first_ts": 0.931,
       "count": 1
     },
     {
       "cap": "net:beacon.ci-sleeper.test",
       "stage": "import",
-      "first_ts": 0.967,
+      "first_ts": 0.943,
       "count": 3
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 5.18,
+      "first_ts": 5.152,
       "count": 1
     },
     {
       "cap": "net:beacon.ci-sleeper.test",
       "stage": "snippet",
-      "first_ts": 5.194,
+      "first_ts": 5.165,
       "count": 3
     }
   ],
@@ -174,7 +174,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.956,
+        "first_ts": 0.931,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -183,7 +183,7 @@
       {
         "cap": "net:beacon.ci-sleeper.test",
         "stage": "import",
-        "first_ts": 0.967,
+        "first_ts": 0.943,
         "count": 3,
         "status": "contradicted",
         "severity": "critical",
@@ -192,7 +192,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 5.18,
+        "first_ts": 5.152,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -201,7 +201,7 @@
       {
         "cap": "net:beacon.ci-sleeper.test",
         "stage": "snippet",
-        "first_ts": 5.194,
+        "first_ts": 5.165,
         "count": 3,
         "status": "contradicted",
         "severity": "critical",
