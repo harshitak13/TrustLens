@@ -1,0 +1,291 @@
+{
+  "scan": "2071e86a9e",
+  "package": "http-fetchy",
+  "version": "1.0.0",
+  "sha256": "1cb01c0f10bf4765eb134c8b8f9dcbe177c35bf014c0621fa6c52c6d94352d75",
+  "ecosystem": "npm",
+  "variant": "user",
+  "events": [
+    {
+      "ts": 0.909,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "import",
+      "type": "env",
+      "target": "FETCHY_TIMEOUT",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 0.922,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "import",
+      "type": "net",
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "http",
+        "method": "GET",
+        "url": "https://status.http-fetchy.test/ping"
+      },
+      "token": null
+    },
+    {
+      "ts": 0.998,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "import",
+      "type": "net",
+      "target": "status.http-fetchy.test:443",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 1.003,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "import",
+      "type": "dns",
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "lookup"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.134,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "FETCHY_TIMEOUT",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.15,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "net",
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "http",
+        "method": "GET",
+        "url": "https://status.http-fetchy.test/ping"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.219,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "net",
+      "target": "status.http-fetchy.test:443",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.225,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "lookup"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.242,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "net",
+      "target": "example.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "http",
+        "method": "GET",
+        "url": "https://example.test/"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.257,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "net",
+      "target": "example.test:443",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.275,
+      "scan": "2071e86a9e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "example.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "lookup"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:FETCHY_TIMEOUT",
+      "stage": "import",
+      "first_ts": 0.909,
+      "count": 1
+    },
+    {
+      "cap": "net:status.http-fetchy.test",
+      "stage": "import",
+      "first_ts": 0.922,
+      "count": 3
+    },
+    {
+      "cap": "env:FETCHY_TIMEOUT",
+      "stage": "snippet",
+      "first_ts": 5.134,
+      "count": 1
+    },
+    {
+      "cap": "net:status.http-fetchy.test",
+      "stage": "snippet",
+      "first_ts": 5.15,
+      "count": 3
+    },
+    {
+      "cap": "net:example.test",
+      "stage": "snippet",
+      "first_ts": 5.242,
+      "count": 3
+    }
+  ],
+  "claims": {
+    "network": [
+      "net:example.test"
+    ],
+    "files": [],
+    "env": [
+      "env:FETCHY_TIMEOUT"
+    ],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "const get = require('http-fetchy');\nget('https://example.test/').then(console.log);\n"
+    ],
+    "category": "http-client",
+    "evidence": [
+      {
+        "cap": "net:example.test",
+        "why": "URL in README: example.test"
+      },
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "why": "README mentions env `FETCHY_TIMEOUT`"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "high",
+    "category": "http-client",
+    "claimed": [
+      {
+        "cap": "net:example.test",
+        "family": "network",
+        "seen": true
+      },
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "family": "env",
+        "seen": true
+      }
+    ],
+    "observed": [
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "stage": "import",
+        "first_ts": 0.909,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "net:status.http-fetchy.test",
+        "stage": "import",
+        "first_ts": 0.922,
+        "count": 3,
+        "status": "unclaimed",
+        "severity": "high",
+        "reason": "undocumented network call during import"
+      },
+      {
+        "cap": "env:FETCHY_TIMEOUT",
+        "stage": "snippet",
+        "first_ts": 5.134,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "net:status.http-fetchy.test",
+        "stage": "snippet",
+        "first_ts": 5.15,
+        "count": 3,
+        "status": "expected",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "net:example.test",
+        "stage": "snippet",
+        "first_ts": 5.242,
+        "count": 3,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      }
+    ],
+    "denials": []
+  }
+}

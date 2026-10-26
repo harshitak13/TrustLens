@@ -16,7 +16,7 @@ const STAGE = process.env.TL_STAGE || 'unknown';
 const ARGV1 = process.argv[1] || '';
 // npm itself runs with the hook too. For npm we only want the processes it
 // spawns (lifecycle scripts), not its own cache/registry/fs chatter.
-const IS_NPM = /npm-cli\.js|npx-cli\.js|[\\/]node_modules[\\/]npm[\\/]/.test(ARGV1);
+const IS_NPM = /npm-cli\.js|npx-cli\.js|[\\/]node_modules[\\/]npm[\\/]|[\\/]bin[\\/]np[mx]$/.test(ARGV1);
 
 let busy = false;
 function emit(type, target, detail) {

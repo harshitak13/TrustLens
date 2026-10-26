@@ -1,49 +1,202 @@
 {
-  "scan": "sample",
+  "scan": "6f5e88d6a6",
   "package": "http-fetchy",
   "version": "1.0.0",
-  "sha256": "sample",
+  "sha256": "1cb01c0f10bf4765eb134c8b8f9dcbe177c35bf014c0621fa6c52c6d94352d75",
   "ecosystem": "npm",
   "variant": "baseline",
-  "sample": true,
   "events": [
     {
-      "ts": 0.41,
+      "ts": 0.992,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
       "stage": "import",
       "type": "env",
-      "target": "FETCHY_TIMEOUT"
+      "target": "FETCHY_TIMEOUT",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
     },
     {
-      "ts": 0.42,
+      "ts": 1.005,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
       "stage": "import",
       "type": "net",
-      "target": "status.http-fetchy.test"
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "http",
+        "method": "GET",
+        "url": "https://status.http-fetchy.test/ping"
+      },
+      "token": null
     },
     {
-      "ts": 5.1,
+      "ts": 1.106,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "net",
+      "target": "status.http-fetchy.test:443",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 1.111,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "dns",
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "lookup"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.255,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "FETCHY_TIMEOUT",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.272,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
       "stage": "snippet",
       "type": "net",
-      "target": "example.test"
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "http",
+        "method": "GET",
+        "url": "https://status.http-fetchy.test/ping"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.351,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "net",
+      "target": "status.http-fetchy.test:443",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.357,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "status.http-fetchy.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "lookup"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.375,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "net",
+      "target": "example.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "http",
+        "method": "GET",
+        "url": "https://example.test/"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.394,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "net",
+      "target": "example.test:443",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.411,
+      "scan": "6f5e88d6a6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "example.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "lookup"
+      },
+      "token": null
     }
   ],
   "capabilities": [
     {
       "cap": "env:FETCHY_TIMEOUT",
       "stage": "import",
-      "first_ts": 0.41,
+      "first_ts": 0.992,
       "count": 1
     },
     {
       "cap": "net:status.http-fetchy.test",
       "stage": "import",
-      "first_ts": 0.42,
+      "first_ts": 1.005,
+      "count": 3
+    },
+    {
+      "cap": "env:FETCHY_TIMEOUT",
+      "stage": "snippet",
+      "first_ts": 5.255,
       "count": 1
+    },
+    {
+      "cap": "net:status.http-fetchy.test",
+      "stage": "snippet",
+      "first_ts": 5.272,
+      "count": 3
     },
     {
       "cap": "net:example.test",
       "stage": "snippet",
-      "first_ts": 5.1,
-      "count": 1
+      "first_ts": 5.375,
+      "count": 3
     }
   ],
   "claims": {
@@ -90,7 +243,7 @@
       {
         "cap": "env:FETCHY_TIMEOUT",
         "stage": "import",
-        "first_ts": 0.41,
+        "first_ts": 0.992,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -99,17 +252,35 @@
       {
         "cap": "net:status.http-fetchy.test",
         "stage": "import",
-        "first_ts": 0.42,
-        "count": 1,
+        "first_ts": 1.005,
+        "count": 3,
         "status": "unclaimed",
         "severity": "high",
         "reason": "undocumented network call during import"
       },
       {
+        "cap": "env:FETCHY_TIMEOUT",
+        "stage": "snippet",
+        "first_ts": 5.255,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "net:status.http-fetchy.test",
+        "stage": "snippet",
+        "first_ts": 5.272,
+        "count": 3,
+        "status": "expected",
+        "severity": "none",
+        "reason": ""
+      },
+      {
         "cap": "net:example.test",
         "stage": "snippet",
-        "first_ts": 5.1,
-        "count": 1,
+        "first_ts": 5.375,
+        "count": 3,
         "status": "claimed",
         "severity": "none",
         "reason": ""
@@ -119,40 +290,45 @@
   },
   "variants": [
     "baseline",
-    "ci"
+    "ci",
+    "later",
+    "host",
+    "user"
   ],
   "matrix": {
     "variants": [
       "baseline",
-      "ci"
+      "ci",
+      "later",
+      "host",
+      "user"
     ],
     "rows": [
       {
-        "cap": "env:CI",
-        "baseline": false,
-        "ci": true
-      },
-      {
         "cap": "env:FETCHY_TIMEOUT",
         "baseline": true,
-        "ci": true
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
       },
       {
         "cap": "net:example.test",
         "baseline": true,
-        "ci": true
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
       },
       {
         "cap": "net:status.http-fetchy.test",
         "baseline": true,
-        "ci": true
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
       }
     ],
-    "findings": [
-      {
-        "variant": "ci",
-        "cap": "env:CI"
-      }
-    ]
+    "findings": []
   }
 }

@@ -1,11 +1,10 @@
 {
-  "scan": "sample",
+  "scan": "729940f7dd",
   "package": "pad-clean",
   "version": "1.0.0",
-  "sha256": "sample",
+  "sha256": "e2c3ecbe9c44a50f211e8eba2c083f48bb56693f503f1c20e22f90fa41f92110",
   "ecosystem": "npm",
   "variant": "baseline",
-  "sample": true,
   "events": [],
   "capabilities": [],
   "claims": {
@@ -39,12 +38,18 @@
   },
   "variants": [
     "baseline",
-    "ci"
+    "ci",
+    "later",
+    "host",
+    "user"
   ],
   "matrix": {
     "variants": [
       "baseline",
-      "ci"
+      "ci",
+      "later",
+      "host",
+      "user"
     ],
     "rows": [],
     "findings": []
