@@ -24,9 +24,11 @@ type Tab = 'diff' | 'triggers' | 'timeline' | 'claims'
 
 export default function App() {
   const [list, setList] = useState<Summary[]>([])
-  const [key, setKey] = useState<string | null>(null)
+  // ?scan=<pkg@ver>&tab=<tab> opens a result directly (handy for demo links).
+  const params = new URLSearchParams(location.search)
+  const [key, setKey] = useState<string | null>(params.get('scan'))
   const [scan, setScan] = useState<Scan | null>(null)
-  const [tab, setTab] = useState<Tab>('diff')
+  const [tab, setTab] = useState<Tab>((params.get('tab') as Tab) || 'diff')
   const [error, setError] = useState('')
 
   const [version, setVersion] = useState(0)
