@@ -41,8 +41,9 @@ def _severity(cap: str, stage: str, status: str) -> tuple[str, str]:
     if status in ("claimed", "expected"):
         return "none", ""
     if status == "contradicted":
-        return ("critical" if fam in ("net", "proc") or SENSITIVE_FILE.match(cap) else "high",
-                "README explicitly says it doesn't do this")
+        if fam in ("net", "proc") or SENSITIVE_FILE.match(cap):
+            return "critical", "README explicitly says it doesn't do this"
+        return "medium", "README says it doesn't do this (minor capability)"
     if SENSITIVE_FILE.match(cap):
         return "high", "reads a credential-style file it never mentions"
     if fam == "proc":

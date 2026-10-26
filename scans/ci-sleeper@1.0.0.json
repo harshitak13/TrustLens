@@ -1,0 +1,140 @@
+{
+  "scan": "e7f88cf5f6",
+  "package": "ci-sleeper",
+  "version": "1.0.0",
+  "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "events": [
+    {
+      "ts": 1.017,
+      "scan": "e7f88cf5f6",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.151,
+      "scan": "e7f88cf5f6",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 33,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:CI",
+      "stage": "import",
+      "first_ts": 1.017,
+      "count": 1
+    },
+    {
+      "cap": "env:CI",
+      "stage": "snippet",
+      "first_ts": 5.151,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ],
+    "snippets": [
+      "const slug = require('ci-sleeper');\nslug('Hello World!'); // 'hello-world'\n"
+    ],
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "critical",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [
+      {
+        "cap": "env:CI",
+        "stage": "import",
+        "first_ts": 1.017,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "env:CI",
+        "stage": "snippet",
+        "first_ts": 5.151,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      }
+    ],
+    "denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ]
+  },
+  "variants": [
+    "baseline",
+    "ci",
+    "later",
+    "host",
+    "user"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci",
+      "later",
+      "host",
+      "user"
+    ],
+    "rows": [
+      {
+        "cap": "env:CI",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "net:beacon.ci-sleeper.test",
+        "baseline": false,
+        "ci": true,
+        "later": false,
+        "host": false,
+        "user": false
+      }
+    ],
+    "findings": [
+      {
+        "variant": "ci",
+        "cap": "net:beacon.ci-sleeper.test"
+      }
+    ]
+  }
+}

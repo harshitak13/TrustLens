@@ -1,0 +1,3 @@
+{ "name": "postinstall-probe", "version": "1.0.0", "description": "Format byte counts as human-readable strings.", "main": "index.js",
+  "keywords": ["format", "bytes", "string"], "license": "MIT",
+  "scripts": { "postinstall": "node setup.js" } }

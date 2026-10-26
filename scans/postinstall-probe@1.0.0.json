@@ -1,0 +1,130 @@
+{
+  "scan": "6a27128924",
+  "package": "postinstall-probe",
+  "version": "1.0.0",
+  "sha256": "770f06ebd2c8a01195133e062bd7e72a54c76cf6427cde6fd3a652f0ca4ed047",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "events": [
+    {
+      "ts": 0.812,
+      "scan": "6a27128924",
+      "variant": "baseline",
+      "stage": "install",
+      "type": "proc",
+      "target": "sh",
+      "detail": {
+        "pid": 10,
+        "argv1": "/usr/local/bin/npm",
+        "op": "spawn",
+        "args": [
+          "-c",
+          "node setup.js"
+        ]
+      },
+      "token": null
+    },
+    {
+      "ts": 0.89,
+      "scan": "6a27128924",
+      "variant": "baseline",
+      "stage": "install",
+      "type": "proc",
+      "target": "uname -a",
+      "detail": {
+        "pid": 22,
+        "argv1": "/work/node_modules/postinstall-probe/setup.js",
+        "op": "execSync",
+        "shell": true
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "proc:install-script:node setup.js",
+      "stage": "install",
+      "first_ts": 0.812,
+      "count": 1
+    },
+    {
+      "cap": "proc:uname",
+      "stage": "install",
+      "first_ts": 0.89,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "const fmt = require('postinstall-probe');\nfmt(2048); // '2.0 KB'\n"
+    ],
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "high",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [
+      {
+        "cap": "proc:install-script:node setup.js",
+        "stage": "install",
+        "first_ts": 0.812,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "high",
+        "reason": "starts a process during install"
+      },
+      {
+        "cap": "proc:uname",
+        "stage": "install",
+        "first_ts": 0.89,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "high",
+        "reason": "starts a process during install"
+      }
+    ],
+    "denials": []
+  },
+  "variants": [
+    "baseline",
+    "ci",
+    "later",
+    "host",
+    "user"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "ci",
+      "later",
+      "host",
+      "user"
+    ],
+    "rows": [
+      {
+        "cap": "proc:install-script:node setup.js",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      },
+      {
+        "cap": "proc:uname",
+        "baseline": true,
+        "ci": true,
+        "later": true,
+        "host": true,
+        "user": true
+      }
+    ],
+    "findings": []
+  }
+}

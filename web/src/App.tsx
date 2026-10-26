@@ -83,7 +83,17 @@ export default function App() {
 
 function DiffView({ scan }: { scan: Scan }) {
   const { claimed, observed, denials } = scan.diff
+  const findings = scan.matrix?.findings ?? []
   return (
+    <>
+    {findings.length > 0 && (
+      <div className="mb-6 rounded-md bg-red-500/10 p-4 ring-1 ring-red-500/30">
+        <p className="text-sm font-medium text-red-300">Hidden trigger: behaviour that only appears in a changed environment</p>
+        <ul className="mt-2 space-y-1 font-mono text-sm">
+          {findings.map((f) => <li key={f.variant + f.cap}>{f.cap} <span className="text-slate-400">only when {f.variant}</span></li>)}
+        </ul>
+      </div>
+    )}
     <div className="grid gap-6 lg:grid-cols-2">
       <section>
         <h3 className="mb-3 text-sm font-medium uppercase tracking-wide text-slate-400">README says</h3>
@@ -119,6 +129,7 @@ function DiffView({ scan }: { scan: Scan }) {
         </ul>
       </section>
     </div>
+    </>
   )
 }
 

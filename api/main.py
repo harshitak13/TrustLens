@@ -22,7 +22,7 @@ from pydantic import BaseModel
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from diff.engine import trigger_matrix  # noqa: E402
+from diff.engine import SEVERITIES as SEVERITY_ORDER, trigger_matrix  # noqa: E402
 from sandbox.run_scan import VARIANTS, scan  # noqa: E402
 
 SCANS = ROOT / "scans"
@@ -42,8 +42,12 @@ def combine(results: dict[str, dict]) -> dict:
     base = results["baseline"]
     out = {**base, "variants": list(results),
            "matrix": trigger_matrix({v: r["capabilities"] for v, r in results.items()})}
-    if out["matrix"]["findings"]:
-        out["diff"] = {**base["diff"], "verdict": "critical" if base["diff"]["verdict"] == "critical" else "high"}
+    findings = out["matrix"]["findings"]
+    if findings:
+        # Behaviour that only switches on in a changed environment is a hidden trigger.
+        sev = "critical" if any(f["cap"].startswith(("net:", "proc:")) for f in findings) else "high"
+        if SEVERITY_ORDER.index(sev) > SEVERITY_ORDER.index(base["diff"]["verdict"]):
+            out["diff"] = {**base["diff"], "verdict": sev}
     (SCANS / f"{base['package']}@{base['version']}.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     return out
 

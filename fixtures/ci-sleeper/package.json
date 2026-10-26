@@ -1,0 +1,1 @@
+{ "name": "ci-sleeper", "version": "1.0.0", "description": "Convert strings to slugs.", "main": "index.js", "keywords": ["slug", "string"], "license": "MIT" }

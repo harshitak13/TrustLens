@@ -1,0 +1,218 @@
+{
+  "scan": "8174a4afd1",
+  "package": "ci-sleeper",
+  "version": "1.0.0",
+  "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
+  "ecosystem": "npm",
+  "variant": "ci",
+  "events": [
+    {
+      "ts": 0.956,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "import",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 0.967,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "import",
+      "type": "net",
+      "target": "beacon.ci-sleeper.test",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "http",
+        "method": "GET",
+        "url": "https://beacon.ci-sleeper.test/hello"
+      },
+      "token": null
+    },
+    {
+      "ts": 1.039,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "import",
+      "type": "net",
+      "target": "beacon.ci-sleeper.test:443",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 1.045,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "import",
+      "type": "dns",
+      "target": "beacon.ci-sleeper.test",
+      "detail": {
+        "pid": 23,
+        "argv1": "",
+        "op": "lookup"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.18,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.194,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "net",
+      "target": "beacon.ci-sleeper.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "http",
+        "method": "GET",
+        "url": "https://beacon.ci-sleeper.test/hello"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.261,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "net",
+      "target": "beacon.ci-sleeper.test:443",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "connect"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.267,
+      "scan": "8174a4afd1",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "beacon.ci-sleeper.test",
+      "detail": {
+        "pid": 37,
+        "argv1": "/work/snippet.js",
+        "op": "lookup"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:CI",
+      "stage": "import",
+      "first_ts": 0.956,
+      "count": 1
+    },
+    {
+      "cap": "net:beacon.ci-sleeper.test",
+      "stage": "import",
+      "first_ts": 0.967,
+      "count": 3
+    },
+    {
+      "cap": "env:CI",
+      "stage": "snippet",
+      "first_ts": 5.18,
+      "count": 1
+    },
+    {
+      "cap": "net:beacon.ci-sleeper.test",
+      "stage": "snippet",
+      "first_ts": 5.194,
+      "count": 3
+    }
+  ],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ],
+    "snippets": [
+      "const slug = require('ci-sleeper');\nslug('Hello World!'); // 'hello-world'\n"
+    ],
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "critical",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [
+      {
+        "cap": "env:CI",
+        "stage": "import",
+        "first_ts": 0.956,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "net:beacon.ci-sleeper.test",
+        "stage": "import",
+        "first_ts": 0.967,
+        "count": 3,
+        "status": "contradicted",
+        "severity": "critical",
+        "reason": "README explicitly says it doesn't do this"
+      },
+      {
+        "cap": "env:CI",
+        "stage": "snippet",
+        "first_ts": 5.18,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "net:beacon.ci-sleeper.test",
+        "stage": "snippet",
+        "first_ts": 5.194,
+        "count": 3,
+        "status": "contradicted",
+        "severity": "critical",
+        "reason": "README explicitly says it doesn't do this"
+      }
+    ],
+    "denials": [
+      "net",
+      "file",
+      "env",
+      "proc"
+    ]
+  }
+}

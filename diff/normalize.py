@@ -71,6 +71,10 @@ def capability(ev):
     if typ == "env":
         return f"env:{t}"
     if typ == "proc":
+        # npm runs lifecycle scripts as `sh -c "<script>"`; name the script itself.
+        args = d.get("args") or []
+        if "/bin/npm" in d.get("argv1", "") and posixpath.basename(t) == "sh" and "-c" in args:
+            return f"proc:install-script:{args[args.index('-c') + 1]}"
         cmd = t.split()[0] if d.get("shell") else t
         return f"proc:{posixpath.basename(cmd)}"
     return f"{typ}:{t}"
