@@ -115,8 +115,9 @@ function DiffView({ scan }: { scan: Scan }) {
         <h3 className="mb-3 text-sm font-medium uppercase tracking-wide text-slate-400">README says</h3>
         <ul className="space-y-1.5">
           {claimed.map((c) => (
-            <li key={c.cap} className="flex items-center justify-between rounded-md bg-slate-900 px-3 py-2 font-mono text-sm">
-              {c.cap}<span className="text-xs text-slate-500">{c.seen ? 'seen' : 'not seen'}</span>
+            <li key={c.cap} className="flex items-center justify-between gap-3 rounded-md bg-slate-900 px-3 py-2 font-mono text-sm">
+              <span className="min-w-0 truncate" title={c.cap}>{c.cap}</span>
+              <span className={`shrink-0 text-xs ${c.seen ? 'text-slate-300' : 'text-slate-500'}`}>{c.seen ? 'seen' : 'not seen'}</span>
             </li>
           ))}
           {denials.map((d) => (

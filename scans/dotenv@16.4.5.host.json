@@ -1,5 +1,5 @@
 {
-  "scan": "3db49c3f71",
+  "scan": "8d0bf0b9f4",
   "package": "dotenv",
   "version": "16.4.5",
   "sha256": "a0822e4897b4e40c2ce69255eca794bf233c6033d926d22561e68ce6891f7133",
@@ -9,8 +9,8 @@
   "variant": "host",
   "events": [
     {
-      "ts": 4.994,
-      "scan": "3db49c3f71",
+      "ts": 4.952,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -23,8 +23,8 @@
       "token": null
     },
     {
-      "ts": 5.013,
-      "scan": "3db49c3f71",
+      "ts": 4.963,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -37,8 +37,8 @@
       "token": null
     },
     {
-      "ts": 5.194,
-      "scan": "3db49c3f71",
+      "ts": 5.158,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -51,8 +51,8 @@
       "token": null
     },
     {
-      "ts": 5.204,
-      "scan": "3db49c3f71",
+      "ts": 5.167,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -65,8 +65,8 @@
       "token": null
     },
     {
-      "ts": 5.213,
-      "scan": "3db49c3f71",
+      "ts": 5.177,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -79,8 +79,8 @@
       "token": null
     },
     {
-      "ts": 5.224,
-      "scan": "3db49c3f71",
+      "ts": 5.186,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -93,8 +93,8 @@
       "token": null
     },
     {
-      "ts": 5.233,
-      "scan": "3db49c3f71",
+      "ts": 5.197,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -107,8 +107,8 @@
       "token": null
     },
     {
-      "ts": 5.252,
-      "scan": "3db49c3f71",
+      "ts": 5.217,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -121,8 +121,8 @@
       "token": null
     },
     {
-      "ts": 5.261,
-      "scan": "3db49c3f71",
+      "ts": 5.225,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -135,8 +135,8 @@
       "token": null
     },
     {
-      "ts": 5.646,
-      "scan": "3db49c3f71",
+      "ts": 5.615,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -149,8 +149,8 @@
       "token": null
     },
     {
-      "ts": 5.658,
-      "scan": "3db49c3f71",
+      "ts": 5.63,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -163,8 +163,8 @@
       "token": null
     },
     {
-      "ts": 5.772,
-      "scan": "3db49c3f71",
+      "ts": 5.738,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -177,8 +177,8 @@
       "token": null
     },
     {
-      "ts": 5.783,
-      "scan": "3db49c3f71",
+      "ts": 5.748,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -191,8 +191,8 @@
       "token": null
     },
     {
-      "ts": 5.795,
-      "scan": "3db49c3f71",
+      "ts": 5.759,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -205,8 +205,8 @@
       "token": null
     },
     {
-      "ts": 5.912,
-      "scan": "3db49c3f71",
+      "ts": 5.874,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -219,8 +219,8 @@
       "token": null
     },
     {
-      "ts": 5.925,
-      "scan": "3db49c3f71",
+      "ts": 5.888,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -233,8 +233,8 @@
       "token": null
     },
     {
-      "ts": 5.939,
-      "scan": "3db49c3f71",
+      "ts": 5.902,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -247,8 +247,8 @@
       "token": null
     },
     {
-      "ts": 6.05,
-      "scan": "3db49c3f71",
+      "ts": 6.023,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -261,8 +261,8 @@
       "token": null
     },
     {
-      "ts": 6.061,
-      "scan": "3db49c3f71",
+      "ts": 6.036,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -275,8 +275,8 @@
       "token": null
     },
     {
-      "ts": 6.074,
-      "scan": "3db49c3f71",
+      "ts": 6.051,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -289,8 +289,8 @@
       "token": null
     },
     {
-      "ts": 6.178,
-      "scan": "3db49c3f71",
+      "ts": 6.161,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -303,8 +303,8 @@
       "token": null
     },
     {
-      "ts": 6.188,
-      "scan": "3db49c3f71",
+      "ts": 6.171,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -317,8 +317,8 @@
       "token": null
     },
     {
-      "ts": 6.309,
-      "scan": "3db49c3f71",
+      "ts": 6.284,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -331,8 +331,8 @@
       "token": null
     },
     {
-      "ts": 6.32,
-      "scan": "3db49c3f71",
+      "ts": 6.295,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -345,8 +345,8 @@
       "token": null
     },
     {
-      "ts": 6.468,
-      "scan": "3db49c3f71",
+      "ts": 6.446,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -359,8 +359,8 @@
       "token": null
     },
     {
-      "ts": 6.824,
-      "scan": "3db49c3f71",
+      "ts": 6.786,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -373,8 +373,8 @@
       "token": null
     },
     {
-      "ts": 7.176,
-      "scan": "3db49c3f71",
+      "ts": 7.133,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -387,8 +387,8 @@
       "token": null
     },
     {
-      "ts": 7.199,
-      "scan": "3db49c3f71",
+      "ts": 7.157,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -401,8 +401,8 @@
       "token": null
     },
     {
-      "ts": 7.382,
-      "scan": "3db49c3f71",
+      "ts": 7.349,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -415,8 +415,8 @@
       "token": null
     },
     {
-      "ts": 7.393,
-      "scan": "3db49c3f71",
+      "ts": 7.36,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -429,8 +429,8 @@
       "token": null
     },
     {
-      "ts": 8.143,
-      "scan": "3db49c3f71",
+      "ts": 8.106,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "env",
@@ -443,8 +443,8 @@
       "token": null
     },
     {
-      "ts": 8.155,
-      "scan": "3db49c3f71",
+      "ts": 8.119,
+      "scan": "8d0bf0b9f4",
       "variant": "host",
       "stage": "snippet",
       "type": "file",
@@ -461,67 +461,67 @@
     {
       "cap": "env:DOTENV_KEY",
       "stage": "snippet",
-      "first_ts": 4.994,
+      "first_ts": 4.952,
       "count": 11
     },
     {
       "cap": "file:read:/work/.env",
       "stage": "snippet",
-      "first_ts": 5.013,
+      "first_ts": 4.963,
       "count": 12
     },
     {
       "cap": "env:DOTENV_CONFIG_ENCODING",
       "stage": "snippet",
-      "first_ts": 5.194,
+      "first_ts": 5.158,
       "count": 1
     },
     {
       "cap": "env:DOTENV_CONFIG_PATH",
       "stage": "snippet",
-      "first_ts": 5.204,
+      "first_ts": 5.167,
       "count": 1
     },
     {
       "cap": "env:DOTENV_CONFIG_DEBUG",
       "stage": "snippet",
-      "first_ts": 5.213,
+      "first_ts": 5.177,
       "count": 1
     },
     {
       "cap": "env:DOTENV_CONFIG_OVERRIDE",
       "stage": "snippet",
-      "first_ts": 5.224,
+      "first_ts": 5.186,
       "count": 1
     },
     {
       "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
       "stage": "snippet",
-      "first_ts": 5.233,
+      "first_ts": 5.197,
       "count": 1
     },
     {
       "cap": "file:read:/custom/path/to/.env",
       "stage": "snippet",
-      "first_ts": 5.658,
+      "first_ts": 5.63,
       "count": 1
     },
     {
       "cap": "file:read:/work/.env.local",
       "stage": "snippet",
-      "first_ts": 5.783,
+      "first_ts": 5.748,
       "count": 1
     },
     {
       "cap": "env:DEBUG",
       "stage": "snippet",
-      "first_ts": 6.05,
+      "first_ts": 6.023,
       "count": 1
     },
     {
       "cap": "env:HELLO",
       "stage": "snippet",
-      "first_ts": 6.824,
+      "first_ts": 6.786,
       "count": 1
     }
   ],
@@ -818,7 +818,7 @@
       {
         "cap": "env:DOTENV_KEY",
         "stage": "snippet",
-        "first_ts": 4.994,
+        "first_ts": 4.952,
         "count": 11,
         "status": "claimed",
         "severity": "none",
@@ -827,7 +827,7 @@
       {
         "cap": "file:read:/work/.env",
         "stage": "snippet",
-        "first_ts": 5.013,
+        "first_ts": 4.963,
         "count": 12,
         "status": "claimed",
         "severity": "none",
@@ -836,7 +836,7 @@
       {
         "cap": "env:DOTENV_CONFIG_ENCODING",
         "stage": "snippet",
-        "first_ts": 5.194,
+        "first_ts": 5.158,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -845,7 +845,7 @@
       {
         "cap": "env:DOTENV_CONFIG_PATH",
         "stage": "snippet",
-        "first_ts": 5.204,
+        "first_ts": 5.167,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -854,7 +854,7 @@
       {
         "cap": "env:DOTENV_CONFIG_DEBUG",
         "stage": "snippet",
-        "first_ts": 5.213,
+        "first_ts": 5.177,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -863,7 +863,7 @@
       {
         "cap": "env:DOTENV_CONFIG_OVERRIDE",
         "stage": "snippet",
-        "first_ts": 5.224,
+        "first_ts": 5.186,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -872,7 +872,7 @@
       {
         "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
         "stage": "snippet",
-        "first_ts": 5.233,
+        "first_ts": 5.197,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -881,7 +881,7 @@
       {
         "cap": "file:read:/custom/path/to/.env",
         "stage": "snippet",
-        "first_ts": 5.658,
+        "first_ts": 5.63,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -890,7 +890,7 @@
       {
         "cap": "file:read:/work/.env.local",
         "stage": "snippet",
-        "first_ts": 5.783,
+        "first_ts": 5.748,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -899,7 +899,7 @@
       {
         "cap": "env:DEBUG",
         "stage": "snippet",
-        "first_ts": 6.05,
+        "first_ts": 6.023,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -908,7 +908,7 @@
       {
         "cap": "env:HELLO",
         "stage": "snippet",
-        "first_ts": 6.824,
+        "first_ts": 6.786,
         "count": 1,
         "status": "claimed",
         "severity": "none",

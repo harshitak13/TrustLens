@@ -123,7 +123,7 @@ def parse(pkg_dir) -> dict:
         for groups in CODE_ENV.findall(code):
             add("env", f"env:{next(g for g in groups if g)}", "used in README example")
         # File paths passed as string literals in examples, e.g. path: '.env.local'.
-        for tok in re.findall(r"['\"]([^'\"\s]{3,})['\"]", code):
+        for tok in re.findall(r"['\"]([^'\"\s]{3,80})['\"]", code):
             if FILE_NAME.match(tok) and (tok.startswith((".", "~", "/")) or "/" in tok) and not tok.startswith(("./", "../")) or tok.startswith(("./.", "~/")):
                 add("files", f"file:*:{tok}", f"README example uses file `{tok}`")
     for _, code in FENCE.findall(readme):
