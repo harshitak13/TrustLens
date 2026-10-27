@@ -8,3 +8,5 @@ web/public/video-cards/
 demo/video/node_modules/
 demo/video/out/
 demo/video/frames/
+demo/slides/node_modules/
+demo/slides/render/
