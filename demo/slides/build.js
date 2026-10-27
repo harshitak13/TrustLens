@@ -83,7 +83,7 @@ function circleNum(slide, x, y, n, d = 0.42) {
     { x: 0.5, y: 3.85, w: 4.3, h: 0.9, fontFace: BODY, fontSize: 12, color: MUTED, margin: 0, valign: 'top', isTextBox: true })
 
   const attacks = [
-    ['Typosquatting', 'reqeusts instead of requests'],
+    ['Typosquatting', 'a look-alike name: “reqeusts” vs “requests”'],
     ['Dependency confusion', 'a public package wins over your private one'],
     ['Malicious install scripts', 'code runs the moment you type npm install'],
   ]
