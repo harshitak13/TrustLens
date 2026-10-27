@@ -170,9 +170,12 @@ function circleNum(slide, x, y, n, d = 0.42) {
 {
   const s = pres.addSlide({ masterName: 'TL_CONTENT' })
   title(s, 'DEMO.')
-  s.addImage({ path: path.join(__dirname, '..', '4-ci-sleeper.png'), x: 0.5, y: 1.4, w: 5.0, h: 3.0, objectName: 'screenshot',
-    altText: 'TrustLens result for ci-sleeper: dangerous, with a hidden trigger banner' })
-  s.addText('Recorded run: demo/TrustLens-demo.mp4 (1:29) · live at localhost:5173', { x: 0.5, y: 4.5, w: 5.0, h: 0.3, fontFace: BODY, fontSize: 10, color: MUTED, margin: 0, isTextBox: true })
+  // The recorded 90 s demo, embedded; the poster frame is the video's title card.
+  card(s, 0.44, 1.34, 5.12, 2.9325) // frame so the beige title card doesn't melt into the page
+  const poster = require('fs').readFileSync(path.join(__dirname, 'video-poster.png')).toString('base64')
+  s.addMedia({ type: 'video', path: path.join(__dirname, '..', 'TrustLens-demo.mp4'), x: 0.5, y: 1.4, w: 5.0, h: 2.8125,
+    cover: 'data:image/png;base64,' + poster, objectName: 'demo video' })
+  s.addText('Click to play the 90-second recorded run · live app at localhost:5173', { x: 0.5, y: 4.5, w: 5.0, h: 0.3, fontFace: BODY, fontSize: 10, color: MUTED, margin: 0, isTextBox: true })
   const cases = [
     ['pad-clean', 'fine', 'does nothing, as promised'],
     ['http-fetchy', 'suspicious', 'calls a server on import, never mentioned'],
