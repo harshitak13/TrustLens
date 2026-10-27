@@ -4,3 +4,7 @@ __pycache__/
 *.tgz
 scans/*.events.jsonl
 web/dist/
+web/public/video-cards/
+demo/video/node_modules/
+demo/video/out/
+demo/video/frames/

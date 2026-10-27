@@ -1,16 +1,16 @@
 {
-  "scan": "2eb3ac3366",
+  "scan": "fc9be4298e",
   "package": "ci-sleeper",
   "version": "1.0.0",
   "sha256": "594a7cde1be817d11279ec9902bc6169e9c4df0c002708c541bf62f7ef115801",
-  "source": "local",
-  "source_sha256": null,
+  "source": "upload",
+  "source_sha256": "3a9305fa4ad629e4581b4ef20a7a713c6998d3434997e52aa0f327f59a9bb0e1",
   "ecosystem": "npm",
   "variant": "ci",
   "events": [
     {
-      "ts": 1.072,
-      "scan": "2eb3ac3366",
+      "ts": 0.863,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "import",
       "type": "env",
@@ -23,8 +23,8 @@
       "token": null
     },
     {
-      "ts": 1.084,
-      "scan": "2eb3ac3366",
+      "ts": 0.871,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -39,8 +39,8 @@
       "token": null
     },
     {
-      "ts": 1.154,
-      "scan": "2eb3ac3366",
+      "ts": 0.928,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "import",
       "type": "net",
@@ -53,8 +53,8 @@
       "token": null
     },
     {
-      "ts": 1.16,
-      "scan": "2eb3ac3366",
+      "ts": 0.933,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "import",
       "type": "dns",
@@ -67,8 +67,8 @@
       "token": null
     },
     {
-      "ts": 5.171,
-      "scan": "2eb3ac3366",
+      "ts": 4.962,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "snippet",
       "type": "env",
@@ -81,8 +81,8 @@
       "token": null
     },
     {
-      "ts": 5.189,
-      "scan": "2eb3ac3366",
+      "ts": 4.977,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -97,8 +97,8 @@
       "token": null
     },
     {
-      "ts": 5.267,
-      "scan": "2eb3ac3366",
+      "ts": 5.066,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "snippet",
       "type": "net",
@@ -111,8 +111,8 @@
       "token": null
     },
     {
-      "ts": 5.274,
-      "scan": "2eb3ac3366",
+      "ts": 5.07,
+      "scan": "fc9be4298e",
       "variant": "ci",
       "stage": "snippet",
       "type": "dns",
@@ -129,25 +129,25 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 1.072,
+      "first_ts": 0.863,
       "count": 1
     },
     {
       "cap": "net:beacon.ci-sleeper.test",
       "stage": "import",
-      "first_ts": 1.084,
+      "first_ts": 0.871,
       "count": 3
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 5.171,
+      "first_ts": 4.962,
       "count": 1
     },
     {
       "cap": "net:beacon.ci-sleeper.test",
       "stage": "snippet",
-      "first_ts": 5.189,
+      "first_ts": 4.977,
       "count": 3
     }
   ],
@@ -177,7 +177,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 1.072,
+        "first_ts": 0.863,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -186,7 +186,7 @@
       {
         "cap": "net:beacon.ci-sleeper.test",
         "stage": "import",
-        "first_ts": 1.084,
+        "first_ts": 0.871,
         "count": 3,
         "status": "contradicted",
         "severity": "critical",
@@ -195,7 +195,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 5.171,
+        "first_ts": 4.962,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -204,7 +204,7 @@
       {
         "cap": "net:beacon.ci-sleeper.test",
         "stage": "snippet",
-        "first_ts": 5.189,
+        "first_ts": 4.977,
         "count": 3,
         "status": "contradicted",
         "severity": "critical",
