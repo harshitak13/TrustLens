@@ -12,7 +12,7 @@ from api.main import JOBS, VARIANTS, run_job  # noqa: E402
 for path in sys.argv[1:]:
     job = uuid.uuid4().hex[:8]
     JOBS[job] = {"events": [], "finished": False, "result": None}
-    run_job(job, path if path.startswith("npm:") else str(Path(path).resolve()), list(VARIANTS))
+    run_job(job, path if path.startswith(("npm:", "pypi:")) else str(Path(path).resolve()), list(VARIANTS))
     for e in JOBS[job]["events"]:
         if e["state"] != "running":
             print(path, e)

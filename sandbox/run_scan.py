@@ -1,7 +1,7 @@
 """Run one npm or Python package through the sandbox and write scans/<pkg>@<ver>.json.
 
 Usage: python sandbox/run_scan.py fixtures/pad-clean [--variant baseline|ci|later|host|user]
-       python sandbox/run_scan.py npm:left-pad@1.3.0
+       python sandbox/run_scan.py npm:left-pad@1.3.0 | pypi:requests==2.32.3 | upload.zip|.tgz|.whl
 
 Host side, stdlib only. Packs the package (recording its sha256), runs it in a
 locked-down container with networking off, then turns the hook log into the
@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -22,9 +23,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from diff.normalize import to_events, capabilities  # noqa: E402
 from diff.engine import diff  # noqa: E402
 from claims.parse import load_meta, parse  # noqa: E402
+from sandbox import intake  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 NPM = "npm.cmd" if os.name == "nt" else "npm"
+MAX_SNIPPETS = 8
 WORK = ROOT / ".trustlens"
 # ecosystem -> (image, hook dir mounted at /trustlens, snippet extension)
 ECOSYSTEMS = {
@@ -48,6 +51,12 @@ def run(cmd):
 
 def pack(pkg_dir: Path, out: Path):
     ecosystem, meta = load_meta(pkg_dir)
+    if ecosystem == "python" and (pkg_dir / ".tl-wheel").exists():
+        # A wheel (from PyPI or an upload): the sandbox installs the wheel itself.
+        whl = pkg_dir / (pkg_dir / ".tl-wheel").read_text(encoding="utf-8").strip()
+        (out / "wheel").mkdir()
+        shutil.copy2(whl, out / "wheel" / whl.name)
+        return ecosystem, meta["name"], meta["version"], hashlib.sha256(whl.read_bytes()).hexdigest()
     if ecosystem == "python":
         # Installed from a copy of the source tree; hash every file in order.
         shutil.copytree(pkg_dir, out / "src", ignore=shutil.ignore_patterns("__pycache__", "*.egg-info", "build"))
@@ -64,20 +73,56 @@ def pack(pkg_dir: Path, out: Path):
     return ecosystem, meta["name"], meta["version"], hashlib.sha256(final.read_bytes()).hexdigest()
 
 
-def fetch_npm(spec: str, out: Path) -> tuple[Path, str]:
-    """Download a registry tarball (outside the sandbox, no scripts run) and
-    unpack it as data so the claims parser can read package.json and README.
-    Returns (unpacked package dir, sha256 of the registry tarball)."""
-    dl = out / "download"
-    dl.mkdir()
-    res = run([NPM, "pack", spec, "--pack-destination", str(dl), "--json", "--ignore-scripts"])
-    tgz = dl / json.loads(res.stdout)[0]["filename"]
-    with tarfile.open(tgz) as t:
-        t.extractall(dl / "unpacked", filter="data")
-    return dl / "unpacked" / "package", hashlib.sha256(tgz.read_bytes()).hexdigest()
+def prepare_deps(ecosystem: str, src_dir: Path, pkg_dir: Path, sha: str) -> Path:
+    """The sandbox has no network, so dependencies are fetched here first, as
+    data only (no install scripts, no builds), and mounted read-only at /deps.
+    npm: an npm cache holding every tarball the install needs.
+    python: binary wheels for the declared dependencies (Linux, CPython 3.11).
+    Cached per package hash (short dir name: npm cache paths are deep and
+    Windows paths max out at 260 chars), so the five variants download once."""
+    cache = WORK / "dc" / sha[:16]
+    if not cache.exists():
+        tmp = cache.with_name(sha[:16] + ".tmp")
+        shutil.rmtree(tmp, ignore_errors=True)
+        tmp.mkdir(parents=True)
+        if ecosystem == "npm":
+            # Throwaway install target; only the cache it fills is kept.
+            prefix = WORK / "dp" / uuid.uuid4().hex[:8]
+            prefix.mkdir(parents=True)
+            (prefix / "package.json").write_text('{"name":"tl-deps","version":"0.0.0","private":true}')
+            try:
+                run([NPM, "install", str(pkg_dir / "pkg.tgz"), "--prefix", str(prefix), "--cache", str(tmp / "npmcache"),
+                     "--ignore-scripts", "--no-audit", "--no-fund", "--no-package-lock"])
+            finally:
+                shutil.rmtree(prefix, ignore_errors=True)
+        else:
+            deps = load_meta(src_dir)[1].get("dependencies", [])
+            (tmp / "wheels").mkdir()
+            if deps:
+                run([sys.executable, "-m", "pip", "download", *deps, "--dest", str(tmp / "wheels"),
+                     "--only-binary=:all:", "--platform", "manylinux2014_x86_64", "--platform", "manylinux_2_28_x86_64",
+                     "--python-version", "3.11", "--implementation", "cp", "--quiet"])
+        tmp.rename(cache)
+    return cache
 
 
-def docker_run(ecosystem, name, pkg_dir: Path, events_dir: Path, variant: str):
+def snippet_source(ecosystem: str, code: str) -> str:
+    """Python READMEs often show REPL sessions (`>>> x`); keep only the input
+    lines so the example runs as a script."""
+    if ecosystem == "python" and re.search(r"^\s*>>> ", code, re.M):
+        lines = [l.strip()[4:] for l in code.splitlines() if l.strip().startswith((">>> ", "... ", ">>>", "..."))]
+        return "\n".join(lines) + "\n"
+    return code
+
+
+def snippet_ext(ecosystem: str, code: str) -> str:
+    if ecosystem == "python":
+        return "py"
+    # ES module syntax needs .mjs to run without a package.json "type" field.
+    return "mjs" if re.search(r"^\s*(import\s[^(]|export\s)", code, re.M) else "js"
+
+
+def docker_run(ecosystem, name, pkg_dir: Path, deps_dir: Path, events_dir: Path, variant: str):
     image, hook_dir, _ = ECOSYSTEMS[ecosystem]
     extra_args, extra_env = VARIANTS[variant]
     mount = lambda src, dst, ro: ["--mount", f"type=bind,src={src},dst={dst}" + (",readonly" if ro else "")]
@@ -89,12 +134,13 @@ def docker_run(ecosystem, name, pkg_dir: Path, events_dir: Path, variant: str):
            "--tmpfs", "/home/dev:size=16m,uid=1001,gid=1001",
            *mount(pkg_dir, "/pkg", True),
            *mount(ROOT / "sandbox" / hook_dir, "/trustlens", True),
+           *mount(deps_dir, "/deps", True),
            *mount(events_dir, "/events", False),
            "-e", f"TL_PKG_NAME={name}", "-e", f"TL_PKG_IMPORT={name.replace('-', '_')}", *extra_args]
     for k, v in extra_env.items():
         cmd += ["-e", f"{k}={v}"]
     cmd += [image, "sh", "/trustlens/run.sh"]
-    subprocess.run(cmd, check=False, timeout=120)
+    subprocess.run(cmd, check=False, timeout=600)
 
 
 def scan(pkg_path: str, variant: str = "baseline"):
@@ -103,20 +149,17 @@ def scan(pkg_path: str, variant: str = "baseline"):
     pkg_dir, events_dir = base / "pkg", base / "events"
     pkg_dir.mkdir(parents=True)
     events_dir.mkdir()
-    source = None
-    if pkg_path.startswith("npm:"):
-        src_dir, source = fetch_npm(pkg_path[4:], base)
-    else:
-        src_dir = Path(pkg_path).resolve()
+    src_dir, source = intake.resolve(pkg_path, base / "intake")
     ecosystem, name, version, sha = pack(src_dir, pkg_dir)
+    deps_dir = prepare_deps(ecosystem, src_dir, pkg_dir, sha)
     manifest = parse(src_dir)
     # README code fences become the snippet stage, run in order after import.
     snip_dir = pkg_dir / "snippets"
     snip_dir.mkdir()
-    for i, code in enumerate(manifest["snippets"]):
-        (snip_dir / f"{i:02d}.{ECOSYSTEMS[ecosystem][2]}").write_text(code, encoding="utf-8")
+    for i, code in enumerate(manifest["snippets"][:MAX_SNIPPETS]):
+        (snip_dir / f"{i:02d}.{snippet_ext(ecosystem, code)}").write_text(snippet_source(ecosystem, code), encoding="utf-8")
 
-    docker_run(ecosystem, name, pkg_dir, events_dir, variant)
+    docker_run(ecosystem, name, pkg_dir, deps_dir, events_dir, variant)
 
     raw = []
     hook_log = events_dir / "hook.jsonl"
@@ -126,7 +169,8 @@ def scan(pkg_path: str, variant: str = "baseline"):
     caps = capabilities(events)
     result = {
         "scan": scan_id, "package": name, "version": version, "sha256": sha,
-        "source": "registry" if source else "local", "registry_sha256": source,
+        "source": "registry" if pkg_path.startswith(("npm:", "pypi:")) else "upload" if source else "local",
+        "source_sha256": source,
         "ecosystem": ecosystem, "variant": variant,
         "events": events, "capabilities": caps,
         "claims": manifest, "diff": diff(caps, manifest),

@@ -1,457 +1,247 @@
 {
-  "scan": "f9c1b04f45",
+  "scan": "b9e8d90011",
   "package": "dotenv",
   "version": "16.4.5",
   "sha256": "a0822e4897b4e40c2ce69255eca794bf233c6033d926d22561e68ce6891f7133",
   "source": "registry",
-  "registry_sha256": "0ae24e5b77e0346558b024ab2ee87bc4d42e3570147e7af755cf6e8671e96637",
+  "source_sha256": "0ae24e5b77e0346558b024ab2ee87bc4d42e3570147e7af755cf6e8671e96637",
   "ecosystem": "npm",
   "variant": "later",
   "events": [
     {
-      "ts": 4.97,
-      "scan": "f9c1b04f45",
+      "ts": 5.091,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
       "target": "DOTENV_KEY",
       "detail": {
-        "pid": 33,
+        "pid": 38,
         "argv1": "/work/snippet.js",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 4.979,
-      "scan": "f9c1b04f45",
+      "ts": 5.106,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/work/.env",
       "detail": {
-        "pid": 33,
+        "pid": 38,
         "argv1": "/work/snippet.js",
         "op": "read"
       },
       "token": null
     },
     {
-      "ts": 5.174,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_CONFIG_ENCODING",
-      "detail": {
-        "pid": 42,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.188,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_CONFIG_PATH",
-      "detail": {
-        "pid": 42,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.199,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_CONFIG_DEBUG",
-      "detail": {
-        "pid": 42,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.208,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_CONFIG_OVERRIDE",
-      "detail": {
-        "pid": 42,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.219,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_CONFIG_DOTENV_KEY",
-      "detail": {
-        "pid": 42,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.239,
-      "scan": "f9c1b04f45",
+      "ts": 5.592,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
       "target": "DOTENV_KEY",
       "detail": {
-        "pid": 42,
+        "pid": 74,
         "argv1": "/work/snippet.js",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 5.25,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 42,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.644,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_KEY",
-      "detail": {
-        "pid": 82,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 5.655,
-      "scan": "f9c1b04f45",
+      "ts": 5.606,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/custom/path/to/.env",
       "detail": {
-        "pid": 82,
+        "pid": 74,
         "argv1": "/work/snippet.js",
         "op": "read"
       },
       "token": null
     },
     {
-      "ts": 5.778,
-      "scan": "f9c1b04f45",
+      "ts": 5.731,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
       "target": "DOTENV_KEY",
       "detail": {
-        "pid": 91,
+        "pid": 83,
         "argv1": "/work/snippet.js",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 5.79,
-      "scan": "f9c1b04f45",
+      "ts": 5.746,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/work/.env.local",
       "detail": {
-        "pid": 91,
+        "pid": 83,
         "argv1": "/work/snippet.js",
         "op": "read"
       },
       "token": null
     },
     {
-      "ts": 5.803,
-      "scan": "f9c1b04f45",
+      "ts": 5.76,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/work/.env",
       "detail": {
-        "pid": 91,
+        "pid": 83,
         "argv1": "/work/snippet.js",
         "op": "read"
       },
       "token": null
     },
     {
-      "ts": 5.92,
-      "scan": "f9c1b04f45",
+      "ts": 5.89,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
       "target": "DOTENV_KEY",
       "detail": {
-        "pid": 100,
+        "pid": 92,
         "argv1": "/work/snippet.js",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 5.931,
-      "scan": "f9c1b04f45",
+      "ts": 5.903,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/work/.env",
       "detail": {
-        "pid": 100,
+        "pid": 92,
         "argv1": "/work/snippet.js",
         "op": "read"
       },
       "token": null
     },
     {
-      "ts": 5.945,
-      "scan": "f9c1b04f45",
+      "ts": 5.916,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/work/.env",
       "detail": {
-        "pid": 100,
+        "pid": 92,
         "argv1": "/work/snippet.js",
         "op": "read"
       },
       "token": null
     },
     {
-      "ts": 6.061,
-      "scan": "f9c1b04f45",
+      "ts": 6.108,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
-      "target": "DEBUG",
+      "target": "DOTENV_CONFIG_ENCODING",
       "detail": {
-        "pid": 109,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 6.071,
-      "scan": "f9c1b04f45",
+      "ts": 6.123,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
-      "target": "DOTENV_KEY",
+      "target": "DOTENV_CONFIG_PATH",
       "detail": {
-        "pid": 109,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 6.081,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 109,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 6.197,
-      "scan": "f9c1b04f45",
+      "ts": 6.139,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
-      "target": "DOTENV_KEY",
+      "target": "DOTENV_CONFIG_DEBUG",
       "detail": {
-        "pid": 118,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 6.208,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 118,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 6.325,
-      "scan": "f9c1b04f45",
+      "ts": 6.153,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
-      "target": "DOTENV_KEY",
+      "target": "DOTENV_CONFIG_OVERRIDE",
       "detail": {
-        "pid": 127,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 6.339,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 127,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 6.492,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 136,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 6.836,
-      "scan": "f9c1b04f45",
+      "ts": 6.166,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
-      "target": "HELLO",
+      "target": "DOTENV_CONFIG_DOTENV_KEY",
       "detail": {
-        "pid": 163,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 7.218,
-      "scan": "f9c1b04f45",
+      "ts": 6.198,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "env",
       "target": "DOTENV_KEY",
       "detail": {
-        "pid": 190,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 7.244,
-      "scan": "f9c1b04f45",
+      "ts": 6.211,
+      "scan": "b9e8d90011",
       "variant": "later",
       "stage": "snippet",
       "type": "file",
       "target": "/work/.env",
       "detail": {
-        "pid": 190,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 7.446,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_KEY",
-      "detail": {
-        "pid": 208,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 7.457,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 208,
-        "argv1": "/work/snippet.js",
-        "op": "read"
-      },
-      "token": null
-    },
-    {
-      "ts": 8.148,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "DOTENV_KEY",
-      "detail": {
-        "pid": 278,
-        "argv1": "/work/snippet.js",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 8.16,
-      "scan": "f9c1b04f45",
-      "variant": "later",
-      "stage": "snippet",
-      "type": "file",
-      "target": "/work/.env",
-      "detail": {
-        "pid": 278,
-        "argv1": "/work/snippet.js",
+        "pid": 101,
+        "argv1": "/work/snippet.mjs",
         "op": "read"
       },
       "token": null
@@ -461,67 +251,55 @@
     {
       "cap": "env:DOTENV_KEY",
       "stage": "snippet",
-      "first_ts": 4.97,
-      "count": 11
+      "first_ts": 5.091,
+      "count": 5
     },
     {
       "cap": "file:read:/work/.env",
       "stage": "snippet",
-      "first_ts": 4.979,
-      "count": 12
-    },
-    {
-      "cap": "env:DOTENV_CONFIG_ENCODING",
-      "stage": "snippet",
-      "first_ts": 5.174,
-      "count": 1
-    },
-    {
-      "cap": "env:DOTENV_CONFIG_PATH",
-      "stage": "snippet",
-      "first_ts": 5.188,
-      "count": 1
-    },
-    {
-      "cap": "env:DOTENV_CONFIG_DEBUG",
-      "stage": "snippet",
-      "first_ts": 5.199,
-      "count": 1
-    },
-    {
-      "cap": "env:DOTENV_CONFIG_OVERRIDE",
-      "stage": "snippet",
-      "first_ts": 5.208,
-      "count": 1
-    },
-    {
-      "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
-      "stage": "snippet",
-      "first_ts": 5.219,
-      "count": 1
+      "first_ts": 5.106,
+      "count": 5
     },
     {
       "cap": "file:read:/custom/path/to/.env",
       "stage": "snippet",
-      "first_ts": 5.655,
+      "first_ts": 5.606,
       "count": 1
     },
     {
       "cap": "file:read:/work/.env.local",
       "stage": "snippet",
-      "first_ts": 5.79,
+      "first_ts": 5.746,
       "count": 1
     },
     {
-      "cap": "env:DEBUG",
+      "cap": "env:DOTENV_CONFIG_ENCODING",
       "stage": "snippet",
-      "first_ts": 6.061,
+      "first_ts": 6.108,
       "count": 1
     },
     {
-      "cap": "env:HELLO",
+      "cap": "env:DOTENV_CONFIG_PATH",
       "stage": "snippet",
-      "first_ts": 6.836,
+      "first_ts": 6.123,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_DEBUG",
+      "stage": "snippet",
+      "first_ts": 6.139,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_OVERRIDE",
+      "stage": "snippet",
+      "first_ts": 6.153,
+      "count": 1
+    },
+    {
+      "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
+      "stage": "snippet",
+      "first_ts": 6.166,
       "count": 1
     }
   ],
@@ -761,12 +539,12 @@
       {
         "cap": "env:DEBUG",
         "family": "env",
-        "seen": true
+        "seen": false
       },
       {
         "cap": "env:HELLO",
         "family": "env",
-        "seen": true
+        "seen": false
       },
       {
         "cap": "env:API_KEY",
@@ -818,8 +596,8 @@
       {
         "cap": "env:DOTENV_KEY",
         "stage": "snippet",
-        "first_ts": 4.97,
-        "count": 11,
+        "first_ts": 5.091,
+        "count": 5,
         "status": "claimed",
         "severity": "none",
         "reason": ""
@@ -827,53 +605,8 @@
       {
         "cap": "file:read:/work/.env",
         "stage": "snippet",
-        "first_ts": 4.979,
-        "count": 12,
-        "status": "claimed",
-        "severity": "none",
-        "reason": ""
-      },
-      {
-        "cap": "env:DOTENV_CONFIG_ENCODING",
-        "stage": "snippet",
-        "first_ts": 5.174,
-        "count": 1,
-        "status": "claimed",
-        "severity": "none",
-        "reason": ""
-      },
-      {
-        "cap": "env:DOTENV_CONFIG_PATH",
-        "stage": "snippet",
-        "first_ts": 5.188,
-        "count": 1,
-        "status": "claimed",
-        "severity": "none",
-        "reason": ""
-      },
-      {
-        "cap": "env:DOTENV_CONFIG_DEBUG",
-        "stage": "snippet",
-        "first_ts": 5.199,
-        "count": 1,
-        "status": "claimed",
-        "severity": "none",
-        "reason": ""
-      },
-      {
-        "cap": "env:DOTENV_CONFIG_OVERRIDE",
-        "stage": "snippet",
-        "first_ts": 5.208,
-        "count": 1,
-        "status": "claimed",
-        "severity": "none",
-        "reason": ""
-      },
-      {
-        "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
-        "stage": "snippet",
-        "first_ts": 5.219,
-        "count": 1,
+        "first_ts": 5.106,
+        "count": 5,
         "status": "claimed",
         "severity": "none",
         "reason": ""
@@ -881,7 +614,7 @@
       {
         "cap": "file:read:/custom/path/to/.env",
         "stage": "snippet",
-        "first_ts": 5.655,
+        "first_ts": 5.606,
         "count": 1,
         "status": "claimed",
         "severity": "none",
@@ -890,25 +623,52 @@
       {
         "cap": "file:read:/work/.env.local",
         "stage": "snippet",
-        "first_ts": 5.79,
+        "first_ts": 5.746,
         "count": 1,
         "status": "claimed",
         "severity": "none",
         "reason": ""
       },
       {
-        "cap": "env:DEBUG",
+        "cap": "env:DOTENV_CONFIG_ENCODING",
         "stage": "snippet",
-        "first_ts": 6.061,
+        "first_ts": 6.108,
         "count": 1,
         "status": "claimed",
         "severity": "none",
         "reason": ""
       },
       {
-        "cap": "env:HELLO",
+        "cap": "env:DOTENV_CONFIG_PATH",
         "stage": "snippet",
-        "first_ts": 6.836,
+        "first_ts": 6.123,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DEBUG",
+        "stage": "snippet",
+        "first_ts": 6.139,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_OVERRIDE",
+        "stage": "snippet",
+        "first_ts": 6.153,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:DOTENV_CONFIG_DOTENV_KEY",
+        "stage": "snippet",
+        "first_ts": 6.166,
         "count": 1,
         "status": "claimed",
         "severity": "none",

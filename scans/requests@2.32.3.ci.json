@@ -1,0 +1,204 @@
+{
+  "scan": "7b5d3f83ba",
+  "package": "requests",
+  "version": "2.32.3",
+  "sha256": "70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6",
+  "source": "registry",
+  "source_sha256": "70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6",
+  "ecosystem": "python",
+  "variant": "ci",
+  "events": [
+    {
+      "ts": 10.935,
+      "scan": "7b5d3f83ba",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "env",
+      "target": "no_proxy",
+      "detail": {
+        "pid": 18,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 10.939,
+      "scan": "7b5d3f83ba",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "env",
+      "target": "NO_PROXY",
+      "detail": {
+        "pid": 18,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 10.956,
+      "scan": "7b5d3f83ba",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "env",
+      "target": "REQUESTS_CA_BUNDLE",
+      "detail": {
+        "pid": 18,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 10.973,
+      "scan": "7b5d3f83ba",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CURL_CA_BUNDLE",
+      "detail": {
+        "pid": 18,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 10.99,
+      "scan": "7b5d3f83ba",
+      "variant": "ci",
+      "stage": "snippet",
+      "type": "dns",
+      "target": "httpbin.org",
+      "detail": {
+        "pid": 18,
+        "argv1": "/work/snippet.py",
+        "op": "getaddrinfo"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:no_proxy",
+      "stage": "snippet",
+      "first_ts": 10.935,
+      "count": 1
+    },
+    {
+      "cap": "env:NO_PROXY",
+      "stage": "snippet",
+      "first_ts": 10.939,
+      "count": 1
+    },
+    {
+      "cap": "env:REQUESTS_CA_BUNDLE",
+      "stage": "snippet",
+      "first_ts": 10.956,
+      "count": 1
+    },
+    {
+      "cap": "env:CURL_CA_BUNDLE",
+      "stage": "snippet",
+      "first_ts": 10.973,
+      "count": 1
+    },
+    {
+      "cap": "net:httpbin.org",
+      "stage": "snippet",
+      "first_ts": 10.99,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [
+      "net:httpbin.org"
+    ],
+    "files": [
+      "file:*:.netrc"
+    ],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      ">>> import requests\n>>> r = requests.get('https://httpbin.org/basic-auth/user/pass', auth=('user', 'pass'))\n>>> r.status_code\n200\n>>> r.headers['content-type']\n'application/json; charset=utf8'\n>>> r.encoding\n'utf-8'\n>>> r.text\n'{\"authenticated\": true, ...'\n>>> r.json()\n{'authenticated': True, ...}\n"
+    ],
+    "ecosystem": "python",
+    "category": "http-client",
+    "evidence": [
+      {
+        "cap": "net:httpbin.org",
+        "why": "URL in README example: httpbin.org"
+      },
+      {
+        "cap": "file:*:.netrc",
+        "why": "README names file `.netrc`"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "low",
+    "category": "http-client",
+    "claimed": [
+      {
+        "cap": "net:httpbin.org",
+        "family": "network",
+        "seen": true
+      },
+      {
+        "cap": "file:*:.netrc",
+        "family": "files",
+        "seen": false
+      }
+    ],
+    "observed": [
+      {
+        "cap": "env:no_proxy",
+        "stage": "snippet",
+        "first_ts": 10.935,
+        "count": 1,
+        "status": "expected",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:NO_PROXY",
+        "stage": "snippet",
+        "first_ts": 10.939,
+        "count": 1,
+        "status": "expected",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:REQUESTS_CA_BUNDLE",
+        "stage": "snippet",
+        "first_ts": 10.956,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:CURL_CA_BUNDLE",
+        "stage": "snippet",
+        "first_ts": 10.973,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "net:httpbin.org",
+        "stage": "snippet",
+        "first_ts": 10.99,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      }
+    ],
+    "denials": []
+  }
+}

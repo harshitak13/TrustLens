@@ -66,6 +66,7 @@ export default function App() {
             <Pill sev={scan.diff.verdict}>{VERDICT_LABEL[scan.diff.verdict]}</Pill>
             <span className="text-sm text-slate-400">category: {scan.diff.category}</span>
             {scan.source === 'registry' && <span className="rounded bg-slate-800 px-2 py-0.5 text-xs text-slate-300">real {scan.ecosystem} package</span>}
+            {scan.source === 'upload' && <span className="rounded bg-slate-800 px-2 py-0.5 text-xs text-slate-300">uploaded {scan.ecosystem} package</span>}
             {scan.sample && <span className="text-xs text-amber-300">sample data</span>}
           </header>
 

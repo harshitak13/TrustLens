@@ -1,0 +1,149 @@
+{
+  "scan": "8475d51cb5",
+  "package": "colorize-lite",
+  "version": "0.1.0",
+  "sha256": "64ee0339cdcbf497d0f0ec91efb0613164d5317ecc8ee4948e8bac36f6d6d4bc",
+  "source": "upload",
+  "source_sha256": "7d3802592cc0c9146d7949437b1ca0548ebacc71a3bfdaddbf51caf0ea714a2b",
+  "ecosystem": "npm",
+  "variant": "baseline",
+  "events": [
+    {
+      "ts": 0.971,
+      "scan": "8475d51cb5",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "file",
+      "target": "/home/dev/.colorizerc",
+      "detail": {
+        "pid": 25,
+        "argv1": "",
+        "op": "read"
+      },
+      "token": null
+    },
+    {
+      "ts": 0.983,
+      "scan": "8475d51cb5",
+      "variant": "baseline",
+      "stage": "import",
+      "type": "file",
+      "target": "/home/dev/.colorizerc",
+      "detail": {
+        "pid": 25,
+        "argv1": "",
+        "op": "read"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.055,
+      "scan": "8475d51cb5",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "file",
+      "target": "/home/dev/.colorizerc",
+      "detail": {
+        "pid": 39,
+        "argv1": "/work/snippet.js",
+        "op": "read"
+      },
+      "token": null
+    },
+    {
+      "ts": 5.065,
+      "scan": "8475d51cb5",
+      "variant": "baseline",
+      "stage": "snippet",
+      "type": "file",
+      "target": "/home/dev/.colorizerc",
+      "detail": {
+        "pid": 39,
+        "argv1": "/work/snippet.js",
+        "op": "read"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "file:read:~/.colorizerc",
+      "stage": "import",
+      "first_ts": 0.971,
+      "count": 2
+    },
+    {
+      "cap": "file:read:~/.colorizerc",
+      "stage": "snippet",
+      "first_ts": 5.055,
+      "count": 2
+    }
+  ],
+  "claims": {
+    "network": [],
+    "files": [],
+    "env": [],
+    "subprocess": [],
+    "explicit_denials": [],
+    "snippets": [
+      "const c = require(\"colorize-lite\");\nconsole.log(c(\"hi\", \"red\"));\n"
+    ],
+    "ecosystem": "npm",
+    "category": "string-utils",
+    "evidence": []
+  },
+  "diff": {
+    "verdict": "medium",
+    "category": "string-utils",
+    "claimed": [],
+    "observed": [
+      {
+        "cap": "file:read:~/.colorizerc",
+        "stage": "import",
+        "first_ts": 0.971,
+        "count": 2,
+        "status": "unclaimed",
+        "severity": "medium",
+        "reason": "reads from your home directory without saying so"
+      },
+      {
+        "cap": "file:read:~/.colorizerc",
+        "stage": "snippet",
+        "first_ts": 5.055,
+        "count": 2,
+        "status": "unclaimed",
+        "severity": "medium",
+        "reason": "reads from your home directory without saying so"
+      }
+    ],
+    "denials": []
+  },
+  "variants": [
+    "baseline",
+    "later",
+    "host",
+    "user",
+    "ci"
+  ],
+  "matrix": {
+    "variants": [
+      "baseline",
+      "later",
+      "host",
+      "user",
+      "ci"
+    ],
+    "rows": [
+      {
+        "cap": "file:read:~/.colorizerc",
+        "baseline": true,
+        "later": true,
+        "host": true,
+        "user": true,
+        "ci": true
+      }
+    ],
+    "findings": [],
+    "evasions": []
+  }
+}

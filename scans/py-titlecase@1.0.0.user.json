@@ -1,44 +1,44 @@
 {
-  "scan": "a3862e3935",
+  "scan": "33cd1f621b",
   "package": "py-titlecase",
   "version": "1.0.0",
   "sha256": "329038a56ee58592cc7714edd3673f33c124d347f25d504590f0add78ecb47f0",
   "source": "local",
-  "registry_sha256": null,
+  "source_sha256": null,
   "ecosystem": "python",
   "variant": "user",
   "events": [
     {
-      "ts": 2.299,
-      "scan": "a3862e3935",
+      "ts": 2.845,
+      "scan": "33cd1f621b",
       "variant": "user",
       "stage": "import",
       "type": "env",
       "target": "CI",
       "detail": {
         "pid": 17,
-        "argv1": "-c",
+        "argv1": "/trustlens/import_pkg.py",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 2.371,
-      "scan": "a3862e3935",
+      "ts": 2.934,
+      "scan": "33cd1f621b",
       "variant": "user",
       "stage": "import",
       "type": "dns",
       "target": "usage.py-titlecase.test",
       "detail": {
         "pid": 17,
-        "argv1": "-c",
+        "argv1": "/trustlens/import_pkg.py",
         "op": "getaddrinfo"
       },
       "token": null
     },
     {
-      "ts": 7.227,
-      "scan": "a3862e3935",
+      "ts": 7.848,
+      "scan": "33cd1f621b",
       "variant": "user",
       "stage": "snippet",
       "type": "env",
@@ -51,8 +51,8 @@
       "token": null
     },
     {
-      "ts": 7.3,
-      "scan": "a3862e3935",
+      "ts": 7.925,
+      "scan": "33cd1f621b",
       "variant": "user",
       "stage": "snippet",
       "type": "dns",
@@ -69,25 +69,25 @@
     {
       "cap": "env:CI",
       "stage": "import",
-      "first_ts": 2.299,
+      "first_ts": 2.845,
       "count": 1
     },
     {
       "cap": "net:usage.py-titlecase.test",
       "stage": "import",
-      "first_ts": 2.371,
+      "first_ts": 2.934,
       "count": 1
     },
     {
       "cap": "env:CI",
       "stage": "snippet",
-      "first_ts": 7.227,
+      "first_ts": 7.848,
       "count": 1
     },
     {
       "cap": "net:usage.py-titlecase.test",
       "stage": "snippet",
-      "first_ts": 7.3,
+      "first_ts": 7.925,
       "count": 1
     }
   ],
@@ -117,7 +117,7 @@
       {
         "cap": "env:CI",
         "stage": "import",
-        "first_ts": 2.299,
+        "first_ts": 2.845,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -126,7 +126,7 @@
       {
         "cap": "net:usage.py-titlecase.test",
         "stage": "import",
-        "first_ts": 2.371,
+        "first_ts": 2.934,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",
@@ -135,7 +135,7 @@
       {
         "cap": "env:CI",
         "stage": "snippet",
-        "first_ts": 7.227,
+        "first_ts": 7.848,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -144,7 +144,7 @@
       {
         "cap": "net:usage.py-titlecase.test",
         "stage": "snippet",
-        "first_ts": 7.3,
+        "first_ts": 7.925,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",

@@ -2,7 +2,9 @@
 
   GET  /scans                 list cached results in scans/
   GET  /scan/{key}            one result, key = "<pkg>@<ver>"
-  POST /scan {path, variants} start a scan job, returns {job}
+  POST /scan {path, variants} start a scan job, returns {job}. path is a fixture
+                              folder, npm:<name>@<ver> or pypi:<name>==<ver>
+  POST /upload (file)         upload a .tgz/.tar.gz/.zip/.whl and scan it, returns {job}
   GET  /job/{job}/stream      SSE progress: one event per finished variant, then "done"
 
 The demo only needs the GETs; they read the cached JSON in scans/.
@@ -10,12 +12,14 @@ Run: uvicorn api.main:app --reload --port 8000
 """
 import asyncio
 import json
+import re
 import sys
 import threading
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -26,6 +30,9 @@ from diff.engine import SEVERITIES as SEVERITY_ORDER, trigger_matrix  # noqa: E4
 from sandbox.run_scan import VARIANTS, scan  # noqa: E402
 
 SCANS = ROOT / "scans"
+REGISTRY_SPEC = re.compile(r"^(npm:(@[\w.-]+/)?[\w.-]+@[\w.+-]+|pypi:[\w.-]+==[\w.+!-]+)$")
+UPLOAD_TYPES = (".tgz", ".tar.gz", ".zip", ".whl")
+MAX_UPLOAD = 50 * 1024 * 1024
 app = FastAPI(title="TrustLens")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 JOBS: dict[str, dict] = {}
@@ -55,11 +62,17 @@ def combine(results: dict[str, dict]) -> dict:
 def run_job(job_id: str, path: str, variants: list[str]):
     job = JOBS[job_id]
     results = {}
+    def one(v):
+        job["events"].append({"stage": v, "state": "running"})
+        _, results[v] = scan(path, v)
+        job["events"].append({"stage": v, "state": "done", "verdict": results[v]["diff"]["verdict"]})
+
     try:
-        for v in ["baseline"] + [x for x in variants if x != "baseline"]:
-            job["events"].append({"stage": v, "state": "running"})
-            _, results[v] = scan(path, v)
-            job["events"].append({"stage": v, "state": "done", "verdict": results[v]["diff"]["verdict"]})
+        # Baseline first (it fills the dependency cache), then the hunter
+        # variants side by side: each is its own container.
+        one("baseline")
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            list(pool.map(one, [x for x in variants if x != "baseline"]))
         job["result"] = summary(combine(results))
         job["events"].append({"stage": "all", "state": "done", "key": job["result"]["key"]})
     except Exception as e:  # surface failures to the progress strip
@@ -104,16 +117,36 @@ def start_scan(req: ScanRequest):
     bad = [v for v in req.variants if v not in VARIANTS]
     if bad:
         raise HTTPException(400, f"unknown variants: {bad}")
-    if req.path.startswith("npm:"):
-        path = req.path
+    spec = req.path.strip()
+    if REGISTRY_SPEC.match(spec):
+        path = spec
     else:
-        path = req.path if Path(req.path).is_absolute() else str(ROOT / req.path)
-    if not path.startswith("npm:") and not is_package(Path(path)):
-        raise HTTPException(400, "path must be an npm or Python package directory")
+        # Local folders only from fixtures/; anything else comes in via /upload.
+        path = str((ROOT / spec).resolve())
+        if not path.startswith(str(ROOT / "fixtures")) or not is_package(Path(path)):
+            raise HTTPException(400, "use a fixture, npm:<name>@<version>, or pypi:<name>==<version>")
+    return {"job": start_job(path, req.variants)}
+
+
+def start_job(path: str, variants: list[str]) -> str:
     job_id = uuid.uuid4().hex[:8]
     JOBS[job_id] = {"events": [], "finished": False, "result": None}
-    threading.Thread(target=run_job, args=(job_id, path, req.variants), daemon=True).start()
-    return {"job": job_id}
+    threading.Thread(target=run_job, args=(job_id, path, variants), daemon=True).start()
+    return job_id
+
+
+@app.post("/upload")
+async def upload(file: UploadFile):
+    name = Path(file.filename or "").name
+    if not name.lower().endswith(UPLOAD_TYPES):
+        raise HTTPException(400, f"upload one of: {', '.join(UPLOAD_TYPES)}")
+    dest = ROOT / ".trustlens" / "uploads" / uuid.uuid4().hex[:8]
+    dest.mkdir(parents=True)
+    data = await file.read(MAX_UPLOAD + 1)
+    if len(data) > MAX_UPLOAD:
+        raise HTTPException(413, "upload too large (50 MB max)")
+    (dest / name).write_bytes(data)
+    return {"job": start_job(str(dest / name), list(VARIANTS))}
 
 
 @app.get("/job/{job_id}/stream")

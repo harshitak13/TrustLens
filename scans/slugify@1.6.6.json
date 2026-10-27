@@ -1,10 +1,10 @@
 {
-  "scan": "0fd4272417",
+  "scan": "debaaee9bc",
   "package": "slugify",
   "version": "1.6.6",
   "sha256": "8deece9a6868450a7812d974174d3e636fce114c037622e627613895607df824",
   "source": "registry",
-  "registry_sha256": "3adbaac6daeae595154217bda3836aa7e4292b5b103cc17955192fa9cd24732f",
+  "source_sha256": "3adbaac6daeae595154217bda3836aa7e4292b5b103cc17955192fa9cd24732f",
   "ecosystem": "npm",
   "variant": "baseline",
   "events": [],
@@ -35,18 +35,18 @@
   },
   "variants": [
     "baseline",
-    "ci",
-    "later",
+    "user",
     "host",
-    "user"
+    "later",
+    "ci"
   ],
   "matrix": {
     "variants": [
       "baseline",
-      "ci",
-      "later",
+      "user",
       "host",
-      "user"
+      "later",
+      "ci"
     ],
     "rows": [],
     "findings": [],

@@ -1,0 +1,427 @@
+{
+  "scan": "dcde3fab1e",
+  "package": "express",
+  "version": "4.21.1",
+  "sha256": "4097da0999b7078263460df02b0990244794d84e79e185e6d4ff50ce06d79462",
+  "source": "registry",
+  "source_sha256": "4097da0999b7078263460df02b0990244794d84e79e185e6d4ff50ce06d79462",
+  "ecosystem": "npm",
+  "variant": "user",
+  "events": [
+    {
+      "ts": 3.013,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "import",
+      "type": "env",
+      "target": "NO_DEPRECATION",
+      "detail": {
+        "pid": 24,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 3.025,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "import",
+      "type": "env",
+      "target": "TRACE_DEPRECATION",
+      "detail": {
+        "pid": 24,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 3.133,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "import",
+      "type": "env",
+      "target": "DEBUG_FD",
+      "detail": {
+        "pid": 24,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 3.146,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "import",
+      "type": "env",
+      "target": "DEBUG",
+      "detail": {
+        "pid": 24,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 4.366,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "import",
+      "type": "env",
+      "target": "DEBUG_MIME",
+      "detail": {
+        "pid": 24,
+        "argv1": "",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.116,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "NO_DEPRECATION",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.134,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "TRACE_DEPRECATION",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.267,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DEBUG_FD",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 7.285,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DEBUG",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 8.687,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "DEBUG_MIME",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 9.383,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "listen",
+      "target": "3000",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "listen"
+      },
+      "token": null
+    },
+    {
+      "ts": 9.402,
+      "scan": "dcde3fab1e",
+      "variant": "user",
+      "stage": "snippet",
+      "type": "env",
+      "target": "NODE_CLUSTER_SCHED_POLICY",
+      "detail": {
+        "pid": 38,
+        "argv1": "/work/snippet.js",
+        "op": "get"
+      },
+      "token": null
+    }
+  ],
+  "capabilities": [
+    {
+      "cap": "env:NO_DEPRECATION",
+      "stage": "import",
+      "first_ts": 3.013,
+      "count": 1
+    },
+    {
+      "cap": "env:TRACE_DEPRECATION",
+      "stage": "import",
+      "first_ts": 3.025,
+      "count": 1
+    },
+    {
+      "cap": "env:DEBUG_FD",
+      "stage": "import",
+      "first_ts": 3.133,
+      "count": 1
+    },
+    {
+      "cap": "env:DEBUG",
+      "stage": "import",
+      "first_ts": 3.146,
+      "count": 1
+    },
+    {
+      "cap": "env:DEBUG_MIME",
+      "stage": "import",
+      "first_ts": 4.366,
+      "count": 1
+    },
+    {
+      "cap": "env:NO_DEPRECATION",
+      "stage": "snippet",
+      "first_ts": 7.116,
+      "count": 1
+    },
+    {
+      "cap": "env:TRACE_DEPRECATION",
+      "stage": "snippet",
+      "first_ts": 7.134,
+      "count": 1
+    },
+    {
+      "cap": "env:DEBUG_FD",
+      "stage": "snippet",
+      "first_ts": 7.267,
+      "count": 1
+    },
+    {
+      "cap": "env:DEBUG",
+      "stage": "snippet",
+      "first_ts": 7.285,
+      "count": 1
+    },
+    {
+      "cap": "env:DEBUG_MIME",
+      "stage": "snippet",
+      "first_ts": 8.687,
+      "count": 1
+    },
+    {
+      "cap": "listen:3000",
+      "stage": "snippet",
+      "first_ts": 9.383,
+      "count": 1
+    },
+    {
+      "cap": "env:NODE_CLUSTER_SCHED_POLICY",
+      "stage": "snippet",
+      "first_ts": 9.402,
+      "count": 1
+    }
+  ],
+  "claims": {
+    "network": [
+      "net:badgen.net",
+      "net:npmcharts.com",
+      "listen:3000"
+    ],
+    "files": [],
+    "env": [],
+    "subprocess": [
+      "proc:npm"
+    ],
+    "explicit_denials": [],
+    "snippets": [
+      "const express = require('express')\nconst app = express()\n\napp.get('/', function (req, res) {\n  res.send('Hello World')\n})\n\napp.listen(3000)\n"
+    ],
+    "ecosystem": "npm",
+    "category": "http-client",
+    "evidence": [
+      {
+        "cap": "net:badgen.net",
+        "why": "README says it talks to badgen.net"
+      },
+      {
+        "cap": "net:npmcharts.com",
+        "why": "README says it talks to npmcharts.com"
+      },
+      {
+        "cap": "proc:npm",
+        "why": "README says it runs `npm test`"
+      },
+      {
+        "cap": "listen:3000",
+        "why": "README example listens on port 3000"
+      }
+    ]
+  },
+  "diff": {
+    "verdict": "low",
+    "category": "http-client",
+    "claimed": [
+      {
+        "cap": "net:badgen.net",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "net:npmcharts.com",
+        "family": "network",
+        "seen": false
+      },
+      {
+        "cap": "listen:3000",
+        "family": "network",
+        "seen": true
+      },
+      {
+        "cap": "proc:npm",
+        "family": "subprocess",
+        "seen": false
+      }
+    ],
+    "observed": [
+      {
+        "cap": "env:NO_DEPRECATION",
+        "stage": "import",
+        "first_ts": 3.013,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:TRACE_DEPRECATION",
+        "stage": "import",
+        "first_ts": 3.025,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:DEBUG_FD",
+        "stage": "import",
+        "first_ts": 3.133,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:DEBUG",
+        "stage": "import",
+        "first_ts": 3.146,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:DEBUG_MIME",
+        "stage": "import",
+        "first_ts": 4.366,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:NO_DEPRECATION",
+        "stage": "snippet",
+        "first_ts": 7.116,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:TRACE_DEPRECATION",
+        "stage": "snippet",
+        "first_ts": 7.134,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:DEBUG_FD",
+        "stage": "snippet",
+        "first_ts": 7.267,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:DEBUG",
+        "stage": "snippet",
+        "first_ts": 7.285,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "env:DEBUG_MIME",
+        "stage": "snippet",
+        "first_ts": 8.687,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      },
+      {
+        "cap": "listen:3000",
+        "stage": "snippet",
+        "first_ts": 9.383,
+        "count": 1,
+        "status": "claimed",
+        "severity": "none",
+        "reason": ""
+      },
+      {
+        "cap": "env:NODE_CLUSTER_SCHED_POLICY",
+        "stage": "snippet",
+        "first_ts": 9.402,
+        "count": 1,
+        "status": "unclaimed",
+        "severity": "low",
+        "reason": "undocumented env read"
+      }
+    ],
+    "denials": []
+  }
+}

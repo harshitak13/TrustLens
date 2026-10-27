@@ -1,10 +1,10 @@
 {
-  "scan": "6f9f45192a",
+  "scan": "c11510f5f1",
   "package": "nanoid",
   "version": "3.3.7",
   "sha256": "ba5e0c3aa37ce381194411356524495ddad5ec7f0c4eab622bd78fd7db92007a",
   "source": "registry",
-  "registry_sha256": "28821115275efecbceccdfceb3c7c80c3c1d129af62a9c0f995f6002c72621f2",
+  "source_sha256": "28821115275efecbceccdfceb3c7c80c3c1d129af62a9c0f995f6002c72621f2",
   "ecosystem": "npm",
   "variant": "host",
   "events": [],

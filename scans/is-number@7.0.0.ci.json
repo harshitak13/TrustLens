@@ -1,10 +1,10 @@
 {
-  "scan": "139aa8fe06",
+  "scan": "34fb299e8d",
   "package": "is-number",
   "version": "7.0.0",
   "sha256": "ec02ca1a8eb57be9ce5ede43a63fa962894e803544a19342bd48d6c93e1ce013",
   "source": "registry",
-  "registry_sha256": "7b75c1057198cf97696909a9bee176c9c5e9bcb5b03bf3ecef2f484defadd51e",
+  "source_sha256": "7b75c1057198cf97696909a9bee176c9c5e9bcb5b03bf3ecef2f484defadd51e",
   "ecosystem": "npm",
   "variant": "ci",
   "events": [],

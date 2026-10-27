@@ -50,6 +50,15 @@ Click **py-titlecase** → **Dangerous**, with the amber Evasion banner.
 Click **dotenv@16.4.5** (tagged "real npm package") → **Matches its README**.
 "These six are real, popular npm packages pulled from the registry: left-pad, ms, is-number, slugify, nanoid, dotenv. All come back clean. dotenv is the interesting one: it reads a `.env` file and several `DOTENV_CONFIG_*` variables, and its README says so, so every row is *claimed*. TrustLens flags what's undocumented, not what's merely powerful."
 
+## 5d. Bring your own package (45s, if judges ask)
+
+In the scan panel pick **npm / PyPI** and type e.g. `npm:express@4.21.1` (69 dependencies,
+about a minute), or pick **upload** and choose a `.zip`/`.tgz` of a package folder or a `.whl`.
+"Dependencies are downloaded first without running anything, then the whole install happens
+offline inside the sandbox, so even dependency install scripts are observed."
+Express comes back **Minor gaps**: a few undocumented debug env vars, and `listen:3000` is
+*claimed* because its README example starts a server.
+
 ## 6. Live scan (45s)
 
 Pick `fixtures/ci-sleeper` in the dropdown → **Scan**. The five steps light up one by one (~50s). Talk over it:

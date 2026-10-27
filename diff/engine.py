@@ -13,7 +13,7 @@ from fnmatch import fnmatchcase
 from claims.parse import PRIORS
 
 SEVERITIES = ["none", "low", "medium", "high", "critical"]
-FAMILY = {"net": "network", "file": "files", "env": "env", "proc": "subprocess"}
+FAMILY = {"net": "network", "listen": "network", "file": "files", "env": "env", "proc": "subprocess"}
 
 SENSITIVE_FILE = re.compile(r"^file:read:(~/\.ssh/|~/\.aws/|~/\.npmrc|~/\.netrc|~/\.config/gcloud|~/\.docker/config|.*/\.env$|/etc/shadow)")
 SECRETISH_ENV = re.compile(r"(KEY|TOKEN|SECRET|PASS|CRED|AUTH|SESSION)", re.I)
@@ -52,6 +52,10 @@ def _severity(cap: str, stage: str, status: str) -> tuple[str, str]:
         return "high", "reads a credential-style file it never mentions"
     if fam == "proc":
         return ("high", "starts a process during install") if stage == "install" else ("medium", "starts an undocumented process")
+    if fam == "listen":
+        # Example code often starts a server; doing it on install/import is a backdoor shape.
+        return ("high", f"opens a listening port during {stage}") if stage in ("install", "import") \
+            else ("low", "example opens a listening port")
     if fam == "net":
         return ("high", f"undocumented network call during {stage}") if stage in ("install", "import") \
             else ("medium", "undocumented network call")
@@ -60,6 +64,10 @@ def _severity(cap: str, stage: str, status: str) -> tuple[str, str]:
         return ("medium", "reads a secret-looking env var") if SECRETISH_ENV.search(name) else ("low", "undocumented env read")
     if fam == "file" and cap.startswith("file:write:") and not cap.startswith("file:write:/work/"):
         return "medium", "writes outside its working directory"
+    if fam == "file" and cap.startswith(("file:read:~", "file:list:~")):
+        return "medium", "reads from your home directory without saying so"
+    if fam == "file" and cap.startswith(("file:read:/etc/", "file:list:/etc", "file:read:/proc/")):
+        return "medium", "reads system files without saying so"
     return "low", "undocumented"
 
 

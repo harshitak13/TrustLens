@@ -120,6 +120,17 @@ if (!IS_NPM) {
     });
   }
 
+  // A package that opens a listening port is a possible backdoor.
+  const origListen = net.Server.prototype.listen;
+  net.Server.prototype.listen = function (...args) {
+    try {
+      const a = args[0];
+      const port = typeof a === 'object' && a !== null ? (a.port ?? a.path) : a;
+      emit('listen', port === undefined ? 'any' : port, { op: 'listen' });
+    } catch (_) {}
+    return origListen.apply(this, args);
+  };
+
   const dns = require('dns');
   for (const fn of ['lookup', 'resolve', 'resolve4', 'resolve6']) {
     wrap(dns, fn, (a) => emit('dns', a[0], { op: fn }));

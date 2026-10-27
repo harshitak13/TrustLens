@@ -120,6 +120,8 @@ def parse(pkg_dir) -> dict:
                 if "/" in path or path.startswith((".", "~")):
                     add("files", f"file:*:{path}", f"README mentions file `{path}`")
     for code in snippets:
+        for port in re.findall(r"\.listen\(\s*(\d{2,5})", code):
+            add("network", f"listen:{port}", f"README example listens on port {port}")
         for groups in CODE_ENV.findall(code):
             add("env", f"env:{next(g for g in groups if g)}", "used in README example")
         # File paths passed as string literals in examples, e.g. path: '.env.local'.
@@ -145,7 +147,7 @@ def parse(pkg_dir) -> dict:
 
 def validate(m: dict) -> dict:
     """Drop anything that isn't a well-formed capability glob (also used on LLM output)."""
-    prefix = {"network": "net:", "files": "file:", "env": "env:", "subprocess": "proc:"}
+    prefix = {"network": ("net:", "listen:"), "files": "file:", "env": "env:", "subprocess": "proc:"}
     out = dict(m)
     for fam in FAMILIES:
         out[fam] = [c for c in m.get(fam, []) if isinstance(c, str) and c.startswith(prefix[fam]) and len(c) < 300]

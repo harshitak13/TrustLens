@@ -1,65 +1,65 @@
 {
-  "scan": "104505cfad",
+  "scan": "4d86c0373e",
   "package": "py-titlecase",
   "version": "1.0.0",
   "sha256": "329038a56ee58592cc7714edd3673f33c124d347f25d504590f0add78ecb47f0",
   "source": "local",
-  "registry_sha256": null,
+  "source_sha256": null,
   "ecosystem": "python",
   "variant": "later",
   "events": [
     {
-      "ts": 0.648,
-      "scan": "104505cfad",
+      "ts": 0.893,
+      "scan": "4d86c0373e",
+      "variant": "later",
+      "stage": "snippet",
+      "type": "env",
+      "target": "CI",
+      "detail": {
+        "pid": 24,
+        "argv1": "/work/snippet.py",
+        "op": "get"
+      },
+      "token": null
+    },
+    {
+      "ts": 0.953,
+      "scan": "4d86c0373e",
       "variant": "later",
       "stage": "import",
       "type": "env",
       "target": "CI",
       "detail": {
         "pid": 20,
-        "argv1": "-c",
+        "argv1": "/trustlens/import_pkg.py",
         "op": "get"
       },
       "token": null
     },
     {
-      "ts": 0.72,
-      "scan": "104505cfad",
+      "ts": 0.969,
+      "scan": "4d86c0373e",
       "variant": "later",
-      "stage": "import",
+      "stage": "snippet",
       "type": "dns",
       "target": "usage.py-titlecase.test",
       "detail": {
-        "pid": 20,
-        "argv1": "-c",
+        "pid": 24,
+        "argv1": "/work/snippet.py",
         "op": "getaddrinfo"
       },
       "token": null
     },
     {
-      "ts": 0.758,
-      "scan": "104505cfad",
+      "ts": 1.032,
+      "scan": "4d86c0373e",
       "variant": "later",
-      "stage": "snippet",
-      "type": "env",
-      "target": "CI",
-      "detail": {
-        "pid": 24,
-        "argv1": "/work/snippet.py",
-        "op": "get"
-      },
-      "token": null
-    },
-    {
-      "ts": 0.823,
-      "scan": "104505cfad",
-      "variant": "later",
-      "stage": "snippet",
+      "stage": "import",
       "type": "dns",
       "target": "usage.py-titlecase.test",
       "detail": {
-        "pid": 24,
-        "argv1": "/work/snippet.py",
+        "pid": 20,
+        "argv1": "/trustlens/import_pkg.py",
         "op": "getaddrinfo"
       },
       "token": null
@@ -68,26 +68,26 @@
   "capabilities": [
     {
       "cap": "env:CI",
-      "stage": "import",
-      "first_ts": 0.648,
-      "count": 1
-    },
-    {
-      "cap": "net:usage.py-titlecase.test",
-      "stage": "import",
-      "first_ts": 0.72,
+      "stage": "snippet",
+      "first_ts": 0.893,
       "count": 1
     },
     {
       "cap": "env:CI",
-      "stage": "snippet",
-      "first_ts": 0.758,
+      "stage": "import",
+      "first_ts": 0.953,
       "count": 1
     },
     {
       "cap": "net:usage.py-titlecase.test",
       "stage": "snippet",
-      "first_ts": 0.823,
+      "first_ts": 0.969,
+      "count": 1
+    },
+    {
+      "cap": "net:usage.py-titlecase.test",
+      "stage": "import",
+      "first_ts": 1.032,
       "count": 1
     }
   ],
@@ -116,8 +116,17 @@
     "observed": [
       {
         "cap": "env:CI",
+        "stage": "snippet",
+        "first_ts": 0.893,
+        "count": 1,
+        "status": "contradicted",
+        "severity": "medium",
+        "reason": "README says it doesn't do this (minor capability)"
+      },
+      {
+        "cap": "env:CI",
         "stage": "import",
-        "first_ts": 0.648,
+        "first_ts": 0.953,
         "count": 1,
         "status": "contradicted",
         "severity": "medium",
@@ -125,26 +134,17 @@
       },
       {
         "cap": "net:usage.py-titlecase.test",
-        "stage": "import",
-        "first_ts": 0.72,
+        "stage": "snippet",
+        "first_ts": 0.969,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",
         "reason": "README explicitly says it doesn't do this"
       },
       {
-        "cap": "env:CI",
-        "stage": "snippet",
-        "first_ts": 0.758,
-        "count": 1,
-        "status": "contradicted",
-        "severity": "medium",
-        "reason": "README says it doesn't do this (minor capability)"
-      },
-      {
         "cap": "net:usage.py-titlecase.test",
-        "stage": "snippet",
-        "first_ts": 0.823,
+        "stage": "import",
+        "first_ts": 1.032,
         "count": 1,
         "status": "contradicted",
         "severity": "critical",

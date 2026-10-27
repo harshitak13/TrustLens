@@ -5,7 +5,7 @@ compares that with what its README says it does.
 
 ## Workflow
 
-1. **Intake.** `sandbox/run_scan.py` packs the package (`npm pack`) and records the sha256.
+1. **Intake.** `sandbox/intake.py` turns a fixture, `npm:name@ver`, `pypi:name==ver` or an upload (.zip/.tgz/.whl) into a package folder without running any of it; `run_scan.py` packs it, records the sha256 and fetches dependencies.
 2. **Sandbox run.** One container per scan and variant: `--network none`, `--cap-drop ALL`,
    `--read-only` with tmpfs for `/tmp`, `/work`, `/home/dev`, memory/CPU/pid limits.
    `run.sh` runs three stages: `install` (offline, from the local copy), `import`, and `snippet`
@@ -35,11 +35,25 @@ compares that with what its README says it does.
 ```bash
 docker build -t trustlens-node sandbox/node
 docker build -t trustlens-python sandbox/python
-python scripts/scan.py fixtures/py-titlecase   # all variants, combined result
-python scripts/scan.py npm:dotenv@16.4.5           # a real registry package
-python sandbox/run_scan.py fixtures/http-fetchy
-python sandbox/run_scan.py fixtures/http-fetchy --variant ci
+python scripts/scan.py fixtures/py-titlecase      # all variants, combined result
+python scripts/scan.py npm:express@4.21.1         # npm registry (dependencies included)
+python scripts/scan.py pypi:requests==2.32.3      # PyPI wheel (dependencies included)
+python scripts/scan.py path/to/my-lib.zip         # upload: .zip / .tgz / .tar.gz / .whl
+python sandbox/run_scan.py fixtures/http-fetchy --variant ci   # one variant only
+
+# UI: API + web app, then open http://localhost:5173
+python -m uvicorn api.main:app --port 8000
+npm --prefix web run dev
 ```
+
+The UI's scan panel has three tabs: **fixture**, **npm / PyPI** (type `npm:name@ver` or
+`pypi:name==ver`) and **upload** (pick a file). How the sandbox works is in [SANDBOX.md](SANDBOX.md).
+
+Dependencies: the sandbox has no network, so `sandbox/run_scan.py` downloads dependencies on the
+host first, as data only (npm with `--ignore-scripts`, pip binary wheels only), caches them per
+package hash in `.trustlens/dc/`, and mounts them read-only at `/deps`. The install inside the
+sandbox runs fully offline from there, so dependency install scripts run (and are observed) only
+in the sandbox. Tested: express@4.21.1 (69 packages), axios@1.7.7, requests==2.32.3, chalk@5.3.0 (ESM-only).
 
 ## Backtest
 
@@ -49,6 +63,29 @@ left-pad@1.3.0, ms@2.1.3, is-number@7.0.0, slugify@1.6.6, nanoid@3.3.7, dotenv@1
 come back clean (dotenv's `.env` and `DOTENV_CONFIG_*` reads are claimed in its README).
 Registry tarballs are fetched with `npm pack --ignore-scripts` and unpacked as data on the host;
 nothing from them runs outside the sandbox.
+
+## Known gaps
+
+Honest limits of the current build, roughly in order of importance:
+
+1. **Hooks can be bypassed.** Observation happens inside Node/Python. Native addons, prebuilt
+   binaries and raw syscalls are invisible, and for a spawned program (`curl`, `sh`) we see its
+   command line but not what it does. Fix: an `strace`/eBPF pass as ground truth (not built).
+2. **No network means no payloads.** We see *where* a package tries to connect, not *what* it would
+   send, and multi-stage malware that needs a server reply never reaches stage two.
+3. **Short runs.** Import waits 4s, each README example gets 8s (max 8 examples). Code that waits
+   longer, or only runs when you call a specific function, isn't exercised.
+4. **Claims are rules, not understanding.** Without an LLM pass the README parser can miss
+   unusual wording (under-claiming → false flags) or pick up stray paths (over-claiming).
+5. **Category is a keyword guess** (string-utils, http-client, cli-tool, parser).
+6. **Install limits.** No compilers in the sandbox, so packages that build native code (node-gyp,
+   Python sdists with C extensions) fail to install; Python dependencies must have Linux CPython
+   3.11 wheels. Packages that download extra binaries at install time (e.g. browsers) fail and show
+   up as flagged network attempts.
+7. **Container, not VM.** Docker isolates with namespaces; a kernel exploit could escape. On Windows,
+   Docker Desktop adds a WSL2 VM layer.
+8. **Demo-grade API.** No auth, meant for localhost; uploads capped at 50 MB; results are keyed by
+   `name@version`, so a re-scan overwrites; `.trustlens/` is never cleaned up.
 
 ## Fixes to the original plan
 

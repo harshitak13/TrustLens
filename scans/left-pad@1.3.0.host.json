@@ -1,10 +1,10 @@
 {
-  "scan": "f2d7d9686b",
+  "scan": "f3f340d79d",
   "package": "left-pad",
   "version": "1.3.0",
   "sha256": "b918ea69ee35e6ac0705145fec0edde7fac2d7899c5ce0ff36a79a57518f5263",
   "source": "registry",
-  "registry_sha256": "870c0fe1096223a58d4f8832d08a7e651ea2fcadb8e6877b2fdc26b662d481dd",
+  "source_sha256": "870c0fe1096223a58d4f8832d08a7e651ea2fcadb8e6877b2fdc26b662d481dd",
   "ecosystem": "npm",
   "variant": "host",
   "events": [],

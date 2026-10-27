@@ -54,6 +54,10 @@ def _hook(event, args):
                 _emit("net", f"{addr[0]}:{addr[1]}", {"op": "connect"})
             else:
                 _emit("net", f"unix:{addr}", {"op": "connect"})
+        elif event == "socket.bind":
+            addr = args[1]
+            if isinstance(addr, tuple) and len(addr) >= 2 and addr[1]:
+                _emit("listen", addr[1], {"op": "bind"})
         elif event == "socket.getaddrinfo":
             _emit("dns", args[0], {"op": "getaddrinfo"})
         elif event == "socket.gethostbyname":
