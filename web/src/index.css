@@ -1,3 +1,25 @@
 @import "tailwindcss";
 
-body { @apply bg-slate-950 text-slate-100 antialiased; }
+/* Warm paper + one orange. No blues or purples anywhere. */
+@theme {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Source Sans 3", ui-sans-serif, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-paper: #fffaf3;
+  --color-card: #ffffff;
+  --color-line: #efe4d6;
+  --color-ink: #2b2118;
+  --color-muted: #7a6a5b;
+  --color-faint: #b3a493;
+  --color-brand: #e8590c;
+  --color-brand-dark: #c2410c;
+  --color-brand-soft: #fff0e3;
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+  font-family: var(--font-sans);
+}
+
+::selection { background: #ffd8b8; }

@@ -54,6 +54,7 @@ Click **dotenv@16.4.5** (tagged "real npm package") → **Matches its README**.
 
 In the scan panel pick **npm / PyPI** and type e.g. `npm:express@4.21.1` (69 dependencies,
 about a minute), or pick **upload** and choose a `.zip`/`.tgz` of a package folder or a `.whl`.
+Ready-made zips of our test packages are in `demo/uploads/` (e.g. `ci-sleeper.zip`).
 "Dependencies are downloaded first without running anything, then the whole install happens
 offline inside the sandbox, so even dependency install scripts are observed."
 Express comes back **Minor gaps**: a few undocumented debug env vars, and `listen:3000` is
