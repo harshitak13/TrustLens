@@ -13,6 +13,7 @@ Run: uvicorn api.main:app --reload --port 8000
 import asyncio
 import json
 import re
+import subprocess
 import sys
 import threading
 import uuid
@@ -128,7 +129,17 @@ def start_scan(req: ScanRequest):
     return {"job": start_job(path, req.variants)}
 
 
+def docker_ready() -> bool:
+    try:
+        return subprocess.run(["docker", "info"], capture_output=True, timeout=15).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
 def start_job(path: str, variants: list[str]) -> str:
+    if not docker_ready():
+        raise HTTPException(503, "Docker isn't running, so the sandbox can't start. Open Docker Desktop, "
+                                 "wait for 'Engine running', then try again.")
     job_id = uuid.uuid4().hex[:8]
     JOBS[job_id] = {"events": [], "finished": False, "result": None}
     threading.Thread(target=run_job, args=(job_id, path, variants), daemon=True).start()

@@ -165,6 +165,11 @@ def scan(pkg_path: str, variant: str = "baseline"):
     hook_log = events_dir / "hook.jsonl"
     if hook_log.exists():
         raw = [json.loads(l) for l in hook_log.read_text(encoding="utf-8").splitlines() if l.strip()]
+    # The sandbox writes a "done" marker as its last step. Without it the run
+    # didn't happen (Docker down, container killed) and an empty result would
+    # wrongly read as "clean", so fail loudly instead of saving it.
+    if not any(r.get("type") == "stage" and r.get("stage") == "done" for r in raw):
+        raise RuntimeError("The sandbox didn't finish. Is Docker Desktop running? (bottom-left should say 'Engine running')")
     events = to_events(raw, scan_id, variant, name)
     caps = capabilities(events)
     result = {
